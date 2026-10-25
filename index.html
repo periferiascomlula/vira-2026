@@ -27,6 +27,10 @@ button{cursor:pointer}
 .cab-logo{flex:none;display:block;line-height:0}
 .cab-logo img{height:68px;width:auto;display:block}
 .cab-id{min-width:0;flex:0 1 auto}
+/* Instagram ao lado da logo: pílula branca com o ícone na cor da marca */
+.ig-btn{flex:none;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px 0 11px;border-radius:999px;background:#fff;color:var(--marca);font-weight:800;font-size:.85rem;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.ig-btn:hover{background:#fff5f4}
+.ig-btn svg{display:block}
 .cab-id .kicker{margin:0;font-family:'Montserrat',sans-serif;font-weight:800;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;opacity:.9}
 .cab-id h1{margin:2px 0 0;font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.6rem;line-height:1.1;letter-spacing:-.01em}
 .cab-id p{margin:4px 0 0;font-size:.8rem;opacity:.88}
@@ -131,7 +135,24 @@ body[data-aba="resumo"] .tela>[data-sec="resumo"],body[data-aba="mapa"] .tela>[d
 .des-l b{font-variant-numeric:tabular-nums}
 .des-l .n{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--sub)}
 /* nota técnica */
-.nota-btn{background:none;border:0;padding:0;cursor:pointer;font:inherit;font-size:.78rem;font-weight:700}
+/* "Como funciona?" em destaque: pílula branca no topo vermelho; no Virômetro, botão cheio na cor da marca */
+.como-btn{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px 0 6px;border:0;border-radius:999px;background:#fff;color:var(--marca);font-weight:800;font-size:.9rem;box-shadow:0 2px 8px rgba(0,0,0,.18);cursor:pointer}
+.como-btn:hover{background:#fff5f4}
+.como-i{width:28px;height:28px;border-radius:14px;background:var(--marca);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:900;font-size:1rem}
+.btn-destaque{background:var(--marca);color:#fff;border-color:var(--marca);font-weight:800}
+.btn-destaque:hover{background:var(--marca-esc)}
+.como-faixa{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:10px 0 4px;padding:10px 12px;border-radius:14px;background:var(--marca-claro);border:1px solid #f3c9c4}
+.como-faixa p{margin:0;flex:1 1 220px;font-size:.9rem}
+/* cadastro para receber notícias */
+.cad{border:2px solid var(--marca);background:var(--card)}
+.cad h3{font-size:1.1rem;margin-top:0}
+.cad-grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px;margin:10px 0}
+.cad label{display:flex;flex-direction:column;gap:4px;font-size:.85rem;font-weight:600}
+.cad input[type=text],.cad input[type=email]{min-height:46px;border-radius:12px;border:1px solid var(--linha);background:var(--bg);padding:0 12px;font-size:16px}
+.cad .aceite{flex-direction:row;align-items:flex-start;gap:10px;font-weight:400;font-size:.85rem}
+.cad .aceite input{width:22px;height:22px;flex:none;margin-top:1px}
+.cad .armadilha{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.cad-msg{font-weight:700;margin:8px 0 0}
 .nota-modal{position:fixed;top:0;left:0;right:0;bottom:0;z-index:3000;background:rgba(20,10,10,.5);display:flex;align-items:center;justify-content:center;padding:16px}
 .nota-caixa{position:relative;background:var(--card);color:var(--txt);border-radius:18px;max-width:780px;width:100%;max-height:92vh;max-height:92dvh;overflow:auto;padding:24px 26px;box-shadow:0 12px 40px rgba(0,0,0,.3);-webkit-overflow-scrolling:touch;font-size:.95rem}
 .nota-caixa h2{margin:0 40px 4px 0}
@@ -153,6 +174,12 @@ body[data-aba="resumo"] .tela>[data-sec="resumo"],body[data-aba="mapa"] .tela>[d
 .vbar .n{font-variant-numeric:tabular-nums;font-weight:800;text-align:right;line-height:1.15}
 .vbar .n small{display:block;font-weight:400;color:var(--sub);font-size:.68rem}
 .placar .fins{margin-top:8px}
+.abn{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}
+.abn .vl{font-size:1.2rem}
+.abn .ds{font-size:.72rem}
+/* "Cadastre-se!" no topo: pílula amarela, contrasta com o vermelho e com o "Como funciona?" */
+.cad-btn{display:inline-flex;align-items:center;min-height:40px;padding:0 18px;border:0;border-radius:999px;background:#ffd34d;color:#3a1c00;font-weight:900;font-family:'Montserrat',sans-serif;font-size:.9rem;box-shadow:0 2px 8px rgba(0,0,0,.2);cursor:pointer}
+.cad-btn:hover{background:#ffe07f}
 .migalhas .voltar{text-decoration:none}
 html[data-versao="lite"] .migalhas .voltar{background:var(--card);border:1.5px solid var(--marca);border-radius:999px;padding:0 16px;min-height:44px;color:var(--acento);font-weight:800;margin-right:4px}
 .viro-tab summary{cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:800;font-size:.92rem;min-height:44px;display:flex;align-items:center}
@@ -285,6 +312,19 @@ html[data-versao="lite"] .gaveta .leg{margin-top:4px}
   html[data-versao="lite"] .gav-alca{min-height:56px;padding-top:12px;position:relative}
   html[data-versao="lite"] .gav-alca::before{content:"";position:absolute;top:5px;left:50%;width:40px;height:4px;margin-left:-20px;border-radius:2px;background:var(--linha)}
   .vbar{grid-template-columns:minmax(0,6.5em) minmax(0,1fr) 7.6em;gap:6px}
+  .como-btn{min-height:36px;font-size:.8rem;padding:0 12px 0 4px;gap:6px}
+  .como-i{width:26px;height:26px;font-size:.9rem}
+  .cad-btn{min-height:36px;font-size:.8rem;padding:0 12px}
+  .ig-btn{width:44px;height:44px;padding:0;justify-content:center}
+  .ig-txt{display:none}
+  /* topo no celular: 1ª linha logo, título e situação; 2ª linha "Cadastre-se!" e "Como funciona?" lado a lado */
+  .cab{flex-wrap:wrap;row-gap:6px}
+  .cab-acoes{width:100%;flex-direction:row;align-items:center;justify-content:space-between;margin-left:0}
+  .cab-acoes>span:last-child{flex-wrap:nowrap}
+  .cab .versao-link{display:none}
+  .des-l{grid-template-columns:minmax(0,1fr) auto}
+  .des-l .n{grid-column:1/-1;order:3}
+  .abn .vl{font-size:1rem}
   html[data-versao="lite"] .gav-seta{transform:rotate(180deg)}
   html[data-versao="lite"] .gaveta[data-aberta="true"] .gav-seta{transform:none}
   html[data-versao="lite"] .leaflet-control-zoom a{width:44px;height:44px;line-height:44px}
@@ -295,9 +335,10 @@ html[data-versao="lite"] .gaveta .leg{margin-top:4px}
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="estrela" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol></svg>
 <header class="cab">
   <span class="cab-logo"><img src="marca/logo.png" alt="Comitê Periferias com Lula" width="97" height="100"></span>
+  <a class="ig-btn" href="https://www.instagram.com/periferiascomlula.oficial" target="_blank" rel="noopener" aria-label="Instagram do Periferias com Lula (@periferiascomlula.oficial)" title="@periferiascomlula.oficial"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor" stroke="none"/></svg><span class="ig-txt">Instagram</span></a>
   <div class="cab-id"><p class="kicker">Apuração ao vivo · 2º turno 2026</p><h1>Presidente</h1><p id="cab-sub">Carregando…</p></div>
   <div class="cab-deco" aria-hidden="true"><i></i><svg class="estrela" style="color:#fff"><use href="#estrela"/></svg></div>
-  <div class="cab-acoes"><span id="estado" class="estado"></span><span style="display:flex;gap:8px 12px;align-items:center;flex-wrap:wrap;justify-content:flex-end"><button class="versao-link nota-btn" data-acao="nota">Como funciona?</button><a id="versao-link" class="versao-link" href="lite.html">Versão Lite</a><button class="btn" data-acao="atualizar">Atualizar agora</button><button class="btn-icone" data-acao="tema" aria-label="Trocar tema claro/escuro">◐</button></span></div>
+  <div class="cab-acoes"><span id="estado" class="estado"></span><span style="display:flex;gap:8px 12px;align-items:center;flex-wrap:wrap;justify-content:flex-end"><button class="cad-btn" id="cad-topo" data-acao="cadastro" hidden>Cadastre-se!</button><button class="como-btn" data-acao="nota"><span class="como-i" aria-hidden="true">?</span>Como funciona?</button><a id="versao-link" class="versao-link" href="lite.html">Versão Lite</a><button class="btn" data-acao="atualizar">Atualizar agora</button><button class="btn-icone" data-acao="tema" aria-label="Trocar tema claro/escuro">◐</button></span></div>
 </header>
 <div class="envolve">
 <div id="fonte" class="fonte">Carregando a base…</div>
@@ -311,9 +352,24 @@ html[data-versao="lite"] .gaveta .leg{margin-top:4px}
   <section class="cartao" id="resumo" data-sec="resumo"></section>
   <section class="cartao" data-sec="mapa"><div id="mapa" class="mapa"></div><div id="gaveta" class="gaveta" data-aberta="true"><button class="gav-alca" data-acao="gaveta" aria-expanded="true" aria-controls="gav-corpo"><span class="gav-txt" id="gav-txt"></span><span class="gav-seta" aria-hidden="true">▾</span></button><div class="gav-corpo" id="gav-corpo"><div id="mapa-ctl"></div><div id="legenda"></div></div></div></section>
   <section class="cartao painel-lista" id="viro" data-sec="viro"></section>
+  <section class="cartao painel-lista cad" id="cadastro" data-sec="viro" hidden>
+    <h3>Receba notícias do Periferias com Lula</h3>
+    <p class="rot">Deixe seu nome, e-mail e cidade para receber as novidades do Comitê Periferias com Lula.</p>
+    <form id="cad-form" novalidate>
+      <div class="cad-grade">
+        <label>Nome<input type="text" name="nome" autocomplete="name" maxlength="80" required></label>
+        <label>E-mail<input type="email" name="email" autocomplete="email" maxlength="120" required></label>
+        <label>Cidade (e estado)<input type="text" name="cidade" autocomplete="address-level2" maxlength="80" placeholder="Ex.: São Paulo – SP" required></label>
+      </div>
+      <label class="armadilha" aria-hidden="true">Não preencha<input type="text" name="site" tabindex="-1" autocomplete="off"></label>
+      <label class="aceite"><input type="checkbox" name="aceite" required><span>Aceito receber notícias do Comitê Periferias com Lula por e-mail. Meus dados ficam só com o Comitê, não serão vendidos nem repassados, e posso pedir para sair quando quiser (Lei Geral de Proteção de Dados).</span></label>
+      <p style="margin:12px 0 0"><button class="btn btn-destaque" type="submit">Quero receber notícias</button></p>
+      <p class="cad-msg" id="cad-msg" role="status"></p>
+    </form>
+  </section>
   <section class="cartao painel-lista" data-sec="lista"><div id="lista-ctl"></div><div id="lista"></div></section>
 </main>
-<footer class="rodape"><svg class="estrela" style="color:var(--marca)"><use href="#estrela"/></svg><span>Comitê Periferias com Lula · 2º turno ao vivo do TSE; 1º turno, 2022 e 2014 dos Dados Abertos do TSE e do IBGE</span><svg class="estrela" style="color:var(--marca)"><use href="#estrela"/></svg></footer>
+<footer class="rodape"><svg class="estrela" style="color:var(--marca)"><use href="#estrela"/></svg><span>Comitê Periferias com Lula · 2º turno ao vivo do TSE; 1º turno, 2022 e 2014 dos Dados Abertos do TSE e do IBGE · <a id="versao-rod" href="lite.html" style="color:var(--acento)">Versão Lite</a></span><svg class="estrela" style="color:var(--marca)"><use href="#estrela"/></svg></footer>
 <div id="nota" class="nota-modal" hidden role="dialog" aria-modal="true" aria-labelledby="nota-tit"><div class="nota-caixa"><button class="nota-x" data-acao="nota" aria-label="Fechar o Como funciona?">×</button><div id="nota-corpo"></div><div id="nota-vivo"></div></div></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script id="app">
@@ -328,6 +384,12 @@ html[data-versao="lite"] .gaveta .leg{margin-top:4px}
   // Versão Lite (lite.html, ou ?lite=1): Virômetro primeiro, mapa em tela cheia, só Grandes Regiões, Estados e Municípios
   var LITE = OPC.lite != null ? !!OPC.lite : Q.get('lite') === '1' || document.documentElement.getAttribute('data-versao') === 'lite';
   if (LITE) document.documentElement.setAttribute('data-versao', 'lite');
+  // Cadastro para receber notícias: vai para um Formulário Google do Comitê (as respostas ficam numa planilha dele).
+  // form = código do formulário (o trecho depois de /forms/d/e/); nome/email/cidade = os "entry.NNN" de cada pergunta.
+  // Enquanto estiver vazio, o quadro de cadastro não aparece.
+  var CADASTRO = OPC.cadastro || { form: '', nome: '', email: '', cidade: '' };
+  // Contador de acessos (Umami Cloud, sem cookies): o "Website ID" do site no Umami. Vazio = desligado.
+  var CONTADOR = OPC.contador != null ? OPC.contador : '';
   var TSE_RAIZ = 'https://resultados.tse.jus.br/oficial';
   var PASTA = OPC.pasta || 'aovivo_dados/';
   // reserva (sem a base): os mesmos códigos do ele-c.json do TSE
@@ -421,7 +483,8 @@ html[data-versao="lite"] .gaveta .leg{margin-top:4px}
     if (j.v.vv == null || j.e.te == null || j.s.ts == null) throw erroFormato(url, 'faltam vv, te ou ts');
     var vv = int(j.v.vv), a = votos[FIN.a.n] || 0, b = votos[FIN.b.n] || 0;
     return { v: [int(j.e.te), int(j.e.c), vv, int(j.v.vb), int(j.v.tvn != null ? j.v.tvn : j.v.vn), a, b, vv - a - b],
-      st: int(j.s.st), ts: int(j.s.ts), and: j.and || '', dt: j.dt || '', ht: j.ht || '', nomes: nomes, tp: j.tpabr, cd: j.cdabr };
+      st: int(j.s.st), ts: int(j.s.ts), and: j.and || '', dt: j.dt || '', ht: j.ht || '', nomes: nomes, tp: j.tpabr, cd: j.cdabr,
+      ab: j.e.a != null ? int(j.e.a) : null };   // abstenções nas seções já apuradas (o te é o total de eleitores do lugar)
   }
   // progresso: {chave: {st, ts, and, marca}}; chaves 'br', 'zz', 'uf:SP', 'mun:71072'
   function lerAb(j, url) {
@@ -668,13 +731,13 @@ html[data-versao="lite"] .gaveta .leg{margin-top:4px}
       if (!x && !p) return null;
       var stt = p ? p.st : x.st, tss = p ? p.ts : x.ts;
       if (x && x.st >= stt) { stt = x.st; tss = x.ts; }
-      return { v: x ? x.v : null, st: stt, ts: tss, completo: tss > 0 && stt >= tss && !!x && x.st >= x.ts, atual: !!x && (!p || x.st === p.st) };
+      return { v: x ? x.v : null, ab: x ? x.ab : null, st: stt, ts: tss, completo: tss > 0 && stt >= tss && !!x && x.st >= x.ts, atual: !!x && (!p || x.st === p.st) };
     }
     // somas: região = estados; intermediária, imediata e RM = municípios
-    var ms = membros(k), vs = [], s = 0, t = 0, todos = ms.length > 0;
-    ms.forEach(function (m) { var y = vivo(m); if (y) { s += y.st; t += y.ts; if (y.v) vs.push(y.v); if (!y.completo) todos = false; } else todos = false; });
+    var ms = membros(k), vs = [], s = 0, t = 0, ab = 0, temAb = true, todos = ms.length > 0;
+    ms.forEach(function (m) { var y = vivo(m); if (y) { s += y.st; t += y.ts; if (y.v) { vs.push(y.v); if (y.ab != null) ab += y.ab; else temAb = false; } if (!y.completo) todos = false; } else todos = false; });
     if (!t && !vs.length) return null;
-    return { v: vs.length ? somar(vs) : null, st: s, ts: t, completo: todos, soma: true };
+    return { v: vs.length ? somar(vs) : null, ab: vs.length && temAb ? ab : null, st: s, ts: t, completo: todos, soma: true };
   }
   function progresso(k) {
     if (k === 'br' || k === 'zz' || nivel(k) === 'uf') return AB.br && AB.br.lug[k] || null;
@@ -889,19 +952,19 @@ html[data-versao="lite"] .gaveta .leg{margin-top:4px}
       var m = function (x) { return String(Math.round(x * f)); };
       return { ele: ELE.t2, t: '2', tpabr: tp, cdabr: cd, dg: '25/10/2026', hg: '17:00:00', dt: '25/10/2026', ht: String(sec), and: f >= 1 ? 'f' : 'p',
         carg: [{ cd: '1', agr: [{ par: [{ cand: [{ n: FIN.a.n, nmu: FIN.a.nome.toUpperCase(), vap: m(v[5]) }] }] }, { par: [{ cand: [{ n: FIN.b.n, nmu: FIN.b.nome.toUpperCase(), vap: m(v[6]) }] }] }] }],
-        s: { ts: String(ts), st: String(sec) }, e: { te: String(v1[0]), c: m(v[1]) }, v: { vv: m(v[2]), vb: m(v[3]), tvn: m(v[4]), vn: m(v[4]) } };
+        s: { ts: String(ts), st: String(sec) }, e: { te: String(v1[0]), c: m(v[1]), a: m(v[0] - v[1]) }, v: { vv: m(v[2]), vb: m(v[3]), tvn: m(v[4]), vn: m(v[4]) } };
     },
     brasil: function () {   // como no TSE: o Brasil é a soma dos estados e do exterior
-      var self = this, soma = { te: 0, c: 0, vv: 0, vb: 0, tvn: 0, a: 0, b: 0, ts: 0, st: 0 };
+      var self = this, soma = { te: 0, c: 0, ab: 0, vv: 0, vb: 0, tvn: 0, a: 0, b: 0, ts: 0, st: 0 };
       Object.keys(BASE.lug).filter(function (x) { return nivel(x) === 'uf' || x === 'zz'; }).forEach(function (x) {
         var j = self.u(x, 'uf', x); if (!j) return;
-        soma.te += +j.e.te; soma.c += +j.e.c; soma.vv += +j.v.vv; soma.vb += +j.v.vb; soma.tvn += +j.v.tvn; soma.ts += +j.s.ts; soma.st += +j.s.st;
+        soma.te += +j.e.te; soma.c += +j.e.c; soma.ab += +j.e.a; soma.vv += +j.v.vv; soma.vb += +j.v.vb; soma.tvn += +j.v.tvn; soma.ts += +j.s.ts; soma.st += +j.s.st;
         soma.a += +j.carg[0].agr[0].par[0].cand[0].vap; soma.b += +j.carg[0].agr[1].par[0].cand[0].vap;
       });
       var S = String;
       return { ele: ELE.t2, t: '2', tpabr: 'br', cdabr: 'br', dg: '25/10/2026', hg: '17:00:00', dt: '25/10/2026', ht: S(soma.st), and: soma.st >= soma.ts ? 'f' : 'p',
         carg: [{ cd: '1', agr: [{ par: [{ cand: [{ n: FIN.a.n, nmu: FIN.a.nome.toUpperCase(), vap: S(soma.a) }] }] }, { par: [{ cand: [{ n: FIN.b.n, nmu: FIN.b.nome.toUpperCase(), vap: S(soma.b) }] }] }] }],
-        s: { ts: S(soma.ts), st: S(soma.st) }, e: { te: S(soma.te), c: S(soma.c) }, v: { vv: S(soma.vv), vb: S(soma.vb), tvn: S(soma.tvn), vn: S(soma.tvn) } };
+        s: { ts: S(soma.ts), st: S(soma.st) }, e: { te: S(soma.te), c: S(soma.c), a: S(soma.ab) }, v: { vv: S(soma.vv), vb: S(soma.vb), tvn: S(soma.tvn), vn: S(soma.tvn) } };
     },
     abDe: function (lista) {
       var self = this;
@@ -1391,7 +1454,15 @@ html[data-versao="lite"] .gaveta .leg{margin-top:4px}
   function cartaoApur(k, A) {
     var x = vivo(k), v = x && x.v, c = ['<div class="vcard larga placar"><h3>Apuração ' + (nivel(k) === 'br' ? 'no Brasil' : 'em ' + esc(nomeDe(k))) + '</h3>' + linhaApur(x)];
     c.push('<p class="rot"><b>' + fmtN(A.n) + '</b> de ' + fmtN(A.total) + ' municípios totalizados (' + fmtP(A.aptosTot ? 100 * A.aptos / A.aptosTot : 0) + ' dos eleitores)</p>');
-    if (v && v[I.validos]) c.push('<div class="fins">' + ['b', 'a'].map(function (q) { return '<div class="fin" style="--c:var(--cor-' + q + ')"><div class="nm">' + esc(FIN[q].nome) + '</div><div class="pc">' + fmtP2(pct(v, q)) + '</div><div class="vt">' + fmtN(v[I[q]]) + ' votos' + (x.completo ? '' : ' (parcial)') + '</div></div>'; }).join('') + '</div>');
+    if (v && v[I.validos]) {
+      // placar em tempo real: % dos votos válidos de cada candidato (como o TSE)
+      c.push('<p class="rot" style="margin-top:10px">Placar' + (x.completo ? '' : ' parcial') + ', em % dos <b>' + fmtN(v[I.validos]) + ' votos válidos</b> apurados:</p>');
+      c.push('<div class="fins" style="margin-top:4px">' + ['b', 'a'].map(function (q) { return '<div class="fin" style="--c:var(--cor-' + q + ')"><div class="nm">' + esc(FIN[q].nome) + '</div><div class="pc">' + fmtP2(pct(v, q)) + '</div><div class="vt">' + fmtN(v[I[q]]) + ' votos</div></div>'; }).join('') + '</div>');
+      // abstenções (sobre os eleitores das seções apuradas) e brancos e nulos (sobre os votos dados), como o TSE
+      var ab = x.ab != null ? x.ab : x.completo ? v[I.aptos] - v[I.comp] : null, tv = v[I.comp];
+      var it = [['Abstenções', ab, ab != null ? pctD(ab, ab + tv) : null, 'dos eleitores'], ['Brancos', v[I.brancos], pctD(v[I.brancos], tv), 'dos votos'], ['Nulos', v[I.nulos], pctD(v[I.nulos], tv), 'dos votos']];
+      c.push('<div class="abn">' + it.map(function (i) { return '<div class="bloco"><div class="vl">' + fmtP2(i[2]) + '</div><div class="ds"><b>' + i[0] + '</b> · ' + (i[1] != null ? fmtN(i[1]) : '—') + ' (' + i[3] + ')</div></div>'; }).join('') + '</div>');
+    }
     if (nivel(k) !== 'br') { var b = vivo('br'); if (b && b.ts) c.push('<p class="nota">Brasil: ' + (b.st >= b.ts ? '100%' : NP2.format(100 * b.st / b.ts) + '%') + ' das seções apuradas.</p>'); }
     return c.join('') + '</div>';
   }
@@ -1460,7 +1531,8 @@ html[data-versao="lite"] .gaveta .leg{margin-top:4px}
     if (D) h.push('<p class="viro-intro">Quanto mudou o <b>desinteresse</b> (abstenções + brancos + nulos, em % dos eleitores aptos) do 1º para o 2º turno de 2026.' + (LITE ? '' : ' Só entram municípios 100% apurados (comparação justa).') + '</p>');
     else if (LITE) h.push('<p class="viro-intro">Votos de <b>' + esc(f.nome) + '</b> no 2º turno × 1º turno. Meta: <b>' + esc(metaRot(q)) + '</b>.</p>');
     else h.push('<p class="viro-intro">Quantos votos <b>' + esc(f.nome) + '</b> ganhou ou perdeu do 1º para o 2º turno de 2026, rumo à meta fixa: a votação de <b>' + esc(metaRot(q)) + '</b> no lugar inteiro. Só entram municípios 100% apurados (comparação justa).</p>');
-    h.push('<div class="ctl"><span class="rot">Medir:</span>' + segQuem(true) + '<button class="btn" data-acao="viromapa">Ver no mapa</button><button class="btn" data-acao="nota">Como funciona?</button></div>');
+    h.push('<div class="como-faixa"><p>Entenda em 1 minuto como o Virômetro conta os votos que cada candidato ganhou ou perdeu.</p><button class="btn btn-destaque" data-acao="nota">Como funciona?</button></div>');
+    h.push('<div class="ctl"><span class="rot">Medir:</span>' + segQuem(true) + '<button class="btn" data-acao="viromapa">Ver no mapa</button></div>');
     if (BASE.fonte !== 'base') { escrever('viro', h.join('') + '<p class="sem-mapa">O Virômetro precisa da base do projeto (1º turno e 2022 por município), que não abriu.</p>'); return; }
     if (n === 'zz') { escrever('viro', h.join('') + '<p class="sem-mapa">O exterior não tem municípios: o Virômetro vale do Brasil até cada município.</p>'); return; }
     var ms = munsDe(k), us = ms ? unidadesViro(k) : [];
@@ -1475,12 +1547,19 @@ html[data-versao="lite"] .gaveta .leg{margin-top:4px}
     // 2) o somatório
     var cob = A.aptosTot ? 100 * A.aptos / A.aptosTot : 0;
     h.push('<div class="vcard"><h3>Somatório nos municípios totalizados</h3><div class="blocos">');
-    h.push('<div class="bloco forte" style="--c:' + (A.ganho < 0 ? corDown : corUp) + '"><div class="vl">' + (A.n ? fmtS(A.ganho) : '—') + '</div><div class="ds">' + (D ? 'diferença de eleitores que não votaram em ninguém (2º turno − 1º turno)' : 'diferença total de votos de ' + esc(f.nome) + ' (2º turno − 1º turno)') + '</div></div>');
+    // desinteresse: o destaque é o percentual (em p.p. dos eleitores aptos); o número de pessoas vem pequeno embaixo
+    var dsA = D ? desDe(A) : null;
+    if (D) h.push('<div class="bloco forte" style="--c:' + (dsA.dd != null && dsA.dd < 0 ? corDown : corUp) + '"><div class="vl">' + (A.n ? fmtPP(dsA.dd) : '—') + '</div><div class="ds">' + (A.n ? fmtP(dsA.d1) + ' no 1º turno → <b>' + fmtP(dsA.d2) + '</b> no 2º turno, dos eleitores aptos · ' + fmtS(A.ganho) + ' pessoas' : 'mudança do desinteresse (2º turno − 1º turno)') + '</div></div>');
+    else h.push('<div class="bloco forte" style="--c:' + (A.ganho < 0 ? corDown : corUp) + '"><div class="vl">' + (A.n ? fmtS(A.ganho) : '—') + '</div><div class="ds">diferença total de votos de ' + esc(f.nome) + ' (2º turno − 1º turno)</div></div>');
     h.push('<div class="bloco"><div class="vl">' + fmtN(A.n) + ' <small style="font-size:.8rem;color:var(--sub)">de ' + fmtN(A.total) + '</small></div><div class="ds">municípios totalizados (' + fmtP(cob) + ' dos eleitores)</div></div>');
     if (!D) h.push('<div class="bloco"><div class="vl">' + (A.nMeta ? (A.chegou ? '0' : fmtN(A.falta)) : '—') + '</div><div class="ds">' + (A.nMeta && A.chegou ? 'já passou da meta por ' + fmtN(A.agora - A.metaTot) + ' votos' : 'votos que faltam para a meta' + (A.nMeta ? ' (fixa: ' + fmtS(A.alvo) + ')' : '')) + '</div></div>');
-    if (!LITE) {
-      h.push('<div class="bloco"><div class="vl" style="color:' + corUp + '">' + fmtS(A.pos) + '</div><div class="ds">' + (D ? 'aumentos somados nos ' + fmtN(A.cresceu) + ' em que cresceu' : 'ganhos somados nos ' + fmtN(A.cresceu) + ' que cresceram') + '</div></div>');
-      h.push('<div class="bloco"><div class="vl" style="color:' + corDown + '">' + fmtS(A.neg) + '</div><div class="ds">' + (D ? 'quedas somadas nos ' + fmtN(A.caiu) + ' em que diminuiu' : 'perdas somadas nos ' + fmtN(A.caiu) + ' que diminuíram') + '</div></div>');
+    if (D && A.n) [['abstenções', A.ab1, A.ab2], ['brancos e nulos', A.bn1, A.bn2]].forEach(function (r) {
+      var dd = pctD(r[2], A.ap2) - pctD(r[1], A.aptos);
+      h.push('<div class="bloco"><div class="vl" style="color:' + (dd < 0 ? corDown : corUp) + '">' + fmtPP(dd) + '</div><div class="ds">' + r[0] + ': ' + fmtP(pctD(r[1], A.aptos)) + ' → ' + fmtP(pctD(r[2], A.ap2)) + '</div></div>');
+    });
+    else if (!D && !LITE) {
+      h.push('<div class="bloco"><div class="vl" style="color:' + corUp + '">' + fmtS(A.pos) + '</div><div class="ds">ganhos somados nos ' + fmtN(A.cresceu) + ' que cresceram</div></div>');
+      h.push('<div class="bloco"><div class="vl" style="color:' + corDown + '">' + fmtS(A.neg) + '</div><div class="ds">perdas somadas nos ' + fmtN(A.caiu) + ' que diminuíram</div></div>');
     }
     h.push('</div>' + (n === 'br' && !LITE ? '<p class="nota">Exterior fora da conta (não tem município).</p>' : '') + '</div>');
     // Brasil e Grande Região: barras por região e por estado
@@ -1708,7 +1787,7 @@ html[data-versao="lite"] .gaveta .leg{margin-top:4px}
     if ((v = b.getAttribute('data-ref')) != null) { st.ref = v; render(); return; }
     if ((v = b.getAttribute('data-quem')) != null) { st.quem = v; render(); return; }
     if ((v = b.getAttribute('data-ord')) != null) { if (st.ord === v) st.desc = !st.desc; else { st.ord = v; st.desc = v !== 'nome'; } render(); return; }
-    if ((v = b.getAttribute('data-aba')) != null) { st.aba = v; render(); return; }
+    if ((v = b.getAttribute('data-aba')) != null) { st.aba = v; contar('aba-' + v); render(); return; }
     if ((v = b.getAttribute('data-vbar')) != null) { st.vbar = v; render(); return; }
     if ((v = b.getAttribute('data-vver')) != null) { st.vver = v; st.vtodos = false; render(); return; }
     if ((v = b.getAttribute('data-vord')) != null) { if (st.vord === v) st.vdesc = !st.vdesc; else { st.vord = v; st.vdesc = v !== 'nome'; } render(); return; }
@@ -1720,7 +1799,12 @@ html[data-versao="lite"] .gaveta .leg{margin-top:4px}
         QUADRO = ''; render();
       }
       else if (v === 'vtodos') { st.vtodos = true; render(); }
-      else if (v === 'nota') { NOTA = !NOTA; renderNota(); }
+      else if (v === 'cadastro') {   // "Cadastre-se!": vai ao Virômetro e desce até o quadro de cadastro
+        st.aba = 'viro'; NOTA = false; contar('cadastre-se'); render();
+        var cad = $('cadastro');
+        RELOGIO.depois(60, function () { if (cad.scrollIntoView) cad.scrollIntoView({ behavior: 'smooth', block: 'start' }); var i = cad.querySelector && cad.querySelector('input[name=nome]'); if (i && i.focus) i.focus({ preventScroll: true }); });
+      }
+      else if (v === 'nota') { NOTA = !NOTA; if (NOTA) contar('como-funciona'); renderNota(); }
       else if (v === 'testar-tse') testarTse();
       else if (v === 'viroaba') { st.aba = 'viro'; render(); }
       else if (v === 'vtab') { st.vtab = !st.vtab; render(); }
@@ -1739,6 +1823,56 @@ html[data-versao="lite"] .gaveta .leg{margin-top:4px}
     else if (s === 'ele') { st.ele = t.value; render(); }
     else if (s === 'ref') { st.ref = t.value; render(); }
   });
+  // ======================================================================
+  // Cadastro para receber notícias (Formulário Google do Comitê) e contador de acessos (Umami)
+  // ======================================================================
+  function ligarCadastro() {
+    var sec = $('cadastro'); if (!sec) return;
+    sec.hidden = !(CADASTRO.form && CADASTRO.nome && CADASTRO.email && CADASTRO.cidade);
+    if ($('cad-topo')) $('cad-topo').hidden = sec.hidden;   // botão "Cadastre-se!" do topo, só com o formulário ligado
+    try { if (localStorage.getItem('vira-cadastro')) $('cad-msg').textContent = 'Você já está cadastrado(a). Obrigado!'; } catch (e) { /* ok */ }
+  }
+  function validarCadastro(d) {
+    if (d.site) return 'robo';   // campo escondido preenchido = robô
+    if (!d.nome || d.nome.trim().length < 2) return 'Escreva seu nome.';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((d.email || '').trim())) return 'Confira o e-mail.';
+    if (!d.cidade || d.cidade.trim().length < 2) return 'Escreva sua cidade.';
+    if (!d.aceite) return 'Marque a caixa de aceite para receber as notícias.';
+    return '';
+  }
+  function enviarCadastro(d) {
+    var corpo = new URLSearchParams();
+    corpo.append(CADASTRO.nome, d.nome.trim()); corpo.append(CADASTRO.email, d.email.trim()); corpo.append(CADASTRO.cidade, d.cidade.trim());
+    var url = 'https://docs.google.com/forms/d/e/' + CADASTRO.form + '/formResponse';
+    if (OPC.enviarCadastro) return OPC.enviarCadastro(url, corpo.toString());
+    // no-cors: o Google não deixa ler a resposta, mas grava; erro de rede ainda cai no catch
+    return fetch(url, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: corpo.toString() });
+  }
+  document.addEventListener('submit', function (ev) {
+    var f = ev.target; if (!f || f.id !== 'cad-form') return;
+    if (ev.preventDefault) ev.preventDefault();
+    var el = f.elements, d = { nome: el.nome.value, email: el.email.value, cidade: el.cidade.value, aceite: el.aceite.checked, site: el.site.value };
+    var erro = validarCadastro(d), msg = $('cad-msg');
+    if (erro === 'robo') { msg.textContent = 'Obrigado!'; return; }
+    if (erro) { msg.textContent = erro; return; }
+    msg.textContent = 'Enviando…';
+    Promise.resolve(enviarCadastro(d)).then(function () {
+      msg.textContent = 'Pronto, ' + d.nome.trim().split(' ')[0] + '! Você vai receber as notícias do Periferias com Lula.';
+      try { localStorage.setItem('vira-cadastro', '1'); } catch (e) { /* ok */ }
+      if (f.reset) f.reset();
+      contar('cadastro');
+    }, function () { msg.textContent = 'Não consegui enviar agora (sem internet?). Tente de novo em instantes.'; });
+  });
+  // contador de acessos: só no site publicado (nem na demonstração, nem no computador local)
+  function ligarContador() {
+    if (!CONTADOR || MODO === 'demo' || !document.createElement || !document.head) return;
+    var host = (window.location && location.hostname) || '';
+    if (!host || host === 'localhost' || /^127\.|^192\.168\.|^10\./.test(host)) return;
+    var s = document.createElement('script');
+    s.defer = true; s.src = 'https://cloud.umami.is/script.js'; s.setAttribute('data-website-id', CONTADOR);
+    document.head.appendChild(s);
+  }
+  function contar(ev) { try { if (window.umami && window.umami.track) window.umami.track(ev); } catch (e) { /* o contador nunca atrapalha o painel */ } }
   // Esc fecha a nota técnica; clicar no fundo escuro também
   document.addEventListener('keydown', function (ev) { if (NOTA && ev.key === 'Escape') { NOTA = false; renderNota(); } });
   document.addEventListener('click', function (ev) { if (NOTA && ev.target && ev.target.id === 'nota') { NOTA = false; renderNota(); } });
@@ -1759,7 +1893,7 @@ html[data-versao="lite"] .gaveta .leg{margin-top:4px}
     try { if (localStorage.getItem('vira-tema') === 'dark') st.tema = 'dark'; } catch (e) { /* sem armazenamento: fica o claro */ }
     document.documentElement.setAttribute('data-theme', st.tema);
     if (!LITE && window.matchMedia && window.matchMedia('(max-width: 760px)').matches) st.aba = 'resumo';
-    versoes();
+    versoes(); ligarCadastro(); ligarContador();
     render();
     var parar = false;
     return carregarBase().then(null, function () {
@@ -1786,7 +1920,7 @@ html[data-versao="lite"] .gaveta .leg{margin-top:4px}
     var qs = new URLSearchParams(Q.toString()); qs.delete('lite');
     // endereço principal (./) = Lite; completa.html (o site abre também como /completa) = Completa
     var s = qs.toString(), a = $('versao-link');
-    if (a && a.setAttribute) { a.setAttribute('href', (LITE ? 'completa.html' : './') + (s ? '?' + s : '')); a.textContent = LITE ? 'Versão completa' : 'Versão Lite'; }
+    [a, $('versao-rod')].forEach(function (x) { if (x && x.setAttribute) { x.setAttribute('href', (LITE ? 'completa.html' : './') + (s ? '?' + s : '')); x.textContent = LITE ? 'Versão completa' : 'Versão Lite'; } });
     if (!LITE) return;
     document.title = 'Vira 2026 · Virômetro ao vivo do 2º turno';
     $('abas-cel').innerHTML = '<button data-aba="viro" aria-current="page">Virômetro</button><button data-aba="mapa">Mapa</button>';
