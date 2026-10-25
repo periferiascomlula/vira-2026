@@ -1,0 +1,1828 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light" data-versao="lite">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vira 2026 · Apuração ao vivo do 2º turno</title>
+<meta name="description" content="Apuração ao vivo do 2º turno de 2026 para Presidente, comparada com o 1º turno, 2022 e 2014 — Comitê Periferias com Lula">
+<meta name="theme-color" content="#d21212">
+<link rel="icon" type="image/png" href="marca/icone.png">
+<link rel="apple-touch-icon" href="marca/icone.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Public+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+/* Identidade do Comitê Periferias com Lula: vermelho da logo (#d21212) só no topo e nos detalhes; o resto claro e quente */
+:root{--marca:#d21212;--marca-esc:#a80e0e;--marca-claro:#fdecea;--bg:#faf6f2;--card:#ffffff;--txt:#2b2525;--sub:#6e6461;--linha:#efe5dd;--linha2:#f6f0ea;--acento:#c01010;--chip:#f4ede7;--neutro-bg:#fbf3ef;--realce:#3d4752;--cor-a:#2f5d8a;--cor-b:#d21212;--cor-d:#6b4f8a;--ruim:#b0412e;--cab-tx:#ffffff;color-scheme:light}
+:root[data-theme="dark"]{--marca:#c01111;--marca-esc:#8f0c0c;--marca-claro:#3a2222;--bg:#1b1919;--card:#252121;--txt:#f2ece6;--sub:#b5aba5;--linha:#3a3331;--linha2:#2e2928;--acento:#ff8a80;--chip:#302a29;--neutro-bg:#2c2524;--realce:#e3e7ec;--cor-a:#7fa6cf;--cor-b:#ff6b5f;--cor-d:#b49bd6;--ruim:#f0937f;color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--bg);color:var(--txt);font-family:'Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:16px;line-height:1.45}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+.tit{font-family:'Montserrat','Public Sans',sans-serif}
+/* topo vermelho com a logo, a linha fina e a estrela do banner */
+.cab{display:flex;align-items:center;gap:12px 20px;padding:10px 24px;background:var(--marca);color:var(--cab-tx);flex-wrap:wrap}
+.cab-logo{flex:none;display:block;line-height:0}
+.cab-logo img{height:68px;width:auto;display:block}
+.cab-id{min-width:0;flex:0 1 auto}
+.cab-id .kicker{margin:0;font-family:'Montserrat',sans-serif;font-weight:800;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;opacity:.9}
+.cab-id h1{margin:2px 0 0;font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.6rem;line-height:1.1;letter-spacing:-.01em}
+.cab-id p{margin:4px 0 0;font-size:.8rem;opacity:.88}
+.cab-deco{flex:1 1 60px;display:flex;align-items:center;gap:14px;min-width:40px}
+.cab-deco i{flex:1;height:2px;background:rgba(255,255,255,.85);border-radius:1px}
+.estrela{width:30px;height:30px;flex:none;fill:#fff}
+.cab-acoes{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.estado{font-size:.82rem;display:flex;align-items:center;gap:6px;color:var(--cab-tx);background:rgba(0,0,0,.14);padding:6px 12px;border-radius:999px}
+.bolinha{width:9px;height:9px;border-radius:5px;background:rgba(255,255,255,.7);display:inline-block}
+.bolinha.viva{background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.3);animation:pisca 2s infinite}
+@keyframes pisca{50%{opacity:.35}}
+.btn{min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--linha);background:var(--card);font-weight:600}
+.cab .btn{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.85)}
+.cab .btn:hover{background:rgba(255,255,255,.12)}
+.btn-icone{width:44px;height:44px;border-radius:22px;border:1.5px solid rgba(255,255,255,.85);background:transparent;color:#fff}
+.fonte{max-width:1400px;margin:14px auto 0;padding:10px 14px;border-radius:12px;background:var(--neutro-bg);border-left:3px solid var(--marca);font-size:.84rem;color:var(--sub)}
+.fonte b{color:var(--txt)}
+.envolve{padding:0 24px}
+.aviso{max-width:1400px;margin:8px auto 0;padding:10px 14px;border-radius:12px;border:1px solid var(--ruim);color:var(--txt);background:var(--card);font-size:.85rem}
+.migalhas{max-width:1400px;display:flex;flex-wrap:wrap;align-items:center;gap:2px 4px;margin:10px auto 0;font-size:.9rem}
+.migalhas button{border:0;background:none;color:var(--acento);font-weight:600;min-height:44px;padding:0 4px;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.migalhas .aqui{font-weight:800;padding:0 4px;font-family:'Montserrat',sans-serif}
+.migalhas .sep{color:var(--sub)}
+.migalhas .niv{font-size:.68rem;color:var(--sub);text-transform:uppercase;letter-spacing:.05em}
+.tela{display:grid;grid-template-columns:minmax(300px,420px) minmax(0,1fr);gap:18px;padding:12px 24px 32px;max-width:1448px;margin:0 auto}
+.cartao{background:var(--card);border:1px solid var(--linha);border-radius:18px;padding:18px;min-width:0;box-shadow:0 1px 2px rgba(60,20,20,.04)}
+.painel-lista{grid-column:1/-1}
+h2{margin:0;font-family:'Montserrat',sans-serif;font-size:1.45rem;font-weight:800;letter-spacing:-.01em}
+h3{margin:18px 0 8px;font-family:'Montserrat',sans-serif;font-size:.92rem;font-weight:800;display:flex;align-items:center;gap:6px}
+h3::before{content:"";width:12px;height:12px;flex:none;background:var(--marca);-webkit-mask:var(--estrela) center/contain no-repeat;mask:var(--estrela) center/contain no-repeat}
+:root{--estrela:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z' stroke='black' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.rot{font-size:.8rem;color:var(--sub);margin:2px 0 0}
+.barra{height:8px;border-radius:4px;background:var(--chip);overflow:hidden;margin:8px 0 3px}
+.barra i{display:block;height:100%;background:var(--marca);border-radius:4px}
+.fins{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin-top:14px}
+.fin{border-radius:14px;padding:12px 14px;background:var(--bg);border-top:4px solid var(--c)}
+.fin .nm{font-weight:700;font-size:.9rem}
+.fin .pc{font-family:'Montserrat',sans-serif;font-size:1.9rem;font-weight:800;line-height:1.1;margin:4px 0 2px;font-variant-numeric:tabular-nums;color:var(--c)}
+.fin .vt{font-size:.76rem;color:var(--sub)}
+.regua{margin-top:4px}
+.regua svg{width:100%;height:auto;display:block}
+.regua text{fill:var(--sub);font-size:11px;font-family:inherit}
+.justa{margin-top:14px;padding:12px 14px;border-radius:14px;background:var(--neutro-bg);font-size:.85rem}
+.justa p{margin:0 0 6px}
+.tab{width:100%;border-collapse:collapse;font-size:.86rem}
+.tab th{font-size:.72rem;color:var(--sub);font-weight:600;text-align:left;border-bottom:1px solid var(--linha);padding:6px 5px}
+.tab td{border-bottom:1px solid var(--linha2);padding:7px 5px;vertical-align:middle}
+.tab .n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tab th button{border:0;background:none;color:var(--sub);font-weight:600;font-size:.72rem;padding:6px 0;min-height:32px;text-align:inherit}
+.tab th button[aria-sort]{color:var(--acento);font-weight:800}
+.tab td button{border:0;background:none;color:var(--txt);font-weight:600;padding:6px 0;min-height:36px;text-align:left;text-decoration:underline;text-decoration-color:var(--marca);text-underline-offset:3px;text-decoration-thickness:1.5px}
+.tab tbody tr:hover td{background:var(--linha2)}
+.tab tr.sel td{background:var(--marca-claro)}
+.tab-rola{max-height:560px;overflow:auto}
+.tab-x{overflow-x:auto;max-width:100%}
+.tab small{display:block;color:var(--sub);font-size:.72rem}
+.tab .eleicao{white-space:nowrap}
+.seg{display:inline-flex;flex-wrap:wrap;gap:2px;background:var(--chip);border-radius:999px;padding:4px}
+.seg button{min-height:40px;padding:0 14px;border:0;border-radius:999px;background:transparent;color:var(--sub);font-size:.85rem}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--acento);font-weight:800;box-shadow:0 1px 3px rgba(60,20,20,.14)}
+.ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
+.ctl .rot{margin:0}
+.esc{display:inline-flex;align-items:center;gap:6px;min-width:0;max-width:100%}
+.esc .nav-sel{min-height:40px;border-radius:999px;font-size:.88rem;padding:0 10px}
+.leg-mais summary{cursor:pointer;color:var(--acento);font-weight:700;list-style-position:inside}
+.leg-mais[open]{flex-basis:100%}
+.leg-mais .nota{margin:4px 0 0}
+.busca{min-height:44px;border-radius:999px;border:1px solid var(--linha);background:var(--card);padding:0 16px;font-size:16px;min-width:0;flex:1 1 180px;max-width:320px}
+.mapa{height:520px;border-radius:14px;background:var(--bg)}
+/* partes do painel: uma aba por vez (no computador, Resumo e Mapa lado a lado) */
+.tela>section{display:none}
+body[data-aba="resumo"] .tela>[data-sec="resumo"],body[data-aba="mapa"] .tela>[data-sec="mapa"],body[data-aba="lista"] .tela>[data-sec="lista"],body[data-aba="viro"] .tela>[data-sec="viro"]{display:block}
+.barra-nav{max-width:1400px;margin:6px auto 0;display:flex;align-items:center;gap:6px 16px;flex-wrap:wrap}
+.barra-nav .migalhas{margin:0;flex:1 1 auto;max-width:none}
+.so-cel{display:none}
+@media (min-width:761px){
+  .abas-cel{display:flex;gap:2px;background:var(--chip);border-radius:999px;padding:4px;margin-left:auto}
+  .abas-cel button{min-height:40px;padding:0 18px;border:0;border-radius:999px;background:transparent;color:var(--sub);font-size:.9rem;font-weight:600}
+  .abas-cel button[aria-current="page"]{background:var(--card);color:var(--acento);font-weight:800;box-shadow:0 1px 3px rgba(60,20,20,.14)}
+  /* Resumo e mapa cabem na tela: a página não rola (a roda do mouse fica só para o zoom do mapa) */
+  html:not([data-versao="lite"]) body[data-aba="resumo"]{height:100vh;height:100dvh;overflow:hidden;display:flex;flex-direction:column}
+  html:not([data-versao="lite"]) body[data-aba="resumo"] .tela{flex:1;min-height:0;width:100%;grid-template-rows:minmax(0,1fr);padding-bottom:14px}
+  html:not([data-versao="lite"]) body[data-aba="resumo"] #resumo{overflow:auto}
+  html:not([data-versao="lite"]) body[data-aba="resumo"] .tela>[data-sec="mapa"]{display:flex;flex-direction:column;min-height:0}
+  html:not([data-versao="lite"]) body[data-aba="resumo"] .mapa{flex:1;min-height:0;height:auto}
+  html:not([data-versao="lite"]) body[data-aba="resumo"] .rodape{display:none}
+  html:not([data-versao="lite"]) body[data-aba="resumo"] .envolve>.fonte{display:none}
+  html:not([data-versao="lite"]) body[data-aba="resumo"] .tela>[data-sec="mapa"]{padding:12px 14px}
+  html:not([data-versao="lite"]) body[data-aba="resumo"] .ctl{margin-bottom:8px}
+  body[data-aba="lista"] .tela,body[data-aba="viro"] .tela{grid-template-columns:minmax(0,1fr)}
+}
+/* versão completa: controles em cima do mapa e legenda embaixo (a "gaveta" só existe na Lite) */
+.gaveta,.gav-corpo{display:contents}
+.gav-alca{display:none}
+#mapa-ctl{order:-1}
+.versao-link{color:#fff;font-size:.78rem;font-weight:700;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+/* desinteresse no Virômetro */
+.des-num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:2rem;line-height:1.1;font-variant-numeric:tabular-nums}
+.des svg{width:100%;display:block;margin:8px 0 4px}
+.des text{fill:var(--sub);font-size:11px;font-family:'Public Sans',sans-serif}
+.des-l{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:4px 12px;align-items:baseline;font-size:.86rem;padding:6px 0;border-top:1px solid var(--linha2)}
+.des-l b{font-variant-numeric:tabular-nums}
+.des-l .n{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--sub)}
+/* nota técnica */
+.nota-btn{background:none;border:0;padding:0;cursor:pointer;font:inherit;font-size:.78rem;font-weight:700}
+.nota-modal{position:fixed;top:0;left:0;right:0;bottom:0;z-index:3000;background:rgba(20,10,10,.5);display:flex;align-items:center;justify-content:center;padding:16px}
+.nota-caixa{position:relative;background:var(--card);color:var(--txt);border-radius:18px;max-width:780px;width:100%;max-height:92vh;max-height:92dvh;overflow:auto;padding:24px 26px;box-shadow:0 12px 40px rgba(0,0,0,.3);-webkit-overflow-scrolling:touch;font-size:.95rem}
+.nota-caixa h2{margin:0 40px 4px 0}
+.nota-caixa h4{margin:18px 0 6px;font-family:'Montserrat',sans-serif;font-size:.95rem}
+.nota-caixa p,.nota-caixa li{margin:0 0 8px;line-height:1.55}
+.nota-caixa ul{padding-left:20px;margin:0 0 8px}
+.nota-caixa a{color:var(--acento);word-break:break-all}
+.nota-x{position:absolute;top:12px;right:12px;width:44px;height:44px;border-radius:22px;border:1px solid var(--linha);background:var(--card);font-size:1.4rem;line-height:1}
+.formula{background:var(--neutro-bg);border-left:3px solid var(--marca);border-radius:10px;padding:10px 14px;margin:8px 0 12px;font-weight:700}
+.conexao{border:1px solid var(--linha);border-radius:14px;padding:14px 16px;margin-top:18px;background:var(--bg)}
+.conexao .ok{color:#2e7d6b;font-weight:800}
+.conexao .ruim{color:var(--ruim);font-weight:800}
+@media (max-width:760px){.nota-modal{padding:0;align-items:flex-end}.nota-caixa{border-radius:18px 18px 0 0;max-height:94dvh;padding:20px 16px calc(20px + env(safe-area-inset-bottom))}}
+.vbars{display:flex;flex-direction:column;gap:2px}
+.vbar{display:grid;grid-template-columns:minmax(0,9.5em) minmax(0,1fr) 9em;align-items:center;gap:10px;font-size:.84rem;min-height:36px}
+.vtr{position:relative;height:16px;background:var(--linha2);border-radius:4px}
+.vtr i{position:absolute;top:0;bottom:0;border-radius:4px}
+.vtr b{position:absolute;top:-4px;bottom:-4px;width:0;border-left:2px dashed var(--txt);opacity:.6}
+.vbar .n{font-variant-numeric:tabular-nums;font-weight:800;text-align:right;line-height:1.15}
+.vbar .n small{display:block;font-weight:400;color:var(--sub);font-size:.68rem}
+.placar .fins{margin-top:8px}
+.migalhas .voltar{text-decoration:none}
+html[data-versao="lite"] .migalhas .voltar{background:var(--card);border:1.5px solid var(--marca);border-radius:999px;padding:0 16px;min-height:44px;color:var(--acento);font-weight:800;margin-right:4px}
+.viro-tab summary{cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:800;font-size:.92rem;min-height:44px;display:flex;align-items:center}
+/* Virômetro */
+.viro-intro{font-size:.9rem;color:var(--sub);margin:6px 0 10px;max-width:75ch}
+.viro-grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:14px;margin-top:12px}
+.vcard{border:1px solid var(--linha);border-radius:14px;padding:14px 16px;min-width:0}
+.vcard.larga{grid-column:1/-1}
+.vcard h3{margin-top:0}
+.gauge svg{width:100%;max-width:400px;display:block;margin:0 auto}
+.gauge text{font-family:'Public Sans',sans-serif}
+.gauge .g-num{font-family:'Montserrat',sans-serif;font-weight:900;font-variant-numeric:tabular-nums}
+.trilha svg{width:100%;display:block;margin-top:6px}
+.trilha text{fill:var(--sub);font-size:11px}
+.blocos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.bloco{background:var(--bg);border-radius:12px;padding:10px 12px;min-width:0}
+.bloco .vl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.3rem;font-variant-numeric:tabular-nums;line-height:1.15;overflow-wrap:anywhere}
+.bloco .ds{font-size:.76rem;color:var(--sub)}
+.bloco.forte{grid-column:1/-1;border-left:4px solid var(--c)}
+.bloco.forte .vl{font-size:1.9rem;color:var(--c)}
+.pilha{display:flex;height:28px;border-radius:8px;overflow:hidden;background:var(--chip);margin:10px 0}
+.pilha i{display:block;min-width:0}
+.pilha-leg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px;font-size:.84rem}
+.pilha-leg span{display:flex;align-items:center;gap:6px;min-width:0}
+.pilha-leg i{width:12px;height:12px;border-radius:3px;flex:none}
+.pilha-leg b{font-family:'Montserrat',sans-serif;font-size:1.05rem;font-variant-numeric:tabular-nums}
+.hist svg{width:100%;display:block}
+.hist text{fill:var(--sub);font-size:11px;font-family:'Public Sans',sans-serif}
+.hist .hn{fill:var(--txt);font-weight:700;font-size:12px}
+.vb{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4px 28px}
+.vb h4{margin:4px 0;font-size:.8rem;color:var(--sub);font-weight:700}
+.vb-l{display:grid;grid-template-columns:minmax(0,9.5em) minmax(0,1fr) auto;align-items:center;gap:8px;font-size:.82rem;min-height:32px}
+.vb-l .tr{height:12px;background:var(--linha2);border-radius:6px;overflow:hidden}
+.vb-l .tr i{display:block;height:100%;border-radius:6px}
+.vb-l .n{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:700}
+.lk{border:0;background:none;padding:4px 0;min-height:32px;color:var(--txt);font-weight:600;text-align:left;text-decoration:underline;text-decoration-color:var(--marca);text-underline-offset:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+.mini{display:inline-block;width:56px;height:8px;border-radius:4px;background:var(--chip);vertical-align:middle;margin-right:6px;overflow:hidden}
+.mini i{display:block;height:100%}
+.leaflet-container{background:var(--bg);font-family:inherit}
+.leaflet-tooltip{border-radius:10px;border:0;box-shadow:0 4px 14px rgba(40,10,10,.18);font-size:.82rem}
+.leg{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:.76rem;color:var(--sub);margin-top:10px}
+.leg span{display:inline-flex;align-items:center;gap:5px}
+.leg i{width:14px;height:14px;border-radius:4px;display:inline-block}
+.nota{font-size:.76rem;color:var(--sub);margin:6px 0 0}
+.sem-mapa{padding:24px;text-align:center;color:var(--sub);border:1px dashed var(--linha);border-radius:12px}
+.nav{display:flex;flex-direction:column;gap:4px;margin:12px 0 4px}
+.nav-sel{min-height:44px;border-radius:12px;border:1px solid var(--linha);background:var(--card);color:var(--txt);padding:0 12px;font-size:16px;max-width:100%}
+.ponto{display:inline-block;width:10px;height:10px;border-radius:5px;margin-right:5px}
+.rodape{display:flex;align-items:center;justify-content:center;gap:10px;padding:18px 24px 28px;color:var(--sub);font-size:.78rem;text-align:center}
+.rodape .estrela{width:16px;height:16px;fill:var(--marca)}
+@media (max-width:980px){.cab-deco{display:none}}
+@media (max-width:760px){
+  .cab{padding:8px 12px;gap:6px 10px;flex-wrap:nowrap}
+  .cab-logo img{height:56px}
+  .cab-id h1{font-size:1.15rem}
+  .cab-id .kicker{font-size:.66rem}
+  #cab-sub{display:none}
+  .cab-acoes{flex-direction:column;align-items:flex-end;gap:4px;margin-left:auto}
+  .cab .btn{min-height:36px;padding:0 12px;font-size:.8rem}
+  .btn-icone{display:none}
+  .estado{font-size:.7rem;padding:3px 9px}
+  .estado .hora{display:none}
+  .cab .btn{white-space:nowrap}
+  .envolve{padding:0 12px}
+  .tela{display:block;padding:8px 12px 84px}
+  .barra-nav{display:block;margin-top:2px}
+  .so-pc{display:none}
+  .so-cel{display:inline}
+  .mapa{height:calc(100vh - 330px);min-height:280px}
+  /* aba Mapa: tudo cabe na tela, a página não rola; arrastar no mapa só mexe no mapa */
+  body[data-aba="mapa"]{height:100vh;height:100dvh;overflow:hidden;display:flex;flex-direction:column}
+  body[data-aba="mapa"] .fonte,body[data-aba="mapa"] .rodape{display:none}
+  body[data-aba="mapa"] .migalhas{flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;margin-top:2px}
+  body[data-aba="mapa"] .tela{flex:1;min-height:0;width:100%;padding:4px 8px calc(66px + env(safe-area-inset-bottom))}
+  body[data-aba="mapa"] .tela>[data-sec="mapa"]{display:flex;flex-direction:column;height:100%;padding:8px;border-radius:14px}
+  body[data-aba="mapa"] #mapa-ctl .ctl{gap:6px;margin-bottom:6px}
+  body[data-aba="mapa"] #mapa-ctl .seg{flex-wrap:nowrap;overflow-x:auto;max-width:100%;min-width:0;scrollbar-width:none}
+  body[data-aba="mapa"] .tela>[data-sec="mapa"]>*{min-width:0;max-width:100%}
+  .esc .nav-sel{font-size:16px;min-height:38px}
+  body[data-aba="mapa"] #mapa-ctl .seg button{white-space:nowrap;min-height:36px;padding:0 11px}
+  body[data-aba="mapa"] .mapa{flex:1;min-height:0;height:auto}
+  body[data-aba="mapa"] .leg{max-height:84px;overflow:auto;margin-top:6px;font-size:.7rem}
+  .vb{grid-template-columns:minmax(0,1fr)}
+  .pilha-leg{grid-template-columns:minmax(0,1fr)}
+  .abas-cel{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:1000;background:var(--card);border-top:1px solid var(--linha);padding:4px 4px calc(4px + env(safe-area-inset-bottom))}
+  .abas-cel button{flex:1;min-height:52px;border:0;background:none;color:var(--sub);font-size:.85rem;border-radius:12px;position:relative}
+  .abas-cel button[aria-current="page"]{color:var(--acento);font-weight:800}
+  .abas-cel button[aria-current="page"]::before{content:"";position:absolute;top:0;left:30%;right:30%;height:3px;border-radius:0 0 3px 3px;background:var(--marca)}
+  .tab-rola{max-height:none}
+  html,body{overflow-x:hidden}
+  .fin .pc{font-size:1.5rem}
+  .rodape{padding-bottom:96px}
+}
+/* ===== Versão Lite: Virômetro primeiro, mapa em tela cheia com gaveta, só Regiões, Estados e Municípios ===== */
+html[data-versao="lite"] .envolve>.fonte{display:none}
+html[data-versao="lite"] .tela{grid-template-columns:minmax(0,1fr);max-width:1100px}
+html[data-versao="lite"] .seg button{min-height:44px}
+html[data-versao="lite"] .esc .nav-sel{min-height:44px}
+html[data-versao="lite"] .tab th button,html[data-versao="lite"] .lk,html[data-versao="lite"] .tab td button{min-height:44px}
+/* aba Mapa: a página não rola; o mapa ocupa tudo e as opções ficam numa gaveta por cima */
+html[data-versao="lite"] body[data-aba="mapa"]{height:100vh;height:100dvh;overflow:hidden;overscroll-behavior:none;display:flex;flex-direction:column}
+html[data-versao="lite"] body[data-aba="mapa"] .rodape{display:none}
+html[data-versao="lite"] body[data-aba="mapa"] .migalhas{flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+html[data-versao="lite"] body[data-aba="mapa"] .tela{flex:1;min-height:0;width:100%;max-width:none;display:block;padding:8px 24px 16px}
+html[data-versao="lite"] body[data-aba="mapa"] .tela>[data-sec="mapa"]{display:block;position:relative;height:100%;padding:0;overflow:hidden}
+html[data-versao="lite"] body[data-aba="mapa"] .mapa{position:absolute;top:0;left:0;right:0;bottom:0;height:auto;min-height:0;border-radius:inherit}
+html[data-versao="lite"] .gaveta{display:flex;flex-direction:column;position:absolute;z-index:800;top:12px;right:12px;width:min(380px,calc(100% - 72px));max-height:calc(100% - 24px);background:var(--card);border:1px solid var(--linha);border-radius:16px;box-shadow:0 6px 24px rgba(40,10,10,.18)}
+html[data-versao="lite"] .gav-alca{display:flex;align-items:center;gap:10px;width:100%;min-height:52px;padding:6px 14px;border:0;background:none;text-align:left;flex:none}
+html[data-versao="lite"] .gav-corpo{display:block;overflow:auto;min-height:0;padding:0 14px 12px;-webkit-overflow-scrolling:touch}
+html[data-versao="lite"] .gaveta[data-aberta="false"] .gav-corpo{display:none}
+.gav-txt{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.25}
+.gav-txt b{font-family:'Montserrat',sans-serif;font-size:.95rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gav-txt small{color:var(--sub);font-size:.78rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gav-seta{flex:none;width:32px;height:32px;border-radius:16px;background:var(--chip);display:flex;align-items:center;justify-content:center;font-size:.8rem;transition:transform .15s}
+.gaveta[data-aberta="true"] .gav-seta{transform:rotate(180deg)}
+html[data-versao="lite"] .gaveta .ctl{gap:8px}
+html[data-versao="lite"] .gaveta .seg{display:flex;flex-wrap:wrap;width:100%;border-radius:14px}
+html[data-versao="lite"] .gaveta .seg button{flex:1 1 40%;border-radius:10px;padding:0 8px}
+html[data-versao="lite"] .gaveta .esc{width:100%;justify-content:space-between}
+html[data-versao="lite"] .gaveta .leg{margin-top:4px}
+@media (max-width:760px){
+  html[data-versao="lite"] .cab-logo img{height:44px}
+  html[data-versao="lite"] .cab .btn{display:none}
+  html[data-versao="lite"] .cab-id .kicker{display:none}
+  html[data-versao="lite"] body[data-aba="mapa"] .tela{padding:0 0 calc(60px + env(safe-area-inset-bottom))}
+  html[data-versao="lite"] body[data-aba="mapa"] .tela>[data-sec="mapa"]{border-radius:0;border:0;box-shadow:none}
+  html[data-versao="lite"] body[data-aba="mapa"] .barra-nav{margin:0}
+  /* gaveta embaixo: fechada, só uma linha com o lugar; aberta, até 60% da tela (rola por dentro) */
+  html[data-versao="lite"] .gaveta{top:auto;left:0;right:0;bottom:0;width:auto;max-height:62%;border-radius:18px 18px 0 0;border-bottom:0;box-shadow:0 -6px 20px rgba(40,10,10,.16)}
+  html[data-versao="lite"] .gav-alca{min-height:56px;padding-top:12px;position:relative}
+  html[data-versao="lite"] .gav-alca::before{content:"";position:absolute;top:5px;left:50%;width:40px;height:4px;margin-left:-20px;border-radius:2px;background:var(--linha)}
+  .vbar{grid-template-columns:minmax(0,6.5em) minmax(0,1fr) 7.6em;gap:6px}
+  html[data-versao="lite"] .gav-seta{transform:rotate(180deg)}
+  html[data-versao="lite"] .gaveta[data-aberta="true"] .gav-seta{transform:none}
+  html[data-versao="lite"] .leaflet-control-zoom a{width:44px;height:44px;line-height:44px}
+}
+</style>
+</head>
+<body data-aba="resumo">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="estrela" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol></svg>
+<header class="cab">
+  <span class="cab-logo"><img src="marca/logo.png" alt="Comitê Periferias com Lula" width="97" height="100"></span>
+  <div class="cab-id"><p class="kicker">Apuração ao vivo · 2º turno 2026</p><h1>Presidente</h1><p id="cab-sub">Carregando…</p></div>
+  <div class="cab-deco" aria-hidden="true"><i></i><svg class="estrela" style="color:#fff"><use href="#estrela"/></svg></div>
+  <div class="cab-acoes"><span id="estado" class="estado"></span><span style="display:flex;gap:8px 12px;align-items:center;flex-wrap:wrap;justify-content:flex-end"><button class="versao-link nota-btn" data-acao="nota">Como funciona?</button><a id="versao-link" class="versao-link" href="lite.html">Versão Lite</a><button class="btn" data-acao="atualizar">Atualizar agora</button><button class="btn-icone" data-acao="tema" aria-label="Trocar tema claro/escuro">◐</button></span></div>
+</header>
+<div class="envolve">
+<div id="fonte" class="fonte">Carregando a base…</div>
+<div id="aviso" class="aviso" hidden></div>
+<div class="barra-nav"><nav id="migalhas" class="migalhas" aria-label="Caminho"></nav>
+<nav class="abas-cel" id="abas-cel" aria-label="Partes do painel">
+  <button data-aba="resumo" aria-current="page"><span class="so-pc">Resumo e mapa</span><span class="so-cel">Resumo</span></button><button data-aba="mapa" class="so-cel">Mapa</button><button data-aba="viro">Virômetro</button><button data-aba="lista">Lista</button>
+</nav></div>
+</div>
+<main class="tela">
+  <section class="cartao" id="resumo" data-sec="resumo"></section>
+  <section class="cartao" data-sec="mapa"><div id="mapa" class="mapa"></div><div id="gaveta" class="gaveta" data-aberta="true"><button class="gav-alca" data-acao="gaveta" aria-expanded="true" aria-controls="gav-corpo"><span class="gav-txt" id="gav-txt"></span><span class="gav-seta" aria-hidden="true">▾</span></button><div class="gav-corpo" id="gav-corpo"><div id="mapa-ctl"></div><div id="legenda"></div></div></div></section>
+  <section class="cartao painel-lista" id="viro" data-sec="viro"></section>
+  <section class="cartao painel-lista" data-sec="lista"><div id="lista-ctl"></div><div id="lista"></div></section>
+</main>
+<footer class="rodape"><svg class="estrela" style="color:var(--marca)"><use href="#estrela"/></svg><span>Comitê Periferias com Lula · 2º turno ao vivo do TSE; 1º turno, 2022 e 2014 dos Dados Abertos do TSE e do IBGE</span><svg class="estrela" style="color:var(--marca)"><use href="#estrela"/></svg></footer>
+<div id="nota" class="nota-modal" hidden role="dialog" aria-modal="true" aria-labelledby="nota-tit"><div class="nota-caixa"><button class="nota-x" data-acao="nota" aria-label="Fechar o Como funciona?">×</button><div id="nota-corpo"></div><div id="nota-vivo"></div></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script id="app">
+(function () {
+  'use strict';
+  // ======================================================================
+  // Configuração
+  // ======================================================================
+  var OPC = window.AOVIVO_OPCOES || {};
+  var Q = new URLSearchParams(OPC.busca != null ? OPC.busca : location.search);
+  var MODO = Q.get('demo') ? 'demo' : Q.get('ensaio') ? 'ensaio' : 'aovivo';
+  // Versão Lite (lite.html, ou ?lite=1): Virômetro primeiro, mapa em tela cheia, só Grandes Regiões, Estados e Municípios
+  var LITE = OPC.lite != null ? !!OPC.lite : Q.get('lite') === '1' || document.documentElement.getAttribute('data-versao') === 'lite';
+  if (LITE) document.documentElement.setAttribute('data-versao', 'lite');
+  var TSE_RAIZ = 'https://resultados.tse.jus.br/oficial';
+  var PASTA = OPC.pasta || 'aovivo_dados/';
+  // reserva (sem a base): os mesmos códigos do ele-c.json do TSE
+  var PADRAO = { ciclo: 'ele2026', t1: '6257', t2: '6258', cargo: '0001', a: '22', b: '13' };
+  var PERIODO = MODO === 'demo' ? 3000 : 60000;     // de quanto em quanto tempo olha o TSE (o TSE renova a cada ~50 s)
+  var ESPERA_ANTES = MODO === 'demo' ? 3000 : 120000; // antes de a apuração começar: uma consulta a cada 2 min
+  var POR_SEG = 9, SIMULT = 3, MAX_404 = 5, PAUSA_404 = 5 * 60000;
+  var RELOGIO = OPC.relogio || { agora: function () { return Date.now(); }, depois: function (ms, f) { return setTimeout(f, ms); } };
+  var I = { aptos: 0, comp: 1, validos: 2, brancos: 3, nulos: 4, a: 5, b: 6, outros: 7 };
+  var UF_REG = { AC: 'N', AL: 'NE', AM: 'N', AP: 'N', BA: 'NE', CE: 'NE', DF: 'CO', ES: 'SE', GO: 'CO', MA: 'NE', MG: 'SE', MS: 'CO', MT: 'CO', PA: 'N', PB: 'NE', PE: 'NE', PI: 'NE', PR: 'S', RJ: 'SE', RN: 'NE', RO: 'N', RR: 'N', RS: 'S', SC: 'S', SE: 'NE', SP: 'SE', TO: 'N' };
+  var NOME_UF = { AC: 'Acre', AL: 'Alagoas', AM: 'Amazonas', AP: 'Amapá', BA: 'Bahia', CE: 'Ceará', DF: 'Distrito Federal', ES: 'Espírito Santo', GO: 'Goiás', MA: 'Maranhão', MG: 'Minas Gerais', MS: 'Mato Grosso do Sul', MT: 'Mato Grosso', PA: 'Pará', PB: 'Paraíba', PE: 'Pernambuco', PI: 'Piauí', PR: 'Paraná', RJ: 'Rio de Janeiro', RN: 'Rio Grande do Norte', RO: 'Rondônia', RR: 'Roraima', RS: 'Rio Grande do Sul', SC: 'Santa Catarina', SE: 'Sergipe', SP: 'São Paulo', TO: 'Tocantins' };
+  var REGIOES = { N: 'Norte', NE: 'Nordeste', SE: 'Sudeste', S: 'Sul', CO: 'Centro-Oeste' };
+  var NOME_NIVEL = { br: 'País', reg: 'Grande Região', uf: 'Estado', int: 'Região intermediária', ime: 'Região imediata', rm: 'Região metropolitana', mun: 'Município', zon: 'Zona eleitoral', zz: 'Exterior' };
+  var PLURAL = { reg: 'Grandes Regiões', uf: 'Estados', int: 'Intermediárias', ime: 'Imediatas', rm: 'Regiões metropolitanas', mun: 'Municípios', zon: 'Zonas' };
+  // cores: finalistas com a paleta dos itens do projeto; 3 tons pela vantagem (< 5, 5–15, ≥ 15 p.p.)
+  // cores da marca: Lula no vermelho do Comitê, Flávio em azul; 3 tons pela vantagem (< 5, 5–15, ≥ 15 p.p.)
+  var TONS = { a: ['#cfdbe7', '#7d9dbd', '#2f5d8a'], b: ['#f6c7c3', '#e8706a', '#c81414'] };
+  // "Quanto mudou": a cor diz para que lado o voto andou — vermelho = na direção de Lula, azul = na direção de Flávio
+  var DIV_B = ['#2f5d8a', '#7d9dbd', '#cddae6', '#efe8e2', '#f6c7c3', '#e8706a', '#b81010'];
+  function divDe(q) { return q === 'b' ? DIV_B : DIV_B.slice().reverse(); }
+  var DIV_LIM = [-10, -5, -1, 1, 5, 10];
+  var SEQ = ['#e4e7eb', '#c0c7d0', '#8f9aa7', '#5c6979', '#2f3a47'];   // apuração: cinza neutro (não confunde com quem lidera)
+  // desinteresse (abstenções + brancos + nulos): roxo = aumentou, verde = diminuiu (não confunde com os candidatos)
+  var DES = { mais: '#6b4f8a', menos: '#2e7d6b' };
+  var DIV_D = ['#2e7d6b', '#7fb8a8', '#cfe5de', '#efe8e2', '#ddd0e6', '#a58bbd', '#6b4f8a'];
+  var DES_LIM = [-3, -1.5, -0.5, 0.5, 1.5, 3];
+  var TEMA = { light: { semDado: '#ebe4dd', borda: '#ffffff', fundo: '#faf6f2' }, dark: { semDado: '#3a3331', borda: '#252121', fundo: '#1b1919' } };
+  var NF = new Intl.NumberFormat('pt-BR'), NP1 = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }),
+    NP2 = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  // ======================================================================
+  // Estado
+  // ======================================================================
+  var st = { lugar: 'br', ver: 'uf', viaRm: null, mapa: 'lider', ele: 'auto', ref: 't1', quem: 'b', ord: 'aptos', desc: true,
+    busca: '', todos: false, aba: LITE ? 'viro' : 'resumo', tema: 'light', vver: 'mun', vord: 'ganho', vdesc: true, vtodos: false, gaveta: null, vbar: 'uf' };
+  var BASE = { fonte: null, ind: null, lug: {}, v: { t1: {} }, geo: { uf: {}, reg: {}, mun: {}, int: {}, ime: {}, rm: {} },
+    ufDe: {}, membros: {}, carregadas: {}, gerado: '', todas: false, todosMuns: null };
+  // "Brasil inteiro" (municípios, regiões do IBGE e RMs sem escolher um estado; Virômetro do Brasil): abre a base de todos os
+  // estados e passa a acompanhar o -ab de cada estado, baixando cada município UMA vez, quando ele chega a 100%
+  var NACIONAL = false;
+  var SUB_UF = LITE ? ['mun'] : ['int', 'ime', 'mun', 'rm'];
+  var ELE = { ciclo: PADRAO.ciclo, t1: PADRAO.t1, t2: PADRAO.t2, cargo: PADRAO.cargo };
+  var FIN = { a: { n: PADRAO.a, nome: 'Flávio Bolsonaro', sg: 'PL' }, b: { n: PADRAO.b, nome: 'Lula', sg: 'PT' } };
+  var COMP = [];                    // eleições de comparação: [{id, rot, a, b}]
+  var VIVO = {};                    // chave -> {v, st, ts, and, dt, ht}
+  var AB = { br: null, uf: {} };    // progresso (arquivos -ab.json)
+  var AO = { estado: 'carregando', marcas: {}, abVisto: {}, ultima: null, timer: null, comecou: false, aviso: null, formato: [] };
+
+  // ======================================================================
+  // Utilidades
+  // ======================================================================
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function int(s) { var n = parseInt(String(s == null ? '' : s).replace(/[^\d-]/g, ''), 10); return isNaN(n) ? 0 : n; }
+  function pad(s, k) { s = String(s); while (s.length < k) s = '0' + s; return s; }
+  function fmtN(n) { return n == null ? '—' : NF.format(n); }
+  function fmtP(x) { return x == null || isNaN(x) ? '—' : NP1.format(x) + '%'; }
+  function fmtP2(x) { return x == null || isNaN(x) ? '—' : NP2.format(x) + '%'; }   // números grandes: duas casas, como o TSE
+  function fmtPP(d) { return d == null || isNaN(d) ? '—' : (d > 0.05 ? '+' : d < -0.05 ? '−' : '') + NP1.format(Math.abs(d)) + ' p.p.'; }
+  function pct(v, k) { return v && v[I.validos] > 0 ? 100 * v[I[k]] / v[I.validos] : null; }
+  function somar(vs) { var o = [0, 0, 0, 0, 0, 0, 0, 0]; vs.forEach(function (v) { if (v) for (var i = 0; i < 8; i++) o[i] += v[i]; }); return o; }
+  function nivel(k) { return k.indexOf(':') < 0 ? k : k.slice(0, k.indexOf(':')); }
+  function cod(k) { return k.slice(k.indexOf(':') + 1); }
+  function nomeDe(k) { var l = BASE.lug[k]; return l ? l.n : k; }
+  function curto(f) { return f.nome; }
+  function hash(s) { var h = 2166136261; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return ((h >>> 0) % 100000) / 100000; }
+  function $(id) { return document.getElementById(id); }
+
+  // ======================================================================
+  // Endereços do TSE (confirmados no ele-c.json e nos arquivos publicados do 1º turno)
+  //   <raiz>/<ciclo>/<eleição>/dados/<uf>/<uf>[<município 5 díg.>]-c<cargo 4 díg.>-e<eleição 6 díg.>-u.json   resultado
+  //   <raiz>/<ciclo>/<eleição>/dados/<uf>/<uf>-e<eleição 6 díg.>-ab.json                                      progresso
+  //   <raiz>/<ciclo>/<eleição>/config/mun-e<eleição 6 díg.>-cm.json                                            municípios
+  // ======================================================================
+  var URLS = {
+    raiz: function (ele) { return TSE_RAIZ + '/' + ELE.ciclo + '/' + ele; },
+    ab: function (ele, uf) { uf = uf.toLowerCase(); return URLS.raiz(ele) + '/dados/' + uf + '/' + uf + '-e' + pad(ele, 6) + '-ab.json'; },
+    u: function (ele, uf, mun) { uf = uf.toLowerCase(); return URLS.raiz(ele) + '/dados/' + uf + '/' + uf + (mun ? pad(mun, 5) : '') + '-c' + ELE.cargo + '-e' + pad(ele, 6) + '-u.json'; },
+    cm: function (ele) { return URLS.raiz(ele) + '/config/mun-e' + pad(ele, 6) + '-cm.json'; }
+  };
+  function ele2() { return MODO === 'ensaio' ? ELE.t1 : ELE.t2; }
+
+  // ======================================================================
+  // Leitura dos arquivos do TSE
+  // ======================================================================
+  function erroFormato(url, msg) { var e = new Error('Formato inesperado em ' + url + ': ' + msg); e.formato = true; e.url = url; return e; }
+  // resultado de um lugar: [aptos, comparecimento, válidos, brancos, nulos, A, B, outros]
+  function lerU(j, url) {
+    if (!j || !j.carg || !j.carg.length || !j.v || !j.e || !j.s) throw erroFormato(url, 'faltam as partes carg, v, e ou s');
+    var votos = {}, nomes = {};
+    (j.carg[0].agr || []).forEach(function (g) { (g.par || []).forEach(function (p) { (p.cand || []).forEach(function (c) { votos[c.n] = int(c.vap); nomes[c.n] = c.nmu; }); }); });
+    if (j.v.vv == null || j.e.te == null || j.s.ts == null) throw erroFormato(url, 'faltam vv, te ou ts');
+    var vv = int(j.v.vv), a = votos[FIN.a.n] || 0, b = votos[FIN.b.n] || 0;
+    return { v: [int(j.e.te), int(j.e.c), vv, int(j.v.vb), int(j.v.tvn != null ? j.v.tvn : j.v.vn), a, b, vv - a - b],
+      st: int(j.s.st), ts: int(j.s.ts), and: j.and || '', dt: j.dt || '', ht: j.ht || '', nomes: nomes, tp: j.tpabr, cd: j.cdabr };
+  }
+  // progresso: {chave: {st, ts, and, marca}}; chaves 'br', 'zz', 'uf:SP', 'mun:71072'
+  function lerAb(j, url) {
+    if (!j || !Array.isArray(j.abr)) throw erroFormato(url, 'falta a lista abr');
+    var out = {};
+    j.abr.forEach(function (x) {
+      if (!x.s) return;
+      var tp = x.tpabr, c = String(x.cdabr || '');
+      var k = tp === 'br' ? 'br' : tp === 'uf' ? (c.toLowerCase() === 'zz' ? 'zz' : 'uf:' + c.toUpperCase()) : (tp === 'mun' || tp === 'mu') ? 'mun:' + pad(c, 5) : null;
+      if (!k) return;
+      out[k] = { st: int(x.s.st), ts: int(x.s.ts), and: x.and || '', marca: x.s.st + '|' + (x.dt || '') + ' ' + (x.ht || '') };
+    });
+    return { quando: (j.dg || '') + ' ' + (j.hg || ''), lug: out };
+  }
+
+  // ======================================================================
+  // Fila de consultas ao TSE: até 9 por segundo, 3 ao mesmo tempo, pausa depois de vários "não encontrado"
+  // ======================================================================
+  function Fila(buscar) {
+    this.buscar = buscar; this.q = []; this.ativos = 0; this.inicios = []; this.seguidos = 0; this.pausaAte = 0;
+    this.total = 0; this.n404 = 0; this.agendado = false; this.pedidos = [];
+  }
+  // op.esperado = "não encontrado" é normal (o arquivo geral antes de a apuração começar): não conta para a pausa
+  Fila.prototype.pedir = function (url, op) {
+    var self = this;
+    return new Promise(function (res) { self.q.push({ url: url, res: res, esperado: !!(op && op.esperado) }); self.girar(); });
+  };
+  Fila.prototype.girar = function () {
+    var self = this;
+    while (this.ativos < SIMULT && this.q.length) {
+      var agora = RELOGIO.agora();
+      if (agora < this.pausaAte) { this.mais(this.pausaAte - agora); return; }
+      while (this.inicios.length && agora - this.inicios[0] >= 1000) this.inicios.shift();
+      if (this.inicios.length >= POR_SEG) { this.mais(1000 - (agora - this.inicios[0]) + 1); return; }
+      var item = this.q.shift();
+      this.inicios.push(agora); this.ativos++; this.total++; this.pedidos.push([agora, item.url]);
+      (function (item) {
+        Promise.resolve().then(function () { return self.buscar(item.url); }).then(function (r) { return r; }, function () { return { ok: false, status: 0 }; }).then(function (r) {
+          self.ativos--;
+          if (r.ok) self.seguidos = 0;
+          else if ((r.status === 404 || r.status === 403) && item.esperado) self.n404++;
+          else if (r.status === 404 || r.status === 403) {
+            self.n404++; self.seguidos++;
+            if (self.seguidos >= MAX_404) { self.pausaAte = RELOGIO.agora() + PAUSA_404; self.seguidos = 0; avisar('O TSE respondeu "não encontrado" várias vezes seguidas. O painel fez uma pausa de 5 minutos para não ser bloqueado e depois tenta de novo.'); }
+          }
+          item.res(r);
+          self.girar();
+        });
+      })(item);
+    }
+  };
+  Fila.prototype.mais = function (ms) {
+    var self = this;
+    if (this.agendado) return;
+    this.agendado = true;
+    RELOGIO.depois(Math.max(1, ms), function () { self.agendado = false; self.girar(); });
+  };
+  function buscarTse(url) {
+    if (OPC.buscarTse) return OPC.buscarTse(url);
+    if (MODO === 'demo') return DEMO.buscar(url);
+    // no-cache = o navegador confere com o TSE se mudou (ETag) e só baixa de novo o que mudou
+    return fetch(url, { cache: 'no-cache' }).then(function (r) {
+      if (!r.ok) return { ok: false, status: r.status };
+      return r.json().then(function (j) { return { ok: true, status: r.status, json: j }; }, function () { return { ok: false, status: -1 }; });
+    });
+  }
+  var FILA = new Fila(buscarTse);
+
+  function carregarJson(url) {
+    if (OPC.carregar) return OPC.carregar(url);
+    return fetch(url, { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
+  }
+
+  // ======================================================================
+  // Base do projeto (aovivo_dados/) e reserva (TSE na hora)
+  // ======================================================================
+  function aplicarIndice(ind) {
+    BASE.ind = ind; BASE.gerado = ind.gerado || '';
+    ELE = { ciclo: ind.eleicao.ciclo, t1: ind.eleicao.t1, t2: ind.eleicao.t2, cargo: (ind.disputas[0] || {}).cargo_tse || PADRAO.cargo };
+    FIN = { a: ind.finalistas[0], b: ind.finalistas[1] };
+    COMP = ind.comparacoes.filter(function (c) { return c.id !== 't1'; });
+  }
+  function juntarBase(d) {
+    Object.keys(d.lug).forEach(function (k) { BASE.lug[k] = d.lug[k]; });
+    Object.keys(d.v).forEach(function (e) { var alvo = BASE.v[e] || (BASE.v[e] = {}); Object.keys(d.v[e]).forEach(function (k) { alvo[k] = d.v[e][k]; }); });
+    Object.keys(d.geo || {}).forEach(function (n) { var g = d.geo[n], alvo = BASE.geo[n] || (BASE.geo[n] = {}); Object.keys(g).forEach(function (c) { alvo[c] = g[c]; }); });
+  }
+  function indexarUf(u) {
+    var m = BASE.membros;
+    m['uf:' + u] = [];
+    Object.keys(BASE.lug).forEach(function (k) {
+      var l = BASE.lug[k];
+      if (nivel(k) !== 'mun' || BASE.ufDe[k] !== u) return;
+      m['uf:' + u].push(k);
+      ['int', 'ime', 'rm'].forEach(function (n) { if (l[n]) (m[n + ':' + l[n]] = m[n + ':' + l[n]] || []).push(k); });
+      if (l.ime && l.int) BASE.lug['ime:' + l.ime].int = l.int;
+    });
+  }
+  function carregarBase() {
+    if (Q.get('base') === '0') return Promise.reject(new Error('base desligada'));
+    return carregarJson(PASTA + 'indice.json').then(function (ind) {
+      if (!ind || ind.versao !== 1 || !ind.finalistas) throw new Error('índice da base em formato desconhecido');
+      return carregarJson(PASTA + 'br.json').then(function (br) {
+        aplicarIndice(ind); juntarBase(br); BASE.fonte = 'base';
+      });
+    });
+  }
+  function garantirUf(u) {
+    if (BASE.carregadas[u]) return BASE.carregadas[u];
+    var p;
+    if (BASE.fonte === 'base') {
+      p = carregarJson(PASTA + BASE.ind.ufs[u].arq).then(function (d) {
+        Object.keys(d.lug).forEach(function (k) { BASE.ufDe[k] = u; });
+        juntarBase(d); indexarUf(u);
+      });
+    } else p = reservaUf(u);
+    BASE.carregadas[u] = p.then(function () { BASE.carregadas[u] = true; return true; }, function (e) { delete BASE.carregadas[u]; avisar('Não consegui abrir os dados de ' + (NOME_UF[u] || u) + ': ' + e.message); });
+    return BASE.carregadas[u];
+  }
+  function ufCarregada(u) { return BASE.carregadas[u] === true; }
+  var TODAS = null;
+  function garantirTodas() {
+    if (BASE.fonte !== 'base') return Promise.resolve(false);
+    if (TODAS) return TODAS;
+    TODAS = Promise.all(Object.keys(BASE.ind.ufs).map(function (u) { return Promise.resolve(garantirUf(u)).then(pedirRender); })).then(function () {
+      if (!Object.keys(BASE.ind.ufs).every(ufCarregada)) { TODAS = null; return false; }
+      BASE.todosMuns = Object.keys(BASE.lug).filter(function (x) { return nivel(x) === 'mun'; });
+      BASE.todas = true; NACIONAL = true; QUADRO = '';
+      if (AO.aviso && /^Não consegui abrir os dados de /.test(AO.aviso)) AO.aviso = null;   // a nova tentativa deu certo
+      if (AB.br) seguirUfs(AB.br, ufDe(st.lugar));
+      pedirRender();
+      return true;
+    });
+    return TODAS;
+  }
+  function ufsAbertas() { return Object.keys(BASE.ind ? BASE.ind.ufs : {}).filter(ufCarregada).length; }
+  // Brasil ou região vistos por intermediária, imediata, município ou RM: precisa da base de todos os estados
+  function precisaTodas(k, ver) { var n = nivel(k); return (n === 'br' || n === 'reg') && SUB_UF.indexOf(ver) >= 0; }
+  function regDe(x) { var u = BASE.ufDe[x]; return u ? (BASE.lug['uf:' + u] || {}).reg || UF_REG[u] : null; }
+
+  // Reserva: sem aovivo_dados/, tudo vem do TSE (nomes do cm do 1º turno, 1º turno dos arquivos do 1º turno); sem mapa
+  var CM = null;
+  function carregarReserva() {
+    BASE.fonte = 'reserva';
+    BASE.lug = { br: { n: 'Brasil' }, zz: { n: 'Exterior' } };
+    Object.keys(REGIOES).forEach(function (r) { BASE.lug['reg:' + r] = { n: REGIOES[r] }; });
+    Object.keys(NOME_UF).forEach(function (u) { BASE.lug['uf:' + u] = { n: NOME_UF[u], reg: UF_REG[u] }; });
+    var lista = ['br', 'zz'].concat(Object.keys(NOME_UF).map(function (u) { return 'uf:' + u; }));
+    return Promise.all(lista.map(function (k) {
+      var uf = k === 'br' ? 'br' : k === 'zz' ? 'zz' : cod(k);
+      return FILA.pedir(URLS.u(ELE.t1, uf)).then(function (r) { if (r.ok) try { BASE.v.t1[k] = lerU(r.json, URLS.u(ELE.t1, uf)).v; } catch (e) { formato(e); } });
+    })).then(function () {
+      if (BASE.v.t1.br) BASE.v.t1.brz = BASE.v.t1.br;   // o arquivo br do TSE já inclui o exterior
+    });
+  }
+  function reservaUf(u) {
+    var cm = CM ? Promise.resolve(CM) : FILA.pedir(URLS.cm(ELE.t1)).then(function (r) { if (!r.ok) throw new Error('lista de municípios do TSE indisponível'); CM = r.json; return CM; });
+    return cm.then(function (j) {
+      var abr = (j.abr || []).filter(function (a) { return String(a.cd).toUpperCase() === u; })[0];
+      if (!abr) throw new Error('estado fora da lista do TSE');
+      abr.mu.forEach(function (m) { var k = 'mun:' + pad(m.cd, 5); BASE.lug[k] = { n: m.nm, ibge: m.cdi, z: m.z || [] }; BASE.ufDe[k] = u; });
+      indexarUf(u);
+    });
+  }
+
+  // ======================================================================
+  // Lugares: hierarquia, filhos e caminho
+  // ======================================================================
+  function ufDe(k) { var n = nivel(k); return n === 'uf' ? cod(k) : BASE.ufDe[k] || null; }
+  function pai(k) {
+    var n = nivel(k), l = BASE.lug[k] || {};
+    if (n === 'br') return null;
+    if (n === 'zz' || n === 'reg') return 'br';
+    if (n === 'uf') return 'reg:' + (l.reg || UF_REG[cod(k)]);
+    if (n === 'int' || n === 'rm' || n === 'zon') return 'uf:' + ufDe(k);
+    if (n === 'ime') return l.int ? 'int:' + l.int : 'uf:' + ufDe(k);
+    if (n === 'mun') return !LITE && l.ime && BASE.lug['ime:' + l.ime] ? 'ime:' + l.ime : 'uf:' + ufDe(k);
+    return 'br';
+  }
+  function caminho(k, viaRm) {
+    var c = [];
+    while (k) { c.unshift(k); k = nivel(k) === 'mun' && viaRm ? viaRm : pai(k); viaRm = null; }
+    return c;
+  }
+  function opcoesVer(k) {
+    var n = nivel(k), u = ufDe(k), o = [];
+    if (n === 'br' || n === 'reg') return (n === 'br' ? ['reg', 'uf'] : ['uf']).concat(BASE.fonte === 'base' ? SUB_UF : []);
+    if (LITE) return n === 'uf' ? ['mun'] : [];
+    if (n === 'uf') {
+      if (BASE.fonte === 'base') o.push('int', 'ime');
+      o.push('mun');
+      if (Object.keys(BASE.lug).some(function (x) { return nivel(x) === 'rm' && BASE.ufDe[x] === u; })) o.push('rm');
+      return o;
+    }
+    if (n === 'int') return ['ime', 'mun'];
+    if (n === 'ime' || n === 'rm') return ['mun'];
+    return [];
+  }
+  function verPadrao(k) { var n = nivel(k); return n === 'br' || n === 'reg' ? 'uf' : 'mun'; }
+  // lugares do nível `ver` dentro de k (para município: os vizinhos do mesmo conjunto)
+  function itens(k, ver) {
+    var n = nivel(k), u = ufDe(k);
+    if (n === 'mun' || n === 'zz') return itens(n === 'mun' && st.viaRm ? st.viaRm : pai(k), n === 'zz' ? 'uf' : 'mun');
+    if (precisaTodas(k, ver)) {
+      if (!BASE.todas) return [];
+      return Object.keys(BASE.lug).filter(function (x) { return nivel(x) === ver && (n === 'br' || regDe(x) === cod(k)); });
+    }
+    if (n === 'br') return Object.keys(BASE.lug).filter(function (x) { return nivel(x) === ver; }).concat(ver === 'uf' ? ['zz'] : []);
+    if (n === 'reg') return Object.keys(BASE.lug).filter(function (x) { return nivel(x) === 'uf' && (BASE.lug[x].reg || UF_REG[cod(x)]) === cod(k); });
+    if (!ufCarregada(u)) return [];
+    if (ver === 'mun') return (BASE.membros[k] || []).slice();
+    var achou = {};
+    (BASE.membros[k] || []).forEach(function (m) { var c = BASE.lug[m][ver]; if (c) achou[ver + ':' + c] = true; });
+    if (n === 'uf' && ver === 'zon') Object.keys(BASE.lug).forEach(function (x) { if (nivel(x) === 'zon' && BASE.ufDe[x] === u) achou[x] = true; });
+    return Object.keys(achou);
+  }
+  // unidades que somadas dão o lugar: estados (Brasil, região) ou municípios (do estado para baixo)
+  function membros(k) {
+    var n = nivel(k);
+    if (n === 'br') return Object.keys(BASE.lug).filter(function (x) { return nivel(x) === 'uf'; }).concat(['zz']);
+    if (n === 'reg') return itens(k, 'uf');
+    if (n === 'mun' || n === 'zz') return [k];
+    return BASE.membros[k] || [];
+  }
+
+  // ======================================================================
+  // Valores: base (eleições anteriores) e ao vivo (2º turno)
+  // ======================================================================
+  function base(k, e) {
+    var v = BASE.v[e] || {};
+    if (k === 'br') return v.brz || null;          // Brasil com o exterior: é o número oficial
+    if (v[k]) return v[k];
+    var n = nivel(k);
+    if (n === 'reg') { var us = itens(k, 'uf'); return us.every(function (x) { return v[x]; }) && us.length ? somar(us.map(function (x) { return v[x]; })) : null; }
+    var ms = membros(k);
+    if (ms.length && ms.every(function (x) { return v[x]; })) return somar(ms.map(function (x) { return v[x]; }));
+    return null;
+  }
+  // 2º turno no lugar: {v, st, ts, completo, parcial}; v só existe quando o TSE já mandou o resultado
+  function vivo(k) {
+    var n = nivel(k);
+    if (n === 'br' || n === 'uf' || n === 'zz' || n === 'mun') {
+      var x = VIVO[k], p = progresso(k);
+      if (!x && !p) return null;
+      var stt = p ? p.st : x.st, tss = p ? p.ts : x.ts;
+      if (x && x.st >= stt) { stt = x.st; tss = x.ts; }
+      return { v: x ? x.v : null, st: stt, ts: tss, completo: tss > 0 && stt >= tss && !!x && x.st >= x.ts, atual: !!x && (!p || x.st === p.st) };
+    }
+    // somas: região = estados; intermediária, imediata e RM = municípios
+    var ms = membros(k), vs = [], s = 0, t = 0, todos = ms.length > 0;
+    ms.forEach(function (m) { var y = vivo(m); if (y) { s += y.st; t += y.ts; if (y.v) vs.push(y.v); if (!y.completo) todos = false; } else todos = false; });
+    if (!t && !vs.length) return null;
+    return { v: vs.length ? somar(vs) : null, st: s, ts: t, completo: todos, soma: true };
+  }
+  function progresso(k) {
+    if (k === 'br' || k === 'zz' || nivel(k) === 'uf') return AB.br && AB.br.lug[k] || null;
+    if (nivel(k) === 'mun') { var u = ufDe(k), ab = AB.uf[u]; return ab && ab.lug[k] || null; }
+    return null;
+  }
+  function temVivo() { return Object.keys(VIVO).length > 0; }
+  // Comparação justa: só os lugares 100% apurados (estado inteiro, ou os municípios do estado aberto)
+  function justa(k) {
+    var n = nivel(k), un = [];
+    function porEstado(uk) {
+      var x = vivo(uk);
+      if (x && x.completo) { un.push(uk); return; }
+      var u = cod(uk);
+      if (ufCarregada(u) && AB.uf[u]) membros(uk).forEach(function (m) { var y = vivo(m); if (y && y.completo) un.push(m); });
+    }
+    if (n === 'br' || n === 'reg') {
+      var b = vivo(k);
+      if (b && b.completo) un = [k];
+      else { itens(n === 'br' ? 'br' : k, 'uf').forEach(function (x) { if (nivel(x) === 'uf') porEstado(x); else { var y = vivo(x); if (y && y.completo) un.push(x); } }); }
+    } else if (n === 'uf') { porEstado(k); }
+    else { var z = vivo(k); if (z && z.completo && nivel(k) !== 'zon') un = [k]; else membros(k).forEach(function (m) { var y = vivo(m); if (y && y.completo) un.push(m); }); }
+    var tot = base(k, 't1'), v2 = somar(un.map(function (x) { return vivo(x).v; })), ref = {};
+    ['t1'].concat(COMP.map(function (c) { return c.id; })).forEach(function (e) {
+      var vs = un.map(function (x) { return base(x, e); });
+      ref[e] = vs.every(Boolean) && vs.length ? somar(vs) : null;
+    });
+    var cob = un.length && tot && ref.t1 ? ref.t1[I.aptos] / tot[I.aptos] : 0;
+    return { unidades: un, n: un.length, cobertura: un.length ? (un.length === 1 && un[0] === k ? 1 : cob) : 0, v2: un.length ? v2 : null, ref: ref };
+  }
+
+  // ======================================================================
+  // Virômetro: votos do finalista no 2º turno − no 1º turno, só nos municípios 100% apurados;
+  // meta = os votos do mesmo lado no 2º turno de 2022
+  // ======================================================================
+  var TOL_IGUAL = 0.01;   // "ficou igual" = mudou menos de 1% dos votos do 1º turno
+  function metaId() { var c = COMP.filter(function (x) { return x.id === '2022'; })[0] || COMP[0]; return c ? c.id : null; }
+  function metaRot(q) { var c = COMP.filter(function (x) { return x.id === metaId(); })[0]; return c ? c[q].nome + ' no ' + c.rot : 'a meta'; }
+  // municípios de um lugar (null = ainda abrindo os estados)
+  function munsDe(k) {
+    var n = nivel(k);
+    if (n === 'mun') return [k];
+    if (n === 'zz') return [];
+    if (n === 'br' || n === 'reg') {
+      if (!BASE.todas) return null;
+      return n === 'br' ? BASE.todosMuns : BASE.todosMuns.filter(function (x) { return regDe(x) === cod(k); });
+    }
+    var u = ufDe(k);
+    return u && ufCarregada(u) ? membros(k) : null;
+  }
+  function classeViro(v1, g) { var tol = Math.max(1, TOL_IGUAL * v1); return g > tol ? 'cresceu' : g < -tol ? 'caiu' : 'igual'; }
+  // o que se conta: votos de um finalista ('a', 'b') ou o desinteresse ('d' = abstenções + brancos + nulos; partes 'abst' e 'bn')
+  function valQ(v, q) {
+    if (!v) return null;
+    if (q === 'd') return v[I.aptos] - v[I.comp] + v[I.brancos] + v[I.nulos];
+    if (q === 'abst') return v[I.aptos] - v[I.comp];
+    if (q === 'bn') return v[I.brancos] + v[I.nulos];
+    return v[I[q]];
+  }
+  // Soma dos municípios totalizados: votos no 1º e no 2º turno, ganhos e perdas, e quantos cresceram/iguais/caíram.
+  // A META É FIXA: a diferença entre 2022 e o 1º turno de 2026 no lugar inteiro (todos os municípios, totalizados ou não);
+  // "caminho" = diferença já somada nos totalizados ÷ essa meta
+  function agg(ms, q) {
+    var mid = metaId(), r = { total: ms.length, n: 0, v1: 0, v2: 0, nMeta: 0, v1Tot: 0, metaTot: 0, aptos: 0, aptosTot: 0, ap2: 0,
+      ab1: 0, ab2: 0, bn1: 0, bn2: 0, m1: 0, mAp: 0, pos: 0, neg: 0, cresceu: 0, igual: 0, caiu: 0 };
+    ms.forEach(function (m) {
+      var b1 = base(m, 't1'); if (!b1) return;
+      var bm = mid ? base(m, mid) : null;
+      r.aptosTot += b1[I.aptos];
+      if (bm) { r.nMeta++; r.v1Tot += valQ(b1, q); r.metaTot += valQ(bm, q); }
+      var x = vivo(m); if (!x || !x.completo || !x.v) return;
+      var a1 = valQ(b1, q), a2 = valQ(x.v, q), g = a2 - a1;
+      r.n++; r.v1 += a1; r.v2 += a2; r.aptos += b1[I.aptos]; r.ap2 += x.v[I.aptos];
+      r.ab1 += valQ(b1, 'abst'); r.ab2 += valQ(x.v, 'abst'); r.bn1 += valQ(b1, 'bn'); r.bn2 += valQ(x.v, 'bn');
+      if (bm) { r.m1 += valQ(bm, q); r.mAp += bm[I.aptos]; }   // 2022 nos mesmos municípios (referência do desinteresse)
+      if (g > 0) r.pos += g; else r.neg += g;
+      r[classeViro(a1, g)]++;
+    });
+    r.ganho = r.v2 - r.v1;
+    r.alvo = r.metaTot - r.v1Tot;                 // meta fixa: votos a ganhar sobre o 1º turno para repetir 2022
+    r.agora = r.v1Tot + r.ganho;                  // 1º turno do lugar inteiro + o que já mudou nos totalizados
+    r.chegou = r.nMeta > 0 && r.agora >= r.metaTot;
+    r.falta = r.nMeta ? Math.max(0, r.metaTot - r.agora) : null;
+    r.prog = r.nMeta && r.alvo > 0 ? 100 * r.ganho / r.alvo : null;
+    r.final = r.total > 0 && r.n === r.total;
+    return r;
+  }
+  // faixa de cada lugar no caminho até a meta (mapa e histograma)
+  function faixaViro(a) {
+    if (!a.nMeta) return null;
+    if (a.chegou) return 'bateu';
+    if (a.ganho < 0) return 'perdeu';
+    return a.prog == null || a.prog < 50 ? 'p0' : 'p50';
+  }
+  // desinteresse em % dos eleitores aptos (1º e 2º turno nos municípios totalizados) e a mudança em p.p.
+  function pctD(x, ap) { return ap > 0 ? 100 * x / ap : null; }
+  function desDe(a) { var d1 = pctD(a.v1, a.aptos), d2 = pctD(a.v2, a.ap2); return { d1: d1, d2: d2, dd: d1 != null && d2 != null ? d2 - d1 : null }; }
+  function corDes(dd) { var i = 0; while (i < DES_LIM.length && dd >= DES_LIM[i]) i++; return DIV_D[i]; }
+  // "Quanto mudou" e a lista falam de um finalista; com o desinteresse escolhido no Virômetro, valem para Lula
+  function quemCand() { return st.quem === 'd' ? 'b' : st.quem; }
+  function coresViro(q) {
+    var o = q === 'b' ? 'a' : 'b';
+    return { perdeu: TONS[o][1], p0: TONS[q][0], p50: TONS[q][1], bateu: TONS[q][2] };
+  }
+  // os lugares contados (municípios por padrão; no município, os vizinhos)
+  function verViro(k) { var ops = opcoesVer(k); return ops.indexOf(st.vver) >= 0 ? st.vver : ops.indexOf('mun') >= 0 ? 'mun' : ops[0] || 'mun'; }
+  function unidadesViro(k) { return itens(k, nivel(k) === 'mun' ? 'mun' : verViro(k)).filter(function (x) { return nivel(x) !== 'zz'; }); }
+
+  // ======================================================================
+  // Apuração ao vivo: só o 2º turno vem do TSE
+  // ======================================================================
+  function avisar(msg) { AO.aviso = msg; pedirRender(); }
+  function formato(e) {
+    if (AO.formato.indexOf(e.url) < 0) AO.formato.push(e.url);
+    AO.aviso = 'Aviso de formato: um arquivo do TSE veio diferente do esperado e foi ignorado. Arquivo: ' + e.url;
+    pedirRender();
+  }
+  function chaveUrl(k) { return k === 'br' ? ['br'] : k === 'zz' ? ['zz'] : nivel(k) === 'uf' ? [cod(k)] : [ufDe(k), cod(k)]; }
+  var A_CAMINHO = {};   // chave -> marca já pedida e ainda sem resposta (não pede duas vezes)
+  function pegarU(k, marca) {
+    if (A_CAMINHO[k] === marca) return Promise.resolve();
+    A_CAMINHO[k] = marca;
+    var p = chaveUrl(k), url = URLS.u(ele2(), p[0], p[1]);
+    return FILA.pedir(url).then(function (r) {
+      delete A_CAMINHO[k];
+      if (!r.ok) return false;
+      try { VIVO[k] = lerU(r.json, url); AO.marcas[k] = marca; } catch (e) { if (e.formato) formato(e); }
+      pedirRender();
+      return true;
+    });
+  }
+  // soCompletos = estado que não está aberto (Brasil inteiro): só os municípios que chegaram a 100%, cada um uma vez
+  function cicloUf(u, soCompletos) {
+    var url = URLS.ab(ele2(), u), marcaUf = AB.br && AB.br.lug['uf:' + u] ? AB.br.lug['uf:' + u].marca : null;
+    return FILA.pedir(url).then(function (r) {
+      if (!r.ok) return;
+      var ab;
+      try { ab = lerAb(r.json, url); } catch (e) { formato(e); return; }
+      AB.uf[u] = ab;
+      var ps = [];
+      // os maiores primeiro (mais eleitores): as cidades grandes aparecem nos primeiros segundos
+      Object.keys(ab.lug).filter(function (k) { var e = ab.lug[k]; return nivel(k) === 'mun' && e.st > 0 && (!soCompletos || (e.ts > 0 && e.st >= e.ts)) && AO.marcas[k] !== e.marca; })
+        .sort(function (p, q) { var a = base(p, 't1'), b = base(q, 't1'); return (b ? b[0] : 0) - (a ? a[0] : 0); })
+        .forEach(function (k) { ps.push(pegarU(k, ab.lug[k].marca)); });
+      return Promise.all(ps).then(function (oks) {
+        // tudo recebido: só volta a olhar este estado quando a marca dele no -ab do Brasil mudar
+        if (oks.every(function (x) { return x !== false; })) AO.abVisto[u] = marcaUf;
+        pedirRender();
+      });
+    });
+  }
+  // Brasil inteiro: os outros estados com seções apuradas e marca nova no -ab do Brasil
+  function seguirUfs(ab, aberta) {
+    if (!NACIONAL) return [];
+    return Object.keys(BASE.ind.ufs).filter(function (u) {
+      var e = ab.lug['uf:' + u];
+      return u !== aberta && e && e.st > 0 && AO.abVisto[u] !== e.marca && !A_CAMINHO['ab:' + u];
+    }).map(function (u) {
+      A_CAMINHO['ab:' + u] = 1;
+      return cicloUf(u, true).then(function () { delete A_CAMINHO['ab:' + u]; });
+    });
+  }
+  function ciclo() {
+    if (AO.timer) { clearTimeout(AO.timer); AO.timer = null; }
+    if (MODO === 'demo') DEMO.passo();
+    var url = URLS.ab(ele2(), 'br');
+    return FILA.pedir(url, { esperado: !AO.comecou }).then(function (r) {
+      if (!r.ok) {
+        AO.estado = AO.comecou ? 'falha' : 'antes';
+        pedirRender(); agendar(AO.comecou ? PERIODO : ESPERA_ANTES); return;
+      }
+      var ab;
+      try { ab = lerAb(r.json, url); } catch (e) { formato(e); agendar(PERIODO); return; }
+      // o arquivo geral do 2º turno pode existir antes das 17h, zerado: só é "apurando" com alguma seção apurada
+      AB.br = ab; AO.comecou = true;
+      AO.estado = Object.keys(ab.lug).some(function (k) { return ab.lug[k].st > 0; }) ? 'apurando' : 'antes';
+      var ps = [];
+      // arquivos detalhados só depois que o geral existe, e só os que mudaram
+      Object.keys(ab.lug).forEach(function (k) { var e = ab.lug[k]; if (e.st > 0 && AO.marcas[k] !== e.marca) ps.push(pegarU(k, e.marca)); });
+      var u = ufDe(st.lugar);
+      if (u && ab.lug['uf:' + u] && ab.lug['uf:' + u].st > 0 && ufCarregada(u)) ps.push(cicloUf(u));
+      ps = ps.concat(seguirUfs(ab, u));
+      return Promise.all(ps).then(function () {
+        AO.ultima = RELOGIO.agora();
+        var b = ab.lug.br; if (b && b.ts && b.st >= b.ts && MODO !== 'demo') AO.estado = 'fim';
+        pedirRender(); agendar(PERIODO);
+      });
+    });
+  }
+  function agendar(ms) { if (OPC.semCiclo) return; if (AO.timer) clearTimeout(AO.timer); AO.timer = RELOGIO.depois(ms, ciclo); }
+
+  // ======================================================================
+  // Demonstração (?demo=1): um "TSE de mentira" que responde no mesmo formato, a partir do 1º turno da base
+  // ?t=0 a 1 fixa o momento da apuração (1 = tudo apurado)
+  // ======================================================================
+  var DEMO = {
+    t: Q.get('t') != null ? Math.max(0, Math.min(1, parseFloat(Q.get('t')) || 0)) : 0, fixo: Q.get('t') != null,
+    passo: function () { if (!this.fixo) this.t = Math.min(1, this.t + 0.025); },
+    fracao: function (k) { var t0 = 0.6 * hash('i' + k), f = (this.t - t0) / 0.35; return this.t >= 1 ? 1 : Math.max(0, Math.min(1, f)); },
+    final: function (k, v) {   // 2º turno simulado: os "outros" se dividem e uma parte troca de lado
+      var h = hash(k), hu = hash('uf' + (ufDe(k) || k)), alfa = Math.max(0.05, Math.min(0.95, 0.3 + 0.35 * hu + 0.3 * (h - 0.5)));
+      // comparecimento e brancos/nulos também mudam um pouco (para o desinteresse do Virômetro ter o que mostrar)
+      var comp = Math.min(v[0], Math.round(v[1] * (1 + (hash('c' + k) - 0.55) * 0.06))), fb = 1 + (hash('n' + k) - 0.5) * 0.4;
+      var br = Math.round(v[3] * fb), nu = Math.round(v[4] * fb), vv = Math.max(0, comp - br - nu);
+      var a = Math.round((v[5] + alfa * v[7]) * vv / (v[2] || 1) + (hash('s' + k) - 0.5) * 0.06 * vv); a = Math.max(0, Math.min(vv, a));
+      return [v[0], comp, vv, br, nu, a, vv - a, 0];
+    },
+    u: function (k, tp, cd) {
+      if (k === 'br') return this.brasil();
+      var v1 = base(k, 't1'); if (!v1) return null;
+      var f = this.fracao(k), v = this.final(k, v1), ts = Math.max(1, Math.round(v1[0] / 380)), sec = Math.round(ts * f);
+      var m = function (x) { return String(Math.round(x * f)); };
+      return { ele: ELE.t2, t: '2', tpabr: tp, cdabr: cd, dg: '25/10/2026', hg: '17:00:00', dt: '25/10/2026', ht: String(sec), and: f >= 1 ? 'f' : 'p',
+        carg: [{ cd: '1', agr: [{ par: [{ cand: [{ n: FIN.a.n, nmu: FIN.a.nome.toUpperCase(), vap: m(v[5]) }] }] }, { par: [{ cand: [{ n: FIN.b.n, nmu: FIN.b.nome.toUpperCase(), vap: m(v[6]) }] }] }] }],
+        s: { ts: String(ts), st: String(sec) }, e: { te: String(v1[0]), c: m(v[1]) }, v: { vv: m(v[2]), vb: m(v[3]), tvn: m(v[4]), vn: m(v[4]) } };
+    },
+    brasil: function () {   // como no TSE: o Brasil é a soma dos estados e do exterior
+      var self = this, soma = { te: 0, c: 0, vv: 0, vb: 0, tvn: 0, a: 0, b: 0, ts: 0, st: 0 };
+      Object.keys(BASE.lug).filter(function (x) { return nivel(x) === 'uf' || x === 'zz'; }).forEach(function (x) {
+        var j = self.u(x, 'uf', x); if (!j) return;
+        soma.te += +j.e.te; soma.c += +j.e.c; soma.vv += +j.v.vv; soma.vb += +j.v.vb; soma.tvn += +j.v.tvn; soma.ts += +j.s.ts; soma.st += +j.s.st;
+        soma.a += +j.carg[0].agr[0].par[0].cand[0].vap; soma.b += +j.carg[0].agr[1].par[0].cand[0].vap;
+      });
+      var S = String;
+      return { ele: ELE.t2, t: '2', tpabr: 'br', cdabr: 'br', dg: '25/10/2026', hg: '17:00:00', dt: '25/10/2026', ht: S(soma.st), and: soma.st >= soma.ts ? 'f' : 'p',
+        carg: [{ cd: '1', agr: [{ par: [{ cand: [{ n: FIN.a.n, nmu: FIN.a.nome.toUpperCase(), vap: S(soma.a) }] }] }, { par: [{ cand: [{ n: FIN.b.n, nmu: FIN.b.nome.toUpperCase(), vap: S(soma.b) }] }] }] }],
+        s: { ts: S(soma.ts), st: S(soma.st) }, e: { te: S(soma.te), c: S(soma.c) }, v: { vv: S(soma.vv), vb: S(soma.vb), tvn: S(soma.tvn), vn: S(soma.tvn) } };
+    },
+    abDe: function (lista) {
+      var self = this;
+      return { ele: ELE.t2, dg: '25/10/2026', hg: '17:00:00', abr: lista.map(function (x) { var j = self.u(x[0], x[1], x[2]); return j && { tpabr: x[1], cdabr: x[2], and: j.and, dt: j.dt, ht: j.ht, s: j.s }; }).filter(Boolean) };
+    },
+    buscar: function (url) {
+      var self = this, m = /\/dados\/([a-z]{2})\/([a-z]{2})(\d{5})?-(?:c\d{4}-)?e\d{6}-(u|ab)\.json$/.exec(url);
+      var nao = { ok: false, status: 404 };
+      if (!m || this.t <= 0) return Promise.resolve(nao);
+      var uf = m[2], mun = m[3], tipo = m[4];
+      if (tipo === 'ab' && uf === 'br') {
+        var l = [['br', 'br', 'br'], ['zz', 'uf', 'zz']].concat(Object.keys(BASE.lug).filter(function (x) { return nivel(x) === 'uf'; }).map(function (x) { return [x, 'uf', cod(x).toLowerCase()]; }));
+        return Promise.resolve({ ok: true, status: 200, json: this.abDe(l) });
+      }
+      var U = uf.toUpperCase();
+      if (tipo === 'ab') {
+        return Promise.resolve(garantirUf(U)).then(function () {
+          return { ok: true, status: 200, json: self.abDe([['uf:' + U, 'uf', uf]].concat((BASE.membros['uf:' + U] || []).map(function (x) { return [x, 'mun', cod(x)]; }))) };
+        });
+      }
+      var k = mun ? 'mun:' + mun : uf === 'br' ? 'br' : uf === 'zz' ? 'zz' : 'uf:' + U;
+      var j = this.u(k, mun ? 'mu' : uf === 'br' ? 'br' : 'uf', mun || uf);
+      return Promise.resolve(j ? { ok: true, status: 200, json: j } : nao);
+    }
+  };
+
+  // ======================================================================
+  // Desenho
+  // ======================================================================
+  var RENDER_PENDENTE = false;
+  function pedirRender() {
+    if (RENDER_PENDENTE) return;
+    RENDER_PENDENTE = true;
+    // Brasil inteiro (milhares de municípios chegando): redesenha no máximo uma vez por segundo
+    RELOGIO.depois(NACIONAL ? 1000 : 250, function () { RENDER_PENDENTE = false; render(); });
+  }
+  function render() {
+    // Brasil/região por município ou Virômetro do Brasil: abre a base de todos os estados (uma vez)
+    var n = nivel(st.lugar);
+    if (BASE.fonte === 'base' && !TODAS && (precisaTodas(st.lugar, st.ver) || ((n === 'br' || n === 'reg') && (st.aba === 'viro' || st.mapa === 'viro')))) garantirTodas();
+    renderCab(); renderMigalhas(); renderResumo(); renderMapa(); renderViro(); renderLista(); renderAbas();
+    if (BASE.fonte) marcarHistorico();
+    renderNota();
+  }
+  function renderCab() {
+    var sub = MODO === 'demo' ? 'Demonstração — 2º turno simulado' : MODO === 'ensaio' ? 'Ensaio com os arquivos reais do 1º turno' : 'Votação das 8h às 17h (horário de Brasília); resultados a partir das 17h';
+    if (BASE.gerado) sub += ' · base gerada em ' + BASE.gerado.slice(8, 10) + '/' + BASE.gerado.slice(5, 7) + '/' + BASE.gerado.slice(0, 4) + ' ' + BASE.gerado.slice(11, 16);
+    $('cab-sub').textContent = sub;
+    var est = { carregando: 'Carregando…', antes: 'A apuração ainda não começou', apurando: 'Apurando', fim: 'Apuração concluída', falha: 'Sem resposta do TSE agora' }[AO.estado] || '';
+    var h = AO.ultima ? ' · atualizado às ' + new Date(AO.ultima).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit' }) : '';
+    if (FILA.pausaAte > RELOGIO.agora()) est = 'Pausa (muitos "não encontrado")';
+    // a hora em que o próprio TSE gerou os dados (prova de que vêm de lá e de que estão frescos)
+    var hg = AB.br && AB.br.quando ? AB.br.quando.trim().split(' ')[1] : '';
+    if (hg && MODO !== 'demo') h = ' · dados do TSE das ' + hg;
+    // vigia: apurando e sem resposta do TSE há mais de 3 minutos
+    var parado = AO.estado === 'apurando' && AO.ultima ? Math.floor((RELOGIO.agora() - AO.ultima) / 60000) : 0;
+    if (parado >= 3) est = 'Sem resposta do TSE há ' + parado + ' min (tentando de novo)';
+    $('estado').innerHTML = '<span class="bolinha' + (AO.estado === 'apurando' ? ' viva' : '') + '"></span>' + esc(est) + '<span class="hora">' + esc(h) + '</span>';
+    var f;
+    if (BASE.fonte === 'base') f = '<b>Fonte:</b> 1º turno de 2026 e 2º turnos de 2022 e 2014 vêm da <b>base do projeto</b> (arquivos publicados junto com este painel, conferidos com os números oficiais). ';
+    else if (BASE.fonte === 'reserva') f = '<b>Fonte:</b> a base do projeto não abriu, então <b>tudo vem direto do TSE</b> (mais lento, sem mapa e sem 2022/2014). ';
+    else f = 'Carregando a base… ';
+    f += MODO === 'demo' ? 'O 2º turno é <b>simulado</b>: nada é pedido ao TSE.' : MODO === 'ensaio' ? 'No lugar do 2º turno o painel lê os <b>arquivos reais do 1º turno no TSE</b>: os números devem ficar iguais aos do 1º turno.' : 'O 2º turno vem <b>direto do TSE</b>, de minuto em minuto.';
+    $('fonte').innerHTML = f;
+    $('aviso').hidden = !AO.aviso; $('aviso').textContent = AO.aviso || '';
+  }
+  function renderMigalhas() {
+    var c = caminho(st.lugar, st.viaRm), h = [];
+    // etiqueta do nível onde o nome se repete (estado, intermediária, imediata e município podem ter o mesmo nome)
+    var ETQ = { int: 'interm.', ime: 'imediata', rm: 'RM', zon: 'zona' };
+    c.forEach(function (k, i) {
+      if (i) h.push('<span class="sep">›</span>');
+      if (ETQ[nivel(k)]) h.push('<span class="niv">' + ETQ[nivel(k)] + '</span>');
+      h.push(i === c.length - 1 ? '<span class="aqui">' + esc(nomeDe(k)) + '</span>' : '<button data-ir="' + esc(k) + '">' + esc(nomeDe(k)) + '</button>');
+    });
+    if (c.length > 1) h.unshift('<button class="voltar" data-ir="' + esc(c[c.length - 2]) + '" aria-label="Voltar para ' + esc(nomeDe(c[c.length - 2])) + '">← Voltar</button>' + (LITE ? '' : '<span class="sep">·</span>'));
+    $('migalhas').innerHTML = h.join('');
+  }
+  function linhaApur(x) {
+    if (!x || !x.ts || !x.st) return '<p class="rot">' + (AO.estado === 'antes' || !AO.comecou ? 'A apuração do 2º turno ainda não começou.' : 'Ainda sem seções apuradas aqui.') + '</p>';
+    var p = 100 * x.st / x.ts;
+    return '<div class="barra" role="progressbar" aria-valuenow="' + p.toFixed(1) + '" aria-valuemin="0" aria-valuemax="100"><i style="width:' + Math.min(100, p).toFixed(2) + '%"></i></div>' +
+      '<p class="rot">Seções apuradas: <b>' + (p >= 100 ? '100%' : NP2.format(p) + '%') + '</b> (' + fmtN(x.st) + ' de ' + fmtN(x.ts) + ')' + (x.soma ? ' · soma dos lugares já recebidos' : '') + '</p>';
+  }
+  // régua: onde cada finalista estava no 1º turno (círculo vazio) e onde está no 2º (círculo cheio)
+  function svgRegua(p1, p2) {
+    var W = 360, H = 64, x0 = 10, x1 = W - 10, X = function (p) { return x0 + (x1 - x0) * p / 100; }, s = [];
+    s.push('<line x1="' + x0 + '" x2="' + x1 + '" y1="20" y2="20" stroke="var(--linha)" stroke-width="2"/><line x1="' + X(50) + '" x2="' + X(50) + '" y1="12" y2="52" stroke="var(--sub)" stroke-dasharray="3 3"/>');
+    s.push('<line x1="' + x0 + '" x2="' + x1 + '" y1="44" y2="44" stroke="var(--linha)" stroke-width="2"/>');
+    s.push('<text x="' + X(50) + '" y="62" text-anchor="middle">50%</text>');
+    [['a', 20], ['b', 44]].forEach(function (q) {
+      var k = q[0], y = q[1], a = p1[k], b = p2[k], cor = 'var(--cor-' + k + ')';
+      if (a != null && b != null) s.push('<line x1="' + X(a) + '" x2="' + X(b) + '" y1="' + y + '" y2="' + y + '" stroke="' + cor + '" stroke-width="4"/>');
+      if (a != null) s.push('<circle cx="' + X(a) + '" cy="' + y + '" r="6" fill="var(--card)" stroke="' + cor + '" stroke-width="2.5"><title>1º turno: ' + fmtP(a) + '</title></circle>');
+      if (b != null) s.push('<circle cx="' + X(b) + '" cy="' + y + '" r="6.5" fill="' + cor + '"><title>2º turno: ' + fmtP(b) + '</title></circle>');
+    });
+    return '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Régua do 1º para o 2º turno">' + s.join('') + '</svg>';
+  }
+  function renderResumo() {
+    var k = st.lugar, n = nivel(k), x = vivo(k), v1 = base(k, 't1'), v2 = x && x.v;
+    var h = ['<p class="rot">' + esc(NOME_NIVEL[n] || '') + (v1 ? ' · ' + fmtN(v1[I.aptos]) + ' eleitores' : '') + (n === 'zz' ? ' · fora do mapa' : '') + '</p><h2>' + esc(nomeDe(k)) + '</h2>'];
+    h.push(navegacao(k));
+    h.push(linhaApur(x));
+    h.push('<div class="fins">');
+    ['a', 'b'].forEach(function (q) {
+      var f = FIN[q], p2 = pct(v2, q), p1 = pct(v1, q);
+      h.push('<div class="fin" style="--c:var(--cor-' + q + ')"><div class="nm">' + esc(f.nome) + ' <span class="rot">(' + esc(f.sg) + ')</span></div>' +
+        '<div class="pc">' + (p2 == null ? '—' : fmtP2(p2)) + '</div><div class="vt">' + (v2 ? fmtN(v2[I[q]]) + ' votos · ' : '') + '1º turno: ' + fmtP2(p1) + '</div></div>');
+    });
+    h.push('</div>');
+    h.push('<h3>Do 1º para o 2º turno</h3><div class="regua">' + svgRegua({ a: pct(v1, 'a'), b: pct(v1, 'b') }, { a: pct(v2, 'a'), b: pct(v2, 'b') }) + '</div>');
+    h.push('<p class="nota"><span class="ponto" style="border:2px solid var(--sub)"></span>1º turno · <span class="ponto" style="background:var(--sub)"></span>2º turno' + (x && !x.completo && v2 ? ' (parcial)' : '') + (v1 && !LITE ? ' · no 1º turno os outros candidatos tiveram ' + fmtP(pct(v1, 'outros')) : '') + '</p>');
+    // comparação justa
+    var J = justa(k), ids = [['t1', '1º turno 2026', FIN]].concat(COMP.map(function (c) { return [c.id, c.rot, c]; }));
+    h.push('<div class="justa"><p><b>Comparação justa</b>: só entra o que já está 100% apurado.</p>');
+    if (!J.n) h.push('<p>Ainda não há lugar 100% apurado aqui.</p>');
+    else {
+      var desc = J.unidades.length === 1 && J.unidades[0] === k ? 'o lugar inteiro (100% apurado)' : J.n + ' ' + (nivel(J.unidades[0]) === 'mun' ? 'municípios' : 'lugares') + ' com ' + fmtP(100 * J.cobertura) + ' dos eleitores';
+      h.push('<p>Base: ' + esc(desc) + '.</p><div class="tab-x"><table class="tab"><thead><tr><th>Eleição</th><th class="n">' + esc(FIN.a.nome) + (LITE ? '' : '<br><small>e quem estava do lado dele</small>') + '</th><th class="n">' + esc(FIN.b.nome) + (LITE ? '' : '<br><small>e do lado dele</small>') + '</th></tr></thead><tbody>');
+      var pa2 = pct(J.v2, 'a'), pb2 = pct(J.v2, 'b');
+      h.push('<tr><td><b>2º turno 2026</b></td><td class="n"><b>' + fmtP(pa2) + '</b></td><td class="n"><b>' + fmtP(pb2) + '</b></td></tr>');
+      ids.forEach(function (e) {
+        var r = J.ref[e[0]]; if (!r) return;
+        var pa = pct(r, 'a'), pb = pct(r, 'b');
+        h.push('<tr><td>' + esc(e[1]) + (e[0] !== 't1' && !LITE ? '<br><small>' + esc(e[2].a.nome) + ' × ' + esc(e[2].b.nome) + '</small>' : '') + '</td><td class="n">' + fmtP(pa) + '<br><small>2026: ' + fmtPP(pa2 - pa) + '</small></td><td class="n">' + fmtP(pb) + '<br><small>2026: ' + fmtPP(pb2 - pb) + '</small></td></tr>');
+      });
+      h.push('</tbody></table></div>');
+    }
+    h.push('</div>');
+    if (LITE) { h.push('<p class="nota">' + $('fonte').innerHTML + '</p>'); escrever('resumo', h.join('')); return; }
+    // o lugar inteiro nas outras eleições
+    if (COMP.length) {
+      h.push('<h3>O lugar inteiro em outras eleições</h3><div class="tab-x"><table class="tab"><thead><tr><th>Eleição</th><th class="n">' + esc(FIN.a.nome) + '<br><small>e o lado dele</small></th><th class="n">' + esc(FIN.b.nome) + '<br><small>e o lado dele</small></th><th class="n">Compare&shy;cimento</th></tr></thead><tbody>');
+      ids.forEach(function (e) {
+        var r = base(k, e[0]); if (!r) return;
+        h.push('<tr><td><span class="eleicao">' + esc(e[1]) + '</span>' + (e[0] !== 't1' ? '<small>' + esc(e[2].a.nome) + ' × ' + esc(e[2].b.nome) + '</small>' : '') + '</td><td class="n">' + fmtP(pct(r, 'a')) + '</td><td class="n">' + fmtP(pct(r, 'b')) + '</td><td class="n">' + fmtP(r[I.aptos] ? 100 * r[I.comp] / r[I.aptos] : null) + '</td></tr>');
+      });
+      h.push('</tbody></table></div>');
+    }
+    // no computador a faixa "Fonte" sai do alto (o mapa precisa da altura) e vem para o fim do resumo
+    h.push('<p class="nota so-pc fonte-res">' + $('fonte').innerHTML + '</p>');
+    escrever('resumo', h.join(''));
+  }
+
+  // ---- cor de cada lugar no mapa
+  function eleMapa() { return st.ele === 'auto' ? (temVivo() ? 't2' : 't1') : st.ele; }
+  function corDe(k) {
+    var semDado = TEMA[st.tema].semDado;
+    if (st.mapa === 'apur') {
+      var x = vivo(k); if (!x || !x.ts || !x.st) return { c: semDado, o: 0.9 };
+      var p = x.st / x.ts; return { c: SEQ[p >= 1 ? 4 : p >= 0.75 ? 3 : p >= 0.5 ? 2 : p >= 0.25 ? 1 : 0], o: 0.9 };
+    }
+    if (st.mapa === 'viro') {
+      var ms = munsDe(k); if (!ms) return { c: semDado, o: 0.9 };
+      var a = agg(ms, st.quem);
+      if (st.quem === 'd') { var ds = desDe(a); return a.n && ds.dd != null ? { c: corDes(ds.dd), o: a.final ? 0.9 : 0.45, viro: a, des: ds } : { c: semDado, o: 0.9 }; }
+      var fx = a.n ? faixaViro(a) : null;
+      if (!fx) return { c: semDado, o: 0.9 };
+      return { c: coresViro(st.quem)[fx], o: a.final ? 0.9 : 0.45, viro: a };
+    }
+    if (st.mapa === 'mudou') {
+      var y = vivo(k), r = base(k, st.ref), qc = quemCand();
+      if (!y || !y.completo || !y.v || !r) return { c: semDado, o: 0.9 };
+      var d = pct(y.v, qc) - pct(r, qc), i = 0;
+      while (i < DIV_LIM.length && d >= DIV_LIM[i]) i++;
+      return { c: divDe(qc)[i], o: 0.9, d: d };
+    }
+    var e = eleMapa(), v, parcial = false;
+    if (e === 't2') { var z = vivo(k); v = z && z.v; parcial = !!(z && !z.completo); } else v = base(k, e);
+    if (!v || !v[I.validos]) return { c: semDado, o: 0.9 };
+    var m = pct(v, 'a') - pct(v, 'b'), q = m >= 0 ? 'a' : 'b', t = Math.abs(m) < 5 ? 0 : Math.abs(m) < 15 ? 1 : 2;
+    return { c: TONS[q][t], o: parcial ? 0.45 : 0.9 };
+  }
+  function geoDe(k) {
+    var n = nivel(k), g = BASE.geo[n === 'mun' ? 'mun' : n];
+    return g ? g[cod(k)] || null : null;
+  }
+  var MAPA = null, CAMADA = null, CAMADA_Q = '', QUADRO = '', CONTORNO = null, CONTORNO_Q = '';
+  // mistura duas cores (#rrggbb): t = quanto de c2
+  function misturar(c1, c2, t) {
+    var a = parseInt(c1.slice(1), 16), b = parseInt(c2.slice(1), 16), out = '#';
+    [16, 8, 0].forEach(function (s) { var x = Math.round(((a >> s) & 255) * (1 - t) + ((b >> s) & 255) * t); out += (x < 16 ? '0' : '') + x.toString(16); });
+    return out;
+  }
+  // divisas desenhadas por cima: as Grandes Regiões no mapa das regiões; senão, os estados (todos no Brasil, os da região, ou o estado aberto)
+  function divisas(k, ver) {
+    var n = nivel(k);
+    if (ver === 'reg' && n === 'br') return Object.keys(BASE.geo.reg || {}).map(function (r) { return 'reg:' + r; });
+    if (n === 'br') return Object.keys(BASE.geo.uf || {}).map(function (u) { return 'uf:' + u; });
+    if (n === 'reg') return itens(k, 'uf').filter(function (x) { return nivel(x) === 'uf'; });
+    var u = ufDe(k);
+    return u ? ['uf:' + u] : [];
+  }
+  // gaveta da Lite: fechada, só uma linha com o lugar e o resultado; aberta, as opções e a legenda
+  function gavetaAberta() { return st.gaveta != null ? st.gaveta : !celular(); }
+  function renderGaveta() {
+    var g = $('gaveta'); if (!g) return;
+    var ab = !LITE || gavetaAberta();
+    g.setAttribute('data-aberta', String(ab));
+    var al = g.querySelector ? g.querySelector('.gav-alca') : null;
+    if (al) { al.setAttribute('aria-expanded', String(ab)); al.setAttribute('aria-label', ab ? 'Fechar as opções do mapa' : 'Abrir as opções do mapa'); }
+    if (!LITE) return;
+    var k = st.lugar, x = vivo(k), v = x && x.v, t;
+    if (v && v[I.validos]) t = esc(FIN.b.nome) + ' ' + fmtP2(pct(v, 'b')) + ' × ' + esc(FIN.a.nome) + ' ' + fmtP2(pct(v, 'a')) + (x.completo ? '' : ' · ' + NP1.format(100 * x.st / x.ts) + '% apurado');
+    else t = AO.estado === 'antes' || !AO.comecou ? 'Apuração ainda não começou' : 'Ainda sem seções apuradas';
+    trocar('gav-txt', '<b>' + esc(nomeDe(k)) + '</b><small>' + t + '</small>');
+  }
+  function renderMapa() {
+    var ctl = [], k = st.lugar, ver = nivel(k) === 'mun' ? 'mun' : st.ver;
+    // uma linha só: o que o mapa mostra (botões) e as escolhas em caixas (o mapa fica com a altura)
+    ctl.push('<div class="seg" role="group" aria-label="O que o mapa mostra">' +
+      [['lider', 'Quem lidera'], ['mudou', 'Quanto mudou'], ['viro', 'Virômetro'], ['apur', 'Apuração']].map(function (o) { return '<button data-mapa="' + o[0] + '" aria-pressed="' + (st.mapa === o[0]) + '">' + o[1] + '</button>'; }).join('') + '</div>');
+    var ops = nivel(k) === 'mun' ? [] : opcoesVer(k);
+    if (ops.length > 1) ctl.push(caixa('ver', 'Ver por', ops.map(function (o) { return [o, PLURAL[o]]; }), ver));
+    var ids = [['t1', '1º turno 2026']].concat(COMP.map(function (c) { return [c.id, c.rot]; }));
+    if (st.mapa === 'lider') ctl.push(caixa('ele', 'Eleição', [['t2', '2º turno 2026']].concat(ids), eleMapa()));
+    if (st.mapa === 'mudou') ctl.push(caixa('ref', '2º turno comparado com', ids, st.ref), '<span class="rot">De:</span>' + segQuem());
+    if (st.mapa === 'viro') ctl.push('<span class="rot">Medir:</span>' + segQuem(true));
+    if (LITE) ctl.push('<button class="btn" data-acao="viroaba">Ver no Virômetro</button>');
+    // só troca o que mudou: redesenhar a cada atualização fecharia a caixa aberta e o "Como ler"
+    trocar('mapa-ctl', '<div class="ctl">' + ctl.join('') + '</div>');
+    trocar('legenda', legenda());
+    renderGaveta();
+    var el = $('mapa');
+    if (BASE.fonte !== 'base' || typeof L === 'undefined') {
+      el.innerHTML = '<div class="sem-mapa">' + (BASE.fonte === 'reserva' ? 'Sem a base publicada, o mapa fica desligado. A lista continua funcionando.' : 'Carregando o mapa…') + '</div>';
+      return;
+    }
+    var u = ufDe(k);
+    if (u && !ufCarregada(u)) return;
+    // no celular o mapa fica numa aba escondida: desenhado escondido, ele fica com tamanho zero e se enquadra errado
+    if (el.offsetWidth === 0) return;
+    if (MAPA) MAPA.invalidateSize({ animate: false, pan: false });
+    if (!MAPA) {
+      el.innerHTML = '';
+      MAPA = L.map('mapa', { preferCanvas: true, zoomSnap: 0.25, attributionControl: false, scrollWheelZoom: true });
+      MAPA.setView([-14.5, -52], 4);
+    }
+    var lista = itens(k, ver).filter(function (x) { return nivel(x) !== 'zz' && geoDe(x); });
+    // Polígonos colados, sem frestas: cada lugar tem o traço da própria cor (fecha a fresta clara que o navegador deixa entre
+    // vizinhos) e cor opaca (lugar ainda apurando = cor clareada, não transparente: a transparência mostraria a emenda).
+    // As divisas que importam (estados; regiões no mapa das regiões) vêm numa camada fina por cima.
+    var fundo = TEMA[st.tema].fundo;
+    var estilo = function (f) {
+      var c = corDe(f.properties.k), sel = f.properties.k === k, cor = c.o < 0.8 ? misturar(c.c, fundo, 0.5) : c.c;
+      return { fillColor: cor, fillOpacity: 1, stroke: true, opacity: 1, color: sel ? '#3d4752' : cor, weight: sel ? 2 : 1, dashArray: sel ? '5 4' : null };
+    };
+    var q = k + '|' + ver + '|' + lista.length;
+    var dv = divisas(k, ver), qd = dv.join(',') + '|' + st.tema;
+    if (qd !== CONTORNO_Q) CAMADA_Q = '';   // refaz as duas camadas juntas, na ordem: lugares embaixo, divisas em cima
+    // mesmos lugares: só repinta (com 5.570 municípios, refazer a camada a cada atualização pesaria)
+    if (CAMADA && CAMADA_Q === q && CAMADA.setStyle) CAMADA.setStyle(estilo);
+    else {
+      var feats = lista.map(function (x) { return { type: 'Feature', properties: { k: x }, geometry: geoDe(x) }; });
+      if (CAMADA) { MAPA.removeLayer(CAMADA); CAMADA = null; }
+      if (CONTORNO) { MAPA.removeLayer(CONTORNO); CONTORNO = null; }
+      // divisas numa camada própria, acima dos lugares e sem clique (a dica e o clique continuam nos lugares)
+      if (MAPA.createPane && !MAPA.getPane('divisas')) { var pn = MAPA.createPane('divisas'); pn.style.zIndex = 450; pn.style.pointerEvents = 'none'; }
+      var fd = dv.map(function (x) { return { type: 'Feature', properties: { k: x }, geometry: geoDe(x) }; }).filter(function (f) { return f.geometry; });
+      if (fd.length) {
+        CONTORNO = L.geoJSON({ type: 'FeatureCollection', features: fd }, {
+          pane: MAPA.getPane && MAPA.getPane('divisas') ? 'divisas' : 'overlayPane', interactive: false,
+          style: function () { return { fill: false, stroke: true, color: TEMA[st.tema].borda, weight: 1.2, opacity: 0.95 }; },
+          onEachFeature: function () {}
+        }).addTo(MAPA);
+      }
+      CONTORNO_Q = qd;
+      CAMADA = L.geoJSON({ type: 'FeatureCollection', features: feats }, {
+        style: estilo,
+        onEachFeature: function (f, lyr) {
+          var x = f.properties.k;
+          lyr.bindTooltip(function () { return dica(x); }, { sticky: true });
+          lyr.on('click', function () { ir(x); });
+        }
+      }).addTo(MAPA);
+      CAMADA_Q = q;
+    }
+    // o lugar escolhido (tracejado) por cima dos vizinhos
+    if (CAMADA.eachLayer) CAMADA.eachLayer(function (l) { if (l.feature && l.feature.properties.k === k && l.bringToFront) l.bringToFront(); });
+    if (q !== QUADRO && lista.length) {
+      QUADRO = q;
+      var bb = CAMADA.getBounds();
+      if (bb && bb.isValid()) MAPA.fitBounds(bb, { padding: [12, 12], animate: false });
+    }
+  }
+  function dica(k) {
+    var v1 = base(k, 't1'), x = vivo(k), v2 = x && x.v, h = '<b>' + esc(nomeDe(k)) + '</b><br>';
+    if (v2) h += esc(FIN.a.nome) + ' ' + fmtP(pct(v2, 'a')) + ' × ' + esc(FIN.b.nome) + ' ' + fmtP(pct(v2, 'b')) + (x.completo ? '' : ' (' + NP1.format(100 * x.st / x.ts) + '% apurado)') + '<br>';
+    else h += '2º turno: ainda sem apuração<br>';
+    if (v1) h += '1º turno: ' + fmtP(pct(v1, 'a')) + ' × ' + fmtP(pct(v1, 'b'));
+    var c = corDe(k); if (c.d != null) h += '<br>Mudança: ' + fmtPP(c.d);
+    if (c.des) h += '<br>Desinteresse: ' + fmtP(c.des.d1) + ' → ' + fmtP(c.des.d2) + ' (' + fmtPP(c.des.dd) + ')' + (c.viro.final ? '' : ' · ' + c.viro.n + ' de ' + c.viro.total + ' municípios totalizados');
+    else if (c.viro) h += '<br>Virômetro (' + esc(FIN[st.quem].nome) + '): ' + fmtS(c.viro.ganho) + ' votos sobre o 1º turno' + (c.viro.nMeta ? ' · ' + fmtCam(c.viro) : '') + (c.viro.final ? '' : ' · ' + c.viro.n + ' de ' + c.viro.total + ' municípios totalizados');
+    return h;
+  }
+  // Listas suspensas: o painel se redesenha a cada novidade do TSE; reescrever a parte com uma lista aberta a fecharia
+  // na mão da pessoa. Enquanto uma lista de dentro estiver em uso, aquela parte espera (volta a ser desenhada ao sair dela).
+  function emUso(el) {
+    var a = document.activeElement;
+    return !!(a && el && a.tagName === 'SELECT' && el.contains && el.contains(a));
+  }
+  function escrever(id, html) { var el = $(id); if (emUso(el)) return false; el.innerHTML = html; return true; }
+  var HTML_ANTES = {};
+  function trocar(id, html) { var el = $(id); if ((HTML_ANTES[id] !== html || el.innerHTML === '') && !emUso(el)) { HTML_ANTES[id] = html; el.innerHTML = html; } }
+  function caixa(nome, rot, ops, atual) {
+    return '<label class="esc"><span class="rot">' + esc(rot) + '</span><select class="nav-sel" data-sel="' + nome + '">' + ops.map(function (o) { return '<option value="' + esc(o[0]) + '"' + (o[0] === atual ? ' selected' : '') + '>' + esc(o[1]) + '</option>'; }).join('') + '</select></label>';
+  }
+  // comD = também o botão "Desinteresse" (abstenções + brancos + nulos), no Virômetro
+  function segQuem(comD) {
+    var qa = comD ? st.quem : quemCand();
+    return '<div class="seg">' + ['b', 'a'].concat(comD ? ['d'] : []).map(function (q) { return '<button data-quem="' + q + '" aria-pressed="' + (qa === q) + '">' + esc(q === 'd' ? 'Desinteresse' : FIN[q].nome) + '</button>'; }).join('') + '</div>';
+  }
+  function fmtS(n) { return n == null ? '—' : (n > 0 ? '+' : n < 0 ? '−' : '') + NF.format(Math.abs(n)); }
+  // quanto do caminho do 1º turno até a meta já foi feito
+  function fmtCam(a) {
+    if (!a || !a.nMeta) return '—';
+    if (a.chegou) return 'chegou à meta';
+    if (a.ganho < 0) return 'perdeu votos';
+    return a.prog == null ? '—' : NF.format(Math.floor(a.prog)) + '% do caminho';
+  }
+  // legenda numa linha; as explicações ficam em "Como ler" (no celular e em telas baixas o mapa precisa da altura)
+  function legenda() {
+    var h = [], nt = [];
+    function it(c, t) { h.push('<span><i style="background:' + c + '"></i>' + esc(t) + '</span>'); }
+    if (st.mapa === 'apur') { ['até 25%', '25–50%', '50–75%', '75–99%', '100%'].forEach(function (t, i) { it(SEQ[i], t); }); it(TEMA[st.tema].semDado, 'sem apuração'); nt.push('Percentual das seções já apuradas em cada lugar.'); }
+    else if (st.mapa === 'viro' && st.quem === 'd') {
+      var td = ['caiu 3 p.p. ou mais', '1,5 a 3', '0,5 a 1,5', 'quase igual (±0,5)', 'subiu 0,5 a 1,5', '1,5 a 3', '3 p.p. ou mais'];
+      DIV_D.forEach(function (c, i) { it(c, td[i]); }); it(TEMA[st.tema].semDado, 'nenhum município totalizado');
+      nt.push('Desinteresse = abstenções + brancos + nulos, em % dos eleitores aptos: 2º turno menos o 1º turno. Roxo = aumentou, verde = diminuiu. Só municípios 100% apurados; cor mais clara = só parte dos municípios do lugar totalizou.');
+    }
+    else if (st.mapa === 'viro') {
+      var cv = coresViro(st.quem);
+      it(cv.perdeu, 'perdeu votos'); it(cv.p0, 'ganhou: menos da metade do caminho'); it(cv.p50, 'mais da metade'); it(cv.bateu, 'chegou à votação de 2022'); it(TEMA[st.tema].semDado, 'nenhum município totalizado');
+      nt.push('Votos de ' + esc(FIN[st.quem].nome) + ' no 2º turno × no 1º turno. Meta fixa de cada lugar: chegar à votação de ' + esc(metaRot(st.quem)) + ' no lugar inteiro. Só municípios 100% apurados; cor mais clara = só parte dos municípios do lugar totalizou.');
+    }
+    else if (st.mapa === 'mudou') {
+      var t = ['caiu 10 p.p. ou mais', '5 a 10', '1 a 5', 'quase igual (±1)', 'subiu 1 a 5', '5 a 10', '10 p.p. ou mais'];
+      divDe(quemCand()).forEach(function (c, i) { it(c, t[i]); }); it(TEMA[st.tema].semDado, 'ainda não 100% apurado');
+      nt.push('Percentual de ' + esc(FIN[quemCand()].nome) + ' no 2º turno menos o da eleição escolhida. Só lugares 100% apurados (comparação justa).');
+    } else {
+      ['a', 'b'].forEach(function (q) { TONS[q].forEach(function (c, i) { it(c, FIN[q].nome + ' ' + ['até 5 p.p.', '5 a 15', '15 p.p. ou mais'][i]); }); });
+      it(TEMA[st.tema].semDado, 'sem dado');
+      nt.push('Cor = quem está à frente; mais forte = vantagem maior.');
+      if (eleMapa() === 't2') nt.push('Cor mais clara e transparente = apuração ainda em andamento no lugar.');
+      else if (st.ele === 'auto') nt.push('Enquanto o 2º turno não começa, o mapa mostra o 1º turno.');
+    }
+    var carregando = precisaTodas(st.lugar, st.ver) && nivel(st.lugar) !== 'mun';
+    if (carregando && BASE.todas) nt.push(avisoTodas());
+    return '<div class="leg">' + h.join('') + '<details class="leg-mais"><summary>Como ler</summary>' + nt.map(function (x) { return '<p class="nota">' + x + '</p>'; }).join('') + '</details>' +
+      (carregando && !BASE.todas ? '<p class="nota">' + avisoTodas() + '</p>' : '') + '</div>';
+  }
+  function avisoTodas() {
+    if (!BASE.todas) return 'Abrindo os dados de todos os estados (' + ufsAbertas() + ' de ' + Object.keys(BASE.ind.ufs).length + ')…';
+    return 'No Brasil inteiro, o 2º turno de cada município chega quando ele termina a apuração (100%): assim o painel pede cada arquivo ao TSE uma vez só. Para ver também as parciais dos municípios, abra o estado.';
+  }
+
+  // ---- lista ordenável
+  function linhaDe(k) {
+    var v1 = base(k, 't1'), x = vivo(k), v2 = x && x.v, r = base(k, st.ref);
+    var d = x && x.completo && v2 && r ? pct(v2, quemCand()) - pct(r, quemCand()) : null;
+    return { k: k, nome: nomeDe(k), apur: x && x.ts ? 100 * x.st / x.ts : null, pa: pct(v2, 'a'), pb: pct(v2, 'b'), dif: d, aptos: v1 ? v1[I.aptos] : null, p1: pct(v1, 'a') };
+  }
+  function renderLista() {
+    if (LITE) return;   // a Lite não tem a aba Lista
+    var k = st.lugar, n = nivel(k), ops = opcoesVer(k), ver = n === 'mun' ? 'mun' : st.ver, ctl = [];
+    if (ops.length > 1) ctl.push('<span class="rot">Ver por:</span><div class="seg">' + ops.map(function (o) { return '<button data-ver="' + o + '" aria-pressed="' + (ver === o) + '">' + PLURAL[o] + '</button>'; }).join('') + '</div>');
+    ctl.push('<input class="busca" id="busca" data-busca="1" type="search" placeholder="Procurar lugar" aria-label="Procurar lugar na lista" value="' + esc(st.busca) + '">');
+    var ref = [['t1', '1º turno']].concat(COMP.map(function (c) { return [c.id, c.rot]; }));
+    ctl.push('<span class="rot">Mudança comparada com:</span><div class="seg">' + ref.map(function (o) { return '<button data-ref="' + o[0] + '" aria-pressed="' + (st.ref === o[0]) + '">' + o[1] + '</button>'; }).join('') + '</div>');
+    var busca = $('busca');
+    if (!(busca && document.activeElement === busca)) $('lista-ctl').innerHTML = '<div class="ctl">' + ctl.join('') + '</div>';
+    var u = ufDe(k);
+    if (u && !ufCarregada(u)) { $('lista').innerHTML = '<p class="rot">Abrindo os dados de ' + esc(NOME_UF[u] || u) + '…</p>'; return; }
+    if (precisaTodas(k, ver) && !BASE.todas) { $('lista').innerHTML = '<p class="rot">' + avisoTodas() + '</p>'; return; }
+    var b = st.busca.trim().toLowerCase(), linhas = itens(k, ver).map(linhaDe).filter(function (l) { return !b || l.nome.toLowerCase().indexOf(b) >= 0; });
+    var o = st.ord, s = st.desc ? -1 : 1;
+    linhas.sort(function (p, q) {
+      if (o === 'nome') return s * p.nome.localeCompare(q.nome, 'pt-BR');
+      var a = p[o], c = q[o];
+      if (a == null && c == null) return p.nome.localeCompare(q.nome, 'pt-BR');
+      if (a == null) return 1; if (c == null) return -1;
+      return s * (a - c);
+    });
+    var total = linhas.length, mostrar = st.todos ? linhas : linhas.slice(0, 300);
+    var cols = [['nome', 'Lugar', ''], ['apur', 'Apurado', 'n'], ['pa', FIN.a.nome, 'n'], ['pb', FIN.b.nome, 'n'], ['dif', 'Mudança de ' + FIN[quemCand()].nome, 'n'], ['aptos', 'Eleitores', 'n']];
+    var h = ['<div class="tab-rola"><table class="tab"><thead><tr>'];
+    cols.forEach(function (c) { h.push('<th class="' + c[2] + '"><button data-ord="' + c[0] + '"' + (st.ord === c[0] ? ' aria-sort="' + (st.desc ? 'descending' : 'ascending') + '"' : '') + '>' + esc(c[1]) + (st.ord === c[0] ? (st.desc ? ' ▼' : ' ▲') : '') + '</button></th>'); });
+    h.push('</tr></thead><tbody>');
+    mostrar.forEach(function (l) {
+      var temFilhos = opcoesVer(l.k).length > 0 || nivel(l.k) === 'mun';
+      h.push('<tr' + (l.k === k ? ' class="sel"' : '') + '><td>' + (temFilhos || nivel(l.k) === 'zz' ? '<button data-ir="' + esc(l.k) + '">' + esc(l.nome) + '</button>' : esc(l.nome)) + (nivel(l.k) === 'zz' ? ' <small class="rot">(fora do mapa)</small>' : '') + '</td>' +
+        '<td class="n">' + (l.apur == null ? '—' : l.apur >= 100 ? '100%' : NP1.format(l.apur) + '%') + '</td><td class="n">' + fmtP(l.pa) + '</td><td class="n">' + fmtP(l.pb) + '</td><td class="n">' + fmtPP(l.dif) + '</td><td class="n">' + fmtN(l.aptos) + '</td></tr>');
+    });
+    h.push('</tbody></table></div>');
+    if ((n === 'br' || n === 'reg') && BASE.fonte === 'base') h.push('<p class="nota">' + (precisaTodas(k, ver) ? avisoTodas() : 'Em <b>Ver por</b>, escolha Intermediárias, Imediatas, Municípios ou Regiões metropolitanas para ver ' + (n === 'br' ? 'o Brasil inteiro' : 'a região inteira') + ' sem escolher um estado.') + '</p>');
+    if (total > mostrar.length) h.push('<p class="nota">Mostrando ' + mostrar.length + ' de ' + total + '. <button class="btn" data-acao="todos">Mostrar todos</button></p>');
+    h.push('<p class="nota">Mudança = percentual de ' + esc(FIN[quemCand()].nome) + ' no 2º turno menos o da eleição escolhida, só nos lugares 100% apurados. Percentuais sobre os votos válidos.</p>');
+    $('lista').innerHTML = h.join('');
+  }
+  // ---- Virômetro
+  // medidor em meia-lua: 0 = votos do 1º turno, 100 = meta (2022); vai de −50 a 150 para mostrar perda e passar da meta
+  function svgMedidor(a, q) {
+    var W = 340, cx = 170, cy = 168, R = 128, lo = -50, hi = 150, cor = 'var(--cor-' + q + ')', outra = 'var(--cor-' + (q === 'b' ? 'a' : 'b') + ')';
+    var ang = function (x) { x = Math.max(lo, Math.min(hi, x)); return Math.PI * (1 - (x - lo) / (hi - lo)); };
+    var pt = function (x, r) { var t = ang(x); return [cx + r * Math.cos(t), cy - r * Math.sin(t)]; };
+    var arco = function (x0, x1, r, c, w, op) {
+      if (x1 <= x0) return '';
+      var p0 = pt(x0, r), p1 = pt(x1, r), g = (x1 - x0) / (hi - lo) > 0.5 ? 1 : 0;
+      return '<path d="M' + p0[0].toFixed(1) + ' ' + p0[1].toFixed(1) + ' A' + r + ' ' + r + ' 0 ' + g + ' 1 ' + p1[0].toFixed(1) + ' ' + p1[1].toFixed(1) + '" fill="none" stroke="' + c + '" stroke-width="' + w + '"' + (op ? ' stroke-opacity="' + op + '"' : '') + '/>';
+    };
+    var p = a && a.nMeta ? (a.chegou ? Math.max(100, a.prog == null ? 100 : a.prog) : a.prog) : null, s = [];
+    s.push(arco(lo, hi, R, 'var(--chip)', 24));
+    s.push(arco(lo, 0, R, outra, 24, 0.12));
+    s.push(arco(100, hi, R, cor, 24, 0.12));
+    if (p != null && p > 0) s.push(arco(0, Math.min(p, hi), R, cor, 24));
+    if (p != null && p < 0) s.push(arco(Math.max(p, lo), 0, R, outra, 24));
+    [[0, '1º turno'], [100, 'Meta 2022']].forEach(function (t) {
+      var i = pt(t[0], R - 16), o = pt(t[0], R + 16), l = pt(t[0], R + 40);
+      s.push('<line x1="' + i[0].toFixed(1) + '" y1="' + i[1].toFixed(1) + '" x2="' + o[0].toFixed(1) + '" y2="' + o[1].toFixed(1) + '" stroke="var(--txt)" stroke-width="2"/>');
+      s.push('<text x="' + l[0].toFixed(1) + '" y="' + (l[1] - 2).toFixed(1) + '" text-anchor="middle" font-size="11" fill="var(--sub)" font-weight="700">' + t[1] + '</text>');
+    });
+    if (p != null) {   // marcador onde está agora
+      var m = pt(p, R + 13), b1 = pt(p - 3, R + 24), b2 = pt(p + 3, R + 24);
+      s.push('<path d="M' + m[0].toFixed(1) + ' ' + m[1].toFixed(1) + ' L' + b1[0].toFixed(1) + ' ' + b1[1].toFixed(1) + ' L' + b2[0].toFixed(1) + ' ' + b2[1].toFixed(1) + 'Z" fill="var(--txt)"/>');
+    }
+    var grande = a && a.n ? fmtS(a.ganho) : '—', sub = a && a.n ? 'votos sobre o 1º turno' : 'aguardando o 1º município totalizado', cam = a && a.n ? fmtCam(a) : '';
+    s.push('<text class="g-num" x="' + cx + '" y="' + (cy - 46) + '" text-anchor="middle" font-size="30" fill="' + (a && a.ganho < 0 ? outra : cor) + '">' + esc(grande) + '</text>');
+    s.push('<text x="' + cx + '" y="' + (cy - 24) + '" text-anchor="middle" font-size="12" fill="var(--sub)">' + esc(sub) + '</text>');
+    if (cam) s.push('<text x="' + cx + '" y="' + (cy - 2) + '" text-anchor="middle" font-size="15" font-weight="800" fill="var(--txt)">' + esc(cam) + '</text>');
+    return '<svg viewBox="0 0 ' + W + ' 186" role="img" aria-label="Virômetro: ' + esc(grande + ' ' + sub + (cam ? ', ' + cam : '')) + '">' + s.join('') + '</svg>';
+  }
+  // trilha do lugar inteiro: votos do 1º turno, "agora" (1º turno + o que já mudou nos totalizados) e a meta fixa (2022)
+  function svgTrilha(a, q) {
+    if (!a || !a.nMeta) return '';
+    var vals = [a.v1Tot, a.agora, a.metaTot], mn = Math.min.apply(null, vals), mx = Math.max.apply(null, vals), folga = (mx - mn) * 0.15 || mx * 0.05 || 1;
+    mn -= folga; mx += folga;
+    var W = 360, x0 = 14, x1 = W - 14, X = function (v) { return x0 + (x1 - x0) * (v - mn) / (mx - mn); }, cor = 'var(--cor-' + q + ')', s = [];
+    s.push('<line x1="' + x0 + '" x2="' + x1 + '" y1="34" y2="34" stroke="var(--linha)" stroke-width="2"/>');
+    s.push('<line x1="' + X(a.v1Tot).toFixed(1) + '" x2="' + X(a.agora).toFixed(1) + '" y1="34" y2="34" stroke="' + cor + '" stroke-width="5"/>');
+    s.push('<line x1="' + X(a.metaTot).toFixed(1) + '" x2="' + X(a.metaTot).toFixed(1) + '" y1="18" y2="46" stroke="var(--txt)" stroke-width="2" stroke-dasharray="3 2"/>');
+    s.push('<circle cx="' + X(a.v1Tot).toFixed(1) + '" cy="34" r="6" fill="var(--card)" stroke="' + cor + '" stroke-width="2.5"/><circle cx="' + X(a.agora).toFixed(1) + '" cy="34" r="7" fill="' + cor + '"/>');
+    // rótulo perto da borda: alinhado para dentro (não sai cortado)
+    var rot = function (v, y, t) { var x = X(v), an = x > W - 90 ? 'end' : x < 90 ? 'start' : 'middle'; x = an === 'end' ? Math.min(x + 6, W - 2) : an === 'start' ? Math.max(x - 6, 2) : x; return '<text x="' + x.toFixed(1) + '" y="' + y + '" text-anchor="' + an + '">' + esc(t) + '</text>'; };
+    s.push(rot(a.metaTot, 12, 'meta 2022: ' + fmtN(a.metaTot)));
+    var acima = Math.abs(X(a.v1Tot) - X(a.agora)) < 140;   // rótulos perto um do outro: o "agora" desce uma linha
+    s.push(rot(a.v1Tot, 62, '1º turno ' + fmtN(a.v1Tot)));
+    s.push(rot(a.agora, acima ? 76 : 62, 'agora ' + fmtN(a.agora)));
+    return '<div class="trilha"><svg viewBox="0 0 ' + W + ' 82" role="img" aria-label="1º turno, agora e meta de 2022">' + s.join('') + '</svg></div>';
+  }
+  // desinteresse: duas barras (1º e 2º turno) divididas em abstenções e brancos e nulos, em % dos eleitores aptos
+  function svgDes(a, ref) {
+    var W = 360, x0 = 70, x1 = W - 54, l = [['1º turno', pctD(a.ab1, a.aptos), pctD(a.bn1, a.aptos)], ['2º turno', pctD(a.ab2, a.ap2), pctD(a.bn2, a.ap2)]];
+    var mx = Math.max(ref || 0, l[0][1] + l[0][2], l[1][1] + l[1][2]) * 1.08 || 1, X = function (p) { return x0 + (x1 - x0) * p / mx; }, s = [];
+    l.forEach(function (r, i) {
+      var y = 6 + i * 34;
+      s.push('<text x="0" y="' + (y + 15) + '" font-weight="700">' + r[0] + '</text>');
+      s.push('<rect x="' + x0 + '" y="' + y + '" width="' + (X(r[1]) - x0).toFixed(1) + '" height="22" rx="3" fill="' + DES.mais + '"><title>Abstenções: ' + fmtP(r[1]) + '</title></rect>');
+      s.push('<rect x="' + X(r[1]).toFixed(1) + '" y="' + y + '" width="' + (X(r[1] + r[2]) - X(r[1])).toFixed(1) + '" height="22" rx="3" fill="#a58bbd"><title>Brancos e nulos: ' + fmtP(r[2]) + '</title></rect>');
+      s.push('<text x="' + (X(r[1] + r[2]) + 5).toFixed(1) + '" y="' + (y + 15) + '" fill="var(--txt)" font-weight="700">' + fmtP(r[1] + r[2]) + '</text>');
+    });
+    if (ref) s.push('<line x1="' + X(ref).toFixed(1) + '" x2="' + X(ref).toFixed(1) + '" y1="0" y2="70" stroke="var(--txt)" stroke-width="1.5" stroke-dasharray="3 2"/><text x="' + X(ref).toFixed(1) + '" y="84" text-anchor="middle">2022: ' + fmtP(ref) + '</text>');
+    return '<div class="des"><svg viewBox="0 0 ' + W + ' 90" role="img" aria-label="Desinteresse no 1º e no 2º turno, em abstenções e brancos e nulos">' + s.join('') + '</svg></div>';
+  }
+  var FAIXAS_HIST = [['perdeu', 'Perdeu votos'], ['0', '0–25%'], ['25', '25–50%'], ['50', '50–75%'], ['75', '75–99%'], ['bateu', 'Chegou à meta']];
+  function faixaHist(a) {
+    if (!a.nMeta) return null;
+    if (a.chegou) return 'bateu';
+    if (a.ganho < 0) return 'perdeu';
+    var p = a.prog == null ? 0 : a.prog;
+    return p < 25 ? '0' : p < 50 ? '25' : p < 75 ? '50' : '75';
+  }
+  function svgHist(cont, q) {
+    var W = 360, H = 170, top = 22, base0 = 128, n = FAIXAS_HIST.length, bw = (W - 20) / n, mx = Math.max.apply(null, FAIXAS_HIST.map(function (f) { return cont[f[0]] || 0; })) || 1, s = [];
+    var cv = coresViro(q), cores = { perdeu: cv.perdeu, '0': TONS[q][0], '25': TONS[q][0], '50': TONS[q][1], '75': TONS[q][1], bateu: TONS[q][2] };
+    FAIXAS_HIST.forEach(function (f, i) {
+      var v = cont[f[0]] || 0, h = (base0 - top) * v / mx, x = 10 + i * bw + 5;
+      s.push('<rect x="' + x.toFixed(1) + '" y="' + (base0 - h).toFixed(1) + '" width="' + (bw - 10).toFixed(1) + '" height="' + Math.max(h, v ? 2 : 0).toFixed(1) + '" rx="4" fill="' + cores[f[0]] + '"><title>' + esc(f[1]) + ': ' + fmtN(v) + '</title></rect>');
+      s.push('<text class="hn" x="' + (x + (bw - 10) / 2).toFixed(1) + '" y="' + (base0 - h - 6).toFixed(1) + '" text-anchor="middle">' + fmtN(v) + '</text>');
+      var t = f[1].split(' '), y = base0 + 16;
+      (t.length > 1 && f[1].length > 8 ? [t[0], t.slice(1).join(' ')] : [f[1]]).forEach(function (l, j) { s.push('<text x="' + (x + (bw - 10) / 2).toFixed(1) + '" y="' + (y + j * 13) + '" text-anchor="middle">' + esc(l) + '</text>'); });
+    });
+    s.push('<line x1="10" x2="' + (W - 10) + '" y1="' + base0 + '" y2="' + base0 + '" stroke="var(--linha)"/>');
+    return '<div class="hist"><svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Quantos lugares em cada faixa do caminho até a meta">' + s.join('') + '</svg></div>';
+  }
+  // cartão 1 dos finalistas: medidor e trilha até a meta FIXA (2022 no lugar inteiro)
+  // quadro de apuração no alto do Virômetro: seções apuradas, municípios totalizados e o placar (na Lite substitui o Resumo)
+  function cartaoApur(k, A) {
+    var x = vivo(k), v = x && x.v, c = ['<div class="vcard larga placar"><h3>Apuração ' + (nivel(k) === 'br' ? 'no Brasil' : 'em ' + esc(nomeDe(k))) + '</h3>' + linhaApur(x)];
+    c.push('<p class="rot"><b>' + fmtN(A.n) + '</b> de ' + fmtN(A.total) + ' municípios totalizados (' + fmtP(A.aptosTot ? 100 * A.aptos / A.aptosTot : 0) + ' dos eleitores)</p>');
+    if (v && v[I.validos]) c.push('<div class="fins">' + ['b', 'a'].map(function (q) { return '<div class="fin" style="--c:var(--cor-' + q + ')"><div class="nm">' + esc(FIN[q].nome) + '</div><div class="pc">' + fmtP2(pct(v, q)) + '</div><div class="vt">' + fmtN(v[I[q]]) + ' votos' + (x.completo ? '' : ' (parcial)') + '</div></div>'; }).join('') + '</div>');
+    if (nivel(k) !== 'br') { var b = vivo('br'); if (b && b.ts) c.push('<p class="nota">Brasil: ' + (b.st >= b.ts ? '100%' : NP2.format(100 * b.st / b.ts) + '%') + ' das seções apuradas.</p>'); }
+    return c.join('') + '</div>';
+  }
+  // barras por Grande Região ou por estado: % do caminho até a meta (finalistas) ou mudança do desinteresse em p.p.
+  function cartaoBarras(k, q) {
+    var n = nivel(k), ver = n === 'reg' ? 'uf' : st.vbar, D = q === 'd';
+    var us = n === 'reg' ? itens(k, 'uf') : Object.keys(BASE.lug).filter(function (x) { return nivel(x) === ver; });
+    var ls = us.map(function (x) {
+      var a = agg(munsDe(x) || [], q), val = null;
+      if (a.n) val = D ? desDe(a).dd : a.chegou ? Math.max(100, a.prog == null ? 100 : a.prog) : a.prog == null ? 0 : a.prog;
+      return { k: x, nome: nomeDe(x), a: a, val: val };
+    }).sort(function (x, y) { return x.val == null ? 1 : y.val == null ? -1 : y.val - x.val; });
+    var vs = ls.filter(function (l) { return l.val != null; }).map(function (l) { return l.val; });
+    var lo = D ? -Math.max(1, Math.max.apply(null, [0].concat(vs.map(Math.abs)))) : Math.min(0, Math.min.apply(null, [0].concat(vs)));
+    var hi = D ? -lo : Math.max(100, Math.max.apply(null, [0].concat(vs)));
+    var P = function (v) { return 100 * (v - lo) / (hi - lo); }, z = P(0);
+    var h = ['<div class="vcard larga"><h3>' + (D ? 'Desinteresse' : 'Virômetro') + ' por ' + (ver === 'reg' ? 'Grande Região' : 'estado') + '</h3>'];
+    if (n === 'br') h.push('<div class="ctl"><div class="seg">' + [['reg', 'Grandes Regiões'], ['uf', 'Estados']].map(function (o) { return '<button data-vbar="' + o[0] + '" aria-pressed="' + (ver === o[0]) + '">' + o[1] + '</button>'; }).join('') + '</div></div>');
+    h.push('<div class="vbars">');
+    ls.forEach(function (l) {
+      var a = l.a, cor = l.val == null ? 'transparent' : D ? corDes(l.val) : coresViro(q)[faixaViro(a) || 'p0'];
+      var x0 = l.val == null ? z : Math.min(z, P(l.val)), w = l.val == null ? 0 : Math.abs(P(l.val) - z);
+      var tot = a.aptosTot ? NF.format(Math.round(100 * a.aptos / a.aptosTot)) + '% tot.' : '';
+      var txt = l.val == null ? 'aguardando' : D ? fmtPP(l.val) : NF.format(Math.round(l.val)) + '%';
+      h.push('<div class="vbar"><button class="lk" data-ir="' + esc(l.k) + '" title="' + esc(l.nome) + '">' + esc(l.nome) + '</button>' +
+        '<span class="vtr"><i style="left:' + x0.toFixed(1) + '%;width:' + w.toFixed(1) + '%;background:' + cor + (a.final ? '' : ';opacity:.55') + '"></i>' +
+        (D ? '<b style="left:' + z.toFixed(1) + '%"></b>' : '<b style="left:' + P(100).toFixed(1) + '%" title="meta 2022"></b>') + '</span>' +
+        '<span class="n">' + txt + '<small>' + (D || !a.n ? '' : fmtS(a.ganho) + ' · ') + tot + '</small></span></div>');
+    });
+    h.push('</div><p class="nota">' + (D ? 'Mudança do desinteresse em p.p. (2º − 1º turno) nos municípios totalizados; a linha marca o zero.' : '% do caminho até a meta fixa (a linha tracejada = ' + esc(metaRot(q)) + ').') + ' “tot.” = parte dos eleitores em municípios já totalizados; barra clara = apuração em andamento. Toque no nome para abrir.</p></div>');
+    return h.join('');
+  }
+  function cartaoMeta(A, q) {
+    var f = FIN[q], c = ['<div class="vcard"><h3>Virômetro</h3><div class="gauge">' + svgMedidor(A, q) + '</div>' + svgTrilha(A, q)];
+    if (!A.nMeta) return c.join('') + '</div>';
+    if (A.alvo <= 0) c.push('<p class="nota">' + esc(f.nome) + ' já teve no 1º turno mais votos que ' + esc(metaRot(q)) + ' aqui (' + fmtN(A.v1Tot) + ' × ' + fmtN(A.metaTot) + ').</p>');
+    else if (LITE) c.push('<p class="nota">Meta fixa: <b>' + fmtS(A.alvo) + ' votos</b> sobre o 1º turno (' + fmtN(A.v1Tot) + ' → ' + fmtN(A.metaTot) + ').</p>');
+    else if (!A.n) c.push('<p class="nota">Para repetir ' + esc(metaRot(q)) + ', ' + esc(f.nome) + ' precisa de <b>' + fmtS(A.alvo) + ' votos</b> sobre o 1º turno aqui (' + fmtN(A.v1Tot) + ' → ' + fmtN(A.metaTot) + '). A meta é fixa: vale para o lugar inteiro.</p>');
+    else c.push('<p class="nota">Meta fixa: <b>' + fmtS(A.alvo) + ' votos</b> sobre o 1º turno no lugar inteiro (' + fmtN(A.v1Tot) + ' → ' + fmtN(A.metaTot) + ', ' + esc(metaRot(q)) + '). Já somados ' + fmtS(A.ganho) + ' em ' + fmtN(A.n) + ' de ' + fmtN(A.total) + ' municípios totalizados.</p>');
+    return c.join('') + '</div>';
+  }
+  // cartão 1 do desinteresse: quanto mudou e as duas partes (abstenções; brancos e nulos)
+  function cartaoDes(k, A, mid) {
+    var c = ['<div class="vcard"><h3>Desinteresse: abstenções, brancos e nulos</h3>'];
+    if (A.n) {
+      var ds = desDe(A), ref = A.mAp ? pctD(A.m1, A.mAp) : null;
+      c.push('<div class="des-num" style="color:' + (ds.dd > 0 ? 'var(--cor-d)' : DES.menos) + '">' + fmtPP(ds.dd) + '</div><p class="rot">' + fmtP(ds.d1) + ' no 1º turno → <b>' + fmtP(ds.d2) + '</b> no 2º turno, dos eleitores aptos · ' + fmtS(A.ganho) + ' eleitores</p>');
+      c.push(svgDes(A, ref));
+      [['Abstenções', A.ab1, A.ab2, DES.mais], ['Brancos e nulos', A.bn1, A.bn2, '#a58bbd']].forEach(function (r) {
+        var p1 = pctD(r[1], A.aptos), p2 = pctD(r[2], A.ap2);
+        c.push('<div class="des-l"><span><span class="ponto" style="background:' + r[3] + '"></span>' + r[0] + '</span><span class="n">' + fmtP(p1) + ' → ' + fmtP(p2) + ' · ' + fmtS(r[2] - r[1]) + '</span><b>' + fmtPP(p2 - p1) + '</b></div>');
+      });
+      if (!LITE) c.push('<p class="nota">Em % dos eleitores aptos, nos ' + fmtN(A.n) + ' de ' + fmtN(A.total) + ' municípios já totalizados' + (ref != null ? '; linha tracejada = 2º turno de 2022 nos mesmos municípios' : '') + '.</p>');
+    } else {
+      var b1 = base(k, 't1'), bm = mid ? base(k, mid) : null;
+      c.push('<p class="rot">Aparece quando o primeiro município totalizar.</p>');
+      if (b1) c.push('<p class="nota">No 1º turno: <b>' + fmtP(pctD(valQ(b1, 'd'), b1[I.aptos])) + '</b> dos eleitores (abstenções ' + fmtP(pctD(valQ(b1, 'abst'), b1[I.aptos])) + ', brancos e nulos ' + fmtP(pctD(valQ(b1, 'bn'), b1[I.aptos])) + ')' + (bm ? '; no 2º turno de 2022: ' + fmtP(pctD(valQ(bm, 'd'), bm[I.aptos])) : '') + '.</p>');
+    }
+    return c.join('') + '</div>';
+  }
+  function renderViro() {
+    if (st.aba !== 'viro') return;
+    var k = st.lugar, n = nivel(k), q = st.quem, D = q === 'd', f = D ? null : FIN[q], o = q === 'b' ? 'a' : 'b';
+    var h = ['<p class="rot">Virômetro · ' + esc(NOME_NIVEL[n] || '') + '</p><h2>' + esc(nomeDe(k)) + '</h2>'];
+    if (LITE) h.push(navegacao(k));
+    if (D) h.push('<p class="viro-intro">Quanto mudou o <b>desinteresse</b> (abstenções + brancos + nulos, em % dos eleitores aptos) do 1º para o 2º turno de 2026.' + (LITE ? '' : ' Só entram municípios 100% apurados (comparação justa).') + '</p>');
+    else if (LITE) h.push('<p class="viro-intro">Votos de <b>' + esc(f.nome) + '</b> no 2º turno × 1º turno. Meta: <b>' + esc(metaRot(q)) + '</b>.</p>');
+    else h.push('<p class="viro-intro">Quantos votos <b>' + esc(f.nome) + '</b> ganhou ou perdeu do 1º para o 2º turno de 2026, rumo à meta fixa: a votação de <b>' + esc(metaRot(q)) + '</b> no lugar inteiro. Só entram municípios 100% apurados (comparação justa).</p>');
+    h.push('<div class="ctl"><span class="rot">Medir:</span>' + segQuem(true) + '<button class="btn" data-acao="viromapa">Ver no mapa</button><button class="btn" data-acao="nota">Como funciona?</button></div>');
+    if (BASE.fonte !== 'base') { escrever('viro', h.join('') + '<p class="sem-mapa">O Virômetro precisa da base do projeto (1º turno e 2022 por município), que não abriu.</p>'); return; }
+    if (n === 'zz') { escrever('viro', h.join('') + '<p class="sem-mapa">O exterior não tem municípios: o Virômetro vale do Brasil até cada município.</p>'); return; }
+    var ms = munsDe(k), us = ms ? unidadesViro(k) : [];
+    if (!ms || (n !== 'mun' && !us.length && precisaTodas(k, verViro(k)))) { escrever('viro', h.join('') + '<p class="rot">' + (n === 'br' || n === 'reg' ? avisoTodas() : 'Abrindo os dados de ' + esc(NOME_UF[ufDe(k)] || '') + '…') + '</p>'); return; }
+    var A = agg(ms, q), mid = metaId();
+    var up = D ? DES.mais : TONS[q][2], down = D ? DES.menos : TONS[o][2];
+    var corUp = D ? 'var(--cor-d)' : 'var(--cor-' + q + ')', corDown = D ? DES.menos : 'var(--cor-' + o + ')';
+    h.push('<div class="viro-grade">');
+    h.push(cartaoApur(k, A));
+    // 1) o medidor (finalistas) ou o desinteresse com as duas partes
+    h.push(D ? cartaoDes(k, A, mid) : cartaoMeta(A, q));
+    // 2) o somatório
+    var cob = A.aptosTot ? 100 * A.aptos / A.aptosTot : 0;
+    h.push('<div class="vcard"><h3>Somatório nos municípios totalizados</h3><div class="blocos">');
+    h.push('<div class="bloco forte" style="--c:' + (A.ganho < 0 ? corDown : corUp) + '"><div class="vl">' + (A.n ? fmtS(A.ganho) : '—') + '</div><div class="ds">' + (D ? 'diferença de eleitores que não votaram em ninguém (2º turno − 1º turno)' : 'diferença total de votos de ' + esc(f.nome) + ' (2º turno − 1º turno)') + '</div></div>');
+    h.push('<div class="bloco"><div class="vl">' + fmtN(A.n) + ' <small style="font-size:.8rem;color:var(--sub)">de ' + fmtN(A.total) + '</small></div><div class="ds">municípios totalizados (' + fmtP(cob) + ' dos eleitores)</div></div>');
+    if (!D) h.push('<div class="bloco"><div class="vl">' + (A.nMeta ? (A.chegou ? '0' : fmtN(A.falta)) : '—') + '</div><div class="ds">' + (A.nMeta && A.chegou ? 'já passou da meta por ' + fmtN(A.agora - A.metaTot) + ' votos' : 'votos que faltam para a meta' + (A.nMeta ? ' (fixa: ' + fmtS(A.alvo) + ')' : '')) + '</div></div>');
+    if (!LITE) {
+      h.push('<div class="bloco"><div class="vl" style="color:' + corUp + '">' + fmtS(A.pos) + '</div><div class="ds">' + (D ? 'aumentos somados nos ' + fmtN(A.cresceu) + ' em que cresceu' : 'ganhos somados nos ' + fmtN(A.cresceu) + ' que cresceram') + '</div></div>');
+      h.push('<div class="bloco"><div class="vl" style="color:' + corDown + '">' + fmtS(A.neg) + '</div><div class="ds">' + (D ? 'quedas somadas nos ' + fmtN(A.caiu) + ' em que diminuiu' : 'perdas somadas nos ' + fmtN(A.caiu) + ' que diminuíram') + '</div></div>');
+    }
+    h.push('</div>' + (n === 'br' && !LITE ? '<p class="nota">Exterior fora da conta (não tem município).</p>' : '') + '</div>');
+    // Brasil e Grande Região: barras por região e por estado
+    if (n === 'br' || n === 'reg') h.push(cartaoBarras(k, q));
+    // 3) a contagem
+    var ver = n === 'mun' ? 'mun' : verViro(k), ops = n === 'mun' ? [] : opcoesVer(k), C = { cresceu: 0, igual: 0, caiu: 0, aguardando: 0, bateu: 0 }, H = {}, linhas = [];
+    us.forEach(function (x) {
+      var a = agg(munsDe(x) || [], q), l = { k: x, nome: nomeDe(x), a: a };
+      if (D) {
+        var ds = desDe(a);
+        l.d1 = ds.d1; l.d2 = ds.d2; l.dd = ds.dd;
+        l.dab = a.n ? pctD(a.ab2, a.ap2) - pctD(a.ab1, a.aptos) : null;
+        l.dbn = a.n ? pctD(a.bn2, a.ap2) - pctD(a.bn1, a.aptos) : null;
+      }
+      linhas.push(l);
+      if (!a.final) { C.aguardando++; return; }
+      C[classeViro(a.v1, a.ganho)]++;
+      if (!D && a.chegou) C.bateu++;
+      var fx = D ? null : faixaHist(a); if (fx) H[fx] = (H[fx] || 0) + 1;
+    });
+    var plural = (PLURAL[ver] || 'Lugares').toLowerCase(), finais = C.cresceu + C.igual + C.caiu;
+    h.push('<div class="vcard"><h3>' + (D ? 'Onde o desinteresse aumentou, ficou igual ou diminuiu' : 'Quantos cresceram, ficaram iguais ou diminuíram') + '</h3>');
+    if (ops.length > 1) h.push('<div class="ctl"><span class="rot">Contar:</span><div class="seg">' + ops.map(function (x) { return '<button data-vver="' + x + '" aria-pressed="' + (ver === x) + '">' + PLURAL[x] + '</button>'; }).join('') + '</div></div>');
+    if (n === 'mun') h.push('<p class="rot">Municípios vizinhos (' + esc(nomeDe(st.viaRm || pai(k))) + ')</p>');
+    var seg = D ? [['cresceu', DES.mais, 'aumentou'], ['igual', '#b9aea6', 'ficou igual'], ['caiu', DES.menos, 'diminuiu'], ['aguardando', 'var(--chip)', 'aguardando totalização']]
+      : [['cresceu', TONS[q][2], 'cresceram'], ['igual', '#b9aea6', 'ficaram iguais'], ['caiu', TONS[o][2], 'diminuíram'], ['aguardando', 'var(--chip)', 'aguardando totalização']];
+    h.push('<div class="pilha" role="img" aria-label="' + seg.map(function (s) { return C[s[0]] + ' ' + s[2]; }).join(', ') + '">' + seg.map(function (s) { return C[s[0]] ? '<i style="flex:' + C[s[0]] + ';background:' + s[1] + '" title="' + C[s[0]] + ' ' + s[2] + '"></i>' : ''; }).join('') + '</div>');
+    h.push('<div class="pilha-leg">' + seg.map(function (s) { return '<span><i style="background:' + s[1] + (s[0] === 'aguardando' ? ';border:1px solid var(--linha)' : '') + '"></i><b>' + fmtN(C[s[0]]) + '</b> ' + s[2] + (s[0] !== 'aguardando' && finais ? ' <small class="rot">(' + fmtP(100 * C[s[0]] / finais) + ')</small>' : '') + '</span>'; }).join('') + '</div>');
+    if (D) { if (!LITE) h.push('<p class="nota">Igual = mudou menos de 1% do desinteresse do 1º turno. ' + (ver === 'mun' ? '' : 'Um lugar só entra na conta quando todos os municípios dele totalizaram.') + '</p>'); }
+    else if (LITE) h.push('<p class="nota"><b>' + fmtN(C.bateu) + '</b> ' + plural + ' já chegaram à votação de 2022.</p>');
+    else h.push('<p class="nota"><b>' + fmtN(C.bateu) + '</b> ' + plural + ' já chegaram à votação de 2022' + (finais ? ' (' + fmtP(100 * C.bateu / finais) + ' dos totalizados)' : '') + '. Igual = mudou menos de 1% dos votos do 1º turno. ' + (ver === 'mun' ? '' : 'Um lugar só entra na conta quando todos os municípios dele totalizaram.') + '</p>');
+    h.push('</div>');
+    // 4) histograma (só na completa, só dos finalistas)
+    if (!D && !LITE) h.push('<div class="vcard"><h3>Quanto do caminho até 2022 cada um já fez</h3>' + svgHist(H, q) + '<p class="nota">' + esc(PLURAL[ver] || 'Lugares') + ' totalizados por faixa: 0% = os votos do 1º turno, 100% = a votação de ' + esc(metaRot(q)) + '.</p></div>');
+    // 5) onde mais ganhou e onde mais perdeu (desinteresse: em p.p., para comparar lugares de tamanhos diferentes)
+    var med = D ? function (l) { return l.dd; } : function (l) { return l.a.ganho; }, fmtM = D ? fmtPP : fmtS, topo = LITE ? 5 : 8;
+    var com = linhas.filter(function (l) { return l.a.n > 0 && med(l) != null; });
+    var ganhos = com.filter(function (l) { return med(l) > 0; }).sort(function (x, y) { return med(y) - med(x); }).slice(0, topo);
+    var perdas = com.filter(function (l) { return med(l) < 0; }).sort(function (x, y) { return med(x) - med(y); }).slice(0, topo);
+    var mxg = Math.max.apply(null, [D ? 0.1 : 1].concat(ganhos.concat(perdas).map(function (l) { return Math.abs(med(l)); })));
+    var barra = function (l, c) { return '<div class="vb-l"><button class="lk" data-ir="' + esc(l.k) + '" title="' + esc(l.nome) + '">' + esc(l.nome) + '</button><span class="tr"><i style="width:' + (100 * Math.abs(med(l)) / mxg).toFixed(1) + '%;background:' + c + (l.a.final ? '' : ';opacity:.5') + '"></i></span><span class="n">' + fmtM(med(l)) + '</span></div>'; };
+    h.push('<div class="vcard larga"><h3>' + (D ? 'Onde o desinteresse mais aumentou e mais diminuiu' : 'Onde ' + esc(f.nome) + ' mais ganhou e mais perdeu votos') + '</h3>');
+    if (!com.length) h.push('<p class="rot">Aparece quando os primeiros ' + plural + ' totalizarem.</p>');
+    else h.push('<div class="vb"><div><h4>' + (D ? 'Mais aumentou' : 'Mais ganhou') + '</h4>' + (ganhos.map(function (l) { return barra(l, up); }).join('') || '<p class="rot">Nenhum ainda.</p>') + '</div><div><h4>' + (D ? 'Mais diminuiu' : 'Mais perdeu') + '</h4>' + (perdas.map(function (l) { return barra(l, down); }).join('') || '<p class="rot">Nenhum.</p>') + '</div></div>' + (ver !== 'mun' && !LITE ? '<p class="nota">Barra mais clara = só parte dos municípios do lugar totalizou.</p>' : ''));
+    h.push('</div>');
+    // 6) tabela (na Lite, só quando a pessoa pede)
+    var cols = D ? [['nome', 'Lugar', ''], ['n', 'Totalizados', 'n'], ['d1', '1º turno', 'n'], ['d2', '2º turno', 'n'], ['dd', 'Diferença', 'n'], ['ganho', 'Eleitores', 'n'], ['dab', 'Abstenções', 'n'], ['dbn', 'Brancos e nulos', 'n']]
+      : [['nome', 'Lugar', ''], ['n', 'Totalizados', 'n'], ['v1', '1º turno', 'n'], ['v2', '2º turno', 'n'], ['ganho', 'Diferença', 'n'], ['falta', 'Falta p/ 2022', 'n'], ['prog', 'Caminho até 2022', '']];
+    var vo = cols.some(function (c) { return c[0] === st.vord; }) ? st.vord : 'ganho', sg = st.vdesc ? -1 : 1;
+    var val = function (l) {
+      if (vo === 'nome') return l.nome;
+      if (!l.a.n) return null;
+      if (vo in l && vo !== 'a' && vo !== 'k') return l[vo];
+      if (vo === 'prog') return l.a.nMeta ? (l.a.chegou ? 1e9 : l.a.prog == null ? -1e9 : l.a.prog) : null;
+      if (vo === 'falta') return l.a.falta;
+      return l.a[vo];
+    };
+    if (LITE && !st.vtab) h.push('<div class="vcard larga"><button class="btn" data-acao="vtab">Ver lugar a lugar (' + fmtN(linhas.length) + ')</button></div>');
+    else {
+      linhas.sort(function (x, y) {
+        if (vo === 'nome') return sg * x.nome.localeCompare(y.nome, 'pt-BR');
+        var p = val(x), r = val(y);
+        if (p == null && r == null) return x.nome.localeCompare(y.nome, 'pt-BR');
+        if (p == null) return 1; if (r == null) return -1;
+        return sg * (p - r);
+      });
+      var mostrar = st.vtodos ? linhas : linhas.slice(0, 300);
+      h.push('<div class="vcard larga"><h3>Lugar a lugar</h3>' + (LITE ? '<p><button class="btn" data-acao="vtab">Esconder a tabela</button></p>' : '') + '<div class="tab-rola tab-x"><table class="tab"><thead><tr>' + cols.map(function (c) { return '<th class="' + c[2] + '"><button data-vord="' + c[0] + '"' + (vo === c[0] ? ' aria-sort="' + (st.vdesc ? 'descending' : 'ascending') + '"' : '') + '>' + esc(c[1]) + (vo === c[0] ? (st.vdesc ? ' ▼' : ' ▲') : '') + '</button></th>'; }).join('') + '</tr></thead><tbody>');
+      mostrar.forEach(function (l) {
+        var a = l.a, tot = '<td class="n">' + (a.final ? (a.total === 1 ? 'sim' : 'todos') : fmtN(a.n) + ' de ' + fmtN(a.total)) + '</td>';
+        var linha = '<tr' + (l.k === k ? ' class="sel"' : '') + '><td><button data-ir="' + esc(l.k) + '">' + esc(l.nome) + '</button></td>' + tot;
+        if (D) linha += '<td class="n">' + fmtP(l.d1) + '</td><td class="n">' + fmtP(l.d2) + '</td><td class="n"><b>' + fmtPP(l.dd) + '</b></td><td class="n">' + (a.n ? fmtS(a.ganho) : '—') + '</td><td class="n">' + fmtPP(l.dab) + '</td><td class="n">' + fmtPP(l.dbn) + '</td></tr>';
+        else {
+          var fx = faixaViro(a), w = a.nMeta ? (a.chegou ? 100 : Math.max(0, Math.min(100, a.prog || 0))) : 0;
+          linha += '<td class="n">' + (a.n ? fmtN(a.v1) : '—') + '</td><td class="n">' + (a.n ? fmtN(a.v2) : '—') + '</td><td class="n"><b>' + (a.n ? fmtS(a.ganho) : '—') + '</b></td>' +
+            '<td class="n">' + (a.n && a.nMeta ? (a.chegou ? '—' : fmtN(a.falta)) : '—') + '</td>' +
+            '<td>' + (a.n ? '<span class="mini"><i style="width:' + w.toFixed(0) + '%;background:' + (fx ? coresViro(q)[fx] : 'transparent') + '"></i></span>' + esc(fmtCam(a)) : '<span class="rot">aguardando</span>') + '</td></tr>';
+        }
+        h.push(linha);
+      });
+      h.push('</tbody></table></div>');
+      if (linhas.length > mostrar.length) h.push('<p class="nota">Mostrando ' + mostrar.length + ' de ' + linhas.length + '. <button class="btn" data-acao="vtodos">Mostrar todos</button></p>');
+      if (!LITE) h.push('<p class="nota">' + (D ? 'Desinteresse em % dos eleitores aptos, só nos municípios totalizados de cada lugar; Eleitores = diferença em número de pessoas.' : 'Votos de ' + esc(f.nome) + ', só nos municípios totalizados de cada lugar. Falta p/ 2022 = votos que faltam para a meta fixa (a votação de ' + esc(metaRot(q)) + ' no lugar inteiro).') + '</p>');
+      h.push('</div>');
+    }
+    h.push('</div>');
+    escrever('viro', h.join(''));
+  }
+  // ======================================================================
+  // Nota técnica: como o Virômetro é calculado, de onde vêm os dados e a conexão com o TSE (com teste na hora)
+  // ======================================================================
+  var NOTA = false, TESTE = null;
+  function linkTse(url, txt) { return '<a href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(txt || url) + '</a>'; }
+  function htmlNota() {
+    var mid = metaId(), c = COMP.filter(function (x) { return x.id === mid; })[0];
+    var b1 = BASE.v.t1 && BASE.v.t1.br, bm = mid && BASE.v[mid] && BASE.v[mid].br, ex = '';
+    if (b1 && bm) {
+      var v1 = valQ(b1, 'b'), vm = valQ(bm, 'b');
+      ex = '<p><b>Exemplo (Brasil, Lula):</b> no 1º turno de 2026, ' + fmtN(v1) + ' votos; ' + (c ? esc(c.b.nome) + ' no ' + esc(c.rot) : 'a meta') + ': ' + fmtN(vm) + ' votos. A meta é ganhar <b>' + fmtS(vm - v1) + ' votos</b> sobre o 1º turno. Se, numa hora da noite, os municípios já totalizados somarem ' + fmtS(Math.round((vm - v1) / 2)) + ' votos para Lula, o Virômetro marca 50% do caminho.</p>';
+    }
+    var h = [];
+    h.push('<p class="rot">Como funciona? · Vira 2026</p><h2 id="nota-tit">Como o Virômetro é calculado</h2>');
+    h.push('<p>O Virômetro mede, voto a voto, quanto cada candidato ganhou ou perdeu do 1º para o 2º turno de 2026, e quanto falta para chegar à votação que o mesmo lado teve no 2º turno de 2022. Todos os números vêm do Tribunal Superior Eleitoral (TSE).</p>');
+    h.push('<h4>1. O cálculo</h4>' +
+      '<p><b>Em resumo:</b> em cada município, o Virômetro compara os votos de cada candidato no 2º turno com os que ele teve no 1º turno. Assim aparece, cidade por cidade, quantos votos cada um <b>ganhou ou perdeu</b>, e a soma de todas as cidades mostra o saldo do lugar (estado, região ou Brasil).</p>' +
+      '<div class="formula">Diferença = votos no 2º turno − votos no 1º turno (somados nos municípios 100% apurados)</div>' +
+      '<div class="formula">Meta (fixa) = votos do mesmo lado no 2º turno de 2022 − votos no 1º turno de 2026, no lugar inteiro</div>' +
+      '<div class="formula">Caminho percorrido = Diferença ÷ Meta</div>' +
+      '<p>0% = o mesmo número de votos do 1º turno; 100% = alcançou a votação de 2022; número negativo = perdeu votos. A meta não muda durante a noite: ela é calculada com todos os municípios do lugar (Brasil, região, estado ou município), e a diferença vai se somando à medida que os municípios terminam a apuração.</p>' + ex +
+      '<p><b>Lados comparados:</b> Lula ↔ Lula (2022) ↔ Dilma (2014); Flávio Bolsonaro ↔ Bolsonaro (2022) ↔ Aécio (2014).</p>');
+    h.push('<h4>2. A regra da comparação justa</h4><p>Um município só entra na conta quando o TSE informa que <b>100% das seções</b> dele foram apuradas. Assim, o 2º turno é sempre comparado com o 1º turno exatamente nos mesmos lugares. Durante a noite, as urnas de cada cidade chegam em horários diferentes; usar números parciais misturaria lugares e daria uma impressão errada.</p>');
+    h.push('<h4>3. De onde vêm os dados</h4><ul>' +
+      '<li><b>2º turno de 2026 (ao vivo):</b> lido direto dos arquivos oficiais de divulgação do TSE, em ' + linkTse('https://resultados.tse.jus.br') + ', os mesmos que alimentam o site e o aplicativo de resultados do TSE. Quem lê é o navegador de cada pessoa, sem nenhum servidor no meio: o painel não recebe, não guarda e não altera os números.</li>' +
+      '<li><b>1º turno de 2026 e 2º turnos de 2022 e 2014:</b> arquivos dos Dados Abertos do TSE, somados por município. Antes de publicar, a base é conferida com os totais oficiais do país; se um único número não bater, ela não é gerada. Exemplo conferido: no 1º turno de 2026, 56.104.503 votos para Flávio Bolsonaro e 53.879.538 para Lula, sobre 119.300.788 votos válidos.</li>' +
+      '<li><b>Mapas e regiões:</b> IBGE (estados, Grandes Regiões e municípios).</li></ul>');
+    h.push('<h4>4. Contagens e desinteresse</h4><ul>' +
+      '<li><b>Cresceu, ficou igual ou diminuiu:</b> "igual" quando a mudança é menor que 1% dos votos que o candidato teve ali no 1º turno.</li>' +
+      '<li><b>Desinteresse</b> = (abstenções + votos brancos + votos nulos) ÷ eleitores aptos, no 1º e no 2º turno, também só nos municípios 100% apurados. A diferença é dada em pontos percentuais (p.p.) e separada em abstenções e brancos e nulos.</li>' +
+      '<li><b>Percentuais dos candidatos</b> são sobre os votos válidos (sem brancos e nulos), como faz o TSE.</li></ul>');
+    h.push('<h4>5. Limites</h4><ul>' +
+      '<li>Os votos do exterior não entram no Virômetro (não pertencem a um município); entram no placar do Brasil.</li>' +
+      '<li>O resultado oficial é sempre o do TSE. Se o TSE corrigir um número, o painel mostra a correção na leitura seguinte.</li>' +
+      '<li>As eleições de 2022 e 2014 usam a divisão atual dos municípios do IBGE.</li></ul>');
+    h.push('<h4>6. Atualização e proteção</h4><p>O painel consulta o TSE a cada minuto (o próprio TSE renova os arquivos a cada 50 segundos, mais ou menos). Para não sobrecarregar o TSE, faz no máximo 9 consultas por segundo e só baixa de novo o que mudou. Os endereços usados são os oficiais, publicados pelo TSE; nada é adivinhado.</p>');
+    return h.join('');
+  }
+  function htmlConexao() {
+    var h = ['<div class="conexao"><h4 style="margin-top:0">Conexão com o TSE agora</h4>'];
+    var abUrl = URLS.ab(ele2(), 'br'), uUrl = URLS.u(ele2(), 'br');
+    if (MODO === 'demo') h.push('<p>Este é o <b>modo demonstração</b>: o 2º turno é simulado e nada é pedido ao TSE. Para o painel de verdade, abra o endereço sem <code>?demo=1</code>.</p>');
+    else {
+      var b = AB.br && AB.br.lug.br;
+      h.push('<p>Arquivo de andamento lido: ' + linkTse(abUrl, abUrl.replace(TSE_RAIZ, 'resultados.tse.jus.br/oficial')) + '<br>Resultado do Brasil: ' + linkTse(uUrl, uUrl.replace(TSE_RAIZ, 'resultados.tse.jus.br/oficial')) + '</p>');
+      h.push('<p>' + (AB.br ? '<span class="ok">✔ Recebendo do TSE.</span> Arquivo gerado pelo TSE em <b>' + esc(AB.br.quando.trim()) + '</b>' + (b ? '; seções apuradas no Brasil: <b>' + (b.ts ? NP2.format(100 * b.st / b.ts) : '0') + '%</b>' : '') + '.' : AO.estado === 'antes' ? 'O TSE ainda não publicou o arquivo do 2º turno (normal antes do início da apuração). O painel tenta de novo a cada 2 minutos.' : 'Aguardando a primeira resposta do TSE.') +
+        (AO.ultima ? ' Última leitura neste aparelho: ' + new Date(AO.ultima).toLocaleTimeString('pt-BR') + '.' : '') + '</p>');
+      h.push('<p class="rot">Consultas feitas: ' + fmtN(FILA.total) + ' · "não encontrado": ' + fmtN(FILA.n404) + (AO.formato.length ? ' · arquivos com formato inesperado: ' + AO.formato.length : '') + '</p>');
+    }
+    if (TESTE && TESTE.andando) h.push('<p>Testando…</p>');
+    else if (TESTE && TESTE.demo) h.push('<p>No modo demonstração o teste não consulta o TSE.</p>');
+    else if (TESTE) {
+      var t1 = TESTE.t1, t2 = TESTE.t2;
+      h.push('<p>' + (t1.ok ? '<span class="ok">✔ Este aparelho lê o TSE diretamente</span> (' + t1.ms + ' ms). Arquivo oficial do 1º turno: gerado em ' + esc(t1.quando || '') + ', ' + (t1.ts ? NP2.format(100 * t1.st / t1.ts) : '0') + '% das seções.' : '<span class="ruim">✖ Não consegui falar com o TSE deste aparelho</span> (sem internet ou acesso bloqueado). O painel continua tentando a cada minuto.') + '</p>');
+      h.push('<p>' + (t2.ok ? '<span class="ok">✔ Arquivo do 2º turno publicado pelo TSE</span>: gerado em ' + esc(t2.quando || '') + ', ' + (t2.ts ? NP2.format(100 * t2.st / t2.ts) : '0') + '% das seções apuradas.' : t1.ok ? 'O TSE ainda não publicou o arquivo do 2º turno (normal antes do início da apuração).' : '') + '</p>');
+    }
+    h.push('<p><button class="btn" data-acao="testar-tse">Testar a conexão com o TSE agora</button></p>');
+    h.push('<p class="rot">Para conferir com a fonte oficial, compare com o site de resultados do TSE: ' + linkTse('https://resultados.tse.jus.br/oficial/app/index.html', 'resultados.tse.jus.br') + '.</p></div>');
+    return h.join('');
+  }
+  function renderNota() {
+    var el = $('nota'); if (!el) return;
+    el.hidden = !NOTA;
+    if (!NOTA) return;
+    if (!$('nota-corpo').innerHTML) $('nota-corpo').innerHTML = htmlNota();
+    trocar('nota-vivo', htmlConexao());
+  }
+  // teste na hora: o navegador desta pessoa pede ao TSE o andamento do 1º turno (sempre existe) e o do 2º turno
+  function testarTse() {
+    if (MODO === 'demo') { TESTE = { demo: true }; renderNota(); return Promise.resolve(); }
+    TESTE = { andando: true }; renderNota();
+    var r = {};
+    return Promise.all([['t1', URLS.ab(ELE.t1, 'br')], ['t2', URLS.ab(ELE.t2, 'br')]].map(function (u) {
+      var ini = RELOGIO.agora();
+      return FILA.pedir(u[1], { esperado: true }).then(function (x) {
+        var o = { ok: !!x.ok, status: x.status, ms: Math.max(1, RELOGIO.agora() - ini) };
+        if (x.ok) try { var ab = lerAb(x.json, u[1]), b = ab.lug.br; o.quando = ab.quando.trim(); o.st = b ? b.st : 0; o.ts = b ? b.ts : 0; } catch (e) { o.ok = false; }
+        r[u[0]] = o;
+      });
+    })).then(function () { TESTE = r; renderNota(); });
+  }
+  function celular() { return !!(window.matchMedia && window.matchMedia('(max-width: 760px)').matches); }
+  // no computador, "Resumo e mapa" ficam juntos (não há aba Mapa separada)
+  // (na Lite o Mapa é uma aba própria também no computador, com o mapa na tela toda)
+  function abaVisivel() { return st.aba === 'mapa' && !celular() && !LITE ? 'resumo' : st.aba; }
+  function renderAbas() {
+    var ab = abaVisivel(), comMapa = ab === 'mapa' || (ab === 'resumo' && !celular() && !LITE);
+    document.body.setAttribute('data-aba', ab);
+    var bs = document.querySelectorAll('#abas-cel [data-aba]');
+    for (var i = 0; i < bs.length; i++) { if (bs[i].getAttribute('data-aba') === ab) bs[i].setAttribute('aria-current', 'page'); else bs[i].removeAttribute('aria-current'); }
+    // ao mostrar o mapa: desenha agora, já com o tamanho de verdade, e reenquadra
+    if (comMapa && !ABA_ANTES) { QUADRO = ''; renderMapa(); }
+    ABA_ANTES = comMapa;
+  }
+  var ABA_ANTES = false;
+  // Resumo: caixa para abrir um lugar de dentro (estado, município…), para quem não usa o mapa nem a lista
+  var ARTIGO = { reg: 'uma Grande Região', uf: 'um estado', int: 'uma região intermediária', ime: 'uma região imediata', rm: 'uma região metropolitana', mun: 'um município' };
+  function navegacao(k) {
+    var n = nivel(k), ver = n === 'mun' ? 'mun' : n === 'zz' ? 'uf' : st.ver, lista = itens(k, ver).filter(function (x) { return x !== k; });
+    if (!lista.length) return '';
+    lista.sort(function (p, q) { return nomeDe(p).localeCompare(nomeDe(q), 'pt-BR'); });
+    var rot = (n === 'mun' ? 'Abrir outro município' : 'Abrir ' + ARTIGO[ver]) + (n === 'br' ? ' do Brasil' : n === 'mun' || n === 'zz' ? '' : ' de ' + nomeDe(k));
+    return '<label class="nav"><span class="rot">' + esc(rot) + '</span><select class="nav-sel" data-nav="1"><option value="">Escolha…</option>' +
+      lista.map(function (x) { return '<option value="' + esc(x) + '">' + esc(nomeDe(x)) + '</option>'; }).join('') + '</select></label>' +
+      ((n === 'br' || n === 'reg') && !LITE ? '<p class="nota">Municípios e regiões do IBGE ' + (n === 'br' ? 'do Brasil inteiro' : 'da região inteira') + ': em “Ver por”, no mapa ou na lista.</p>' : '');
+  }
+
+  // ======================================================================
+  // Navegação
+  // ======================================================================
+  function ir(k) {
+    if (!BASE.lug[k] && k !== 'br') return Promise.resolve();
+    var antes = st.lugar, n = nivel(k);
+    // município aberto a partir de uma RM: o caminho passa pela RM (e continua por ela entre os vizinhos)
+    if (n === 'mun' && nivel(antes) === 'rm' && membros(antes).indexOf(k) >= 0) st.viaRm = antes;
+    else if (!(n === 'mun' && st.viaRm && membros(st.viaRm).indexOf(k) >= 0)) st.viaRm = null;
+    st.lugar = k; st.busca = ''; st.todos = false; st.vtodos = false;
+    if (n !== 'mun') { var ops = opcoesVer(k); if (ops.indexOf(st.ver) < 0 || nivel(antes) !== n) st.ver = verPadrao(k); }
+    var u = ufDe(k), p = u ? garantirUf(u) : Promise.resolve();
+    render();
+    return Promise.resolve(p).then(function () {
+      if (n === 'uf' && opcoesVer(k).indexOf(st.ver) < 0) st.ver = verPadrao(k);
+      render();
+      // estado aberto: passa a acompanhar os municípios dele
+      if (u && AB.br && AB.br.lug['uf:' + u] && AB.br.lug['uf:' + u].st > 0 && !AB.uf[u]) cicloUf(u).then(pedirRender);
+    });
+  }
+
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-ir],[data-ver],[data-mapa],[data-ele],[data-ref],[data-quem],[data-ord],[data-aba],[data-acao],[data-vver],[data-vord],[data-vbar]');
+    if (!b) return;
+    var v;
+    if ((v = b.getAttribute('data-ir')) != null) { ir(v); return; }
+    if ((v = b.getAttribute('data-ver')) != null) { st.ver = v; st.todos = false; QUADRO = ''; render(); return; }
+    if ((v = b.getAttribute('data-mapa')) != null) { st.mapa = v; render(); return; }
+    if ((v = b.getAttribute('data-ele')) != null) { st.ele = v; render(); return; }
+    if ((v = b.getAttribute('data-ref')) != null) { st.ref = v; render(); return; }
+    if ((v = b.getAttribute('data-quem')) != null) { st.quem = v; render(); return; }
+    if ((v = b.getAttribute('data-ord')) != null) { if (st.ord === v) st.desc = !st.desc; else { st.ord = v; st.desc = v !== 'nome'; } render(); return; }
+    if ((v = b.getAttribute('data-aba')) != null) { st.aba = v; render(); return; }
+    if ((v = b.getAttribute('data-vbar')) != null) { st.vbar = v; render(); return; }
+    if ((v = b.getAttribute('data-vver')) != null) { st.vver = v; st.vtodos = false; render(); return; }
+    if ((v = b.getAttribute('data-vord')) != null) { if (st.vord === v) st.vdesc = !st.vdesc; else { st.vord = v; st.vdesc = v !== 'nome'; } render(); return; }
+    if ((v = b.getAttribute('data-acao')) != null) {
+      if (v === 'atualizar') { if (BASE.fonte) ciclo(); }
+      else if (v === 'viromapa') {   // o mesmo recorte do Virômetro, no mapa
+        st.mapa = 'viro'; st.aba = 'mapa';
+        if (nivel(st.lugar) !== 'mun' && opcoesVer(st.lugar).indexOf(verViro(st.lugar)) >= 0) st.ver = verViro(st.lugar);
+        QUADRO = ''; render();
+      }
+      else if (v === 'vtodos') { st.vtodos = true; render(); }
+      else if (v === 'nota') { NOTA = !NOTA; renderNota(); }
+      else if (v === 'testar-tse') testarTse();
+      else if (v === 'viroaba') { st.aba = 'viro'; render(); }
+      else if (v === 'vtab') { st.vtab = !st.vtab; render(); }
+      else if (v === 'gaveta') { st.gaveta = !gavetaAberta(); renderGaveta(); }
+      else if (v === 'tema') { st.tema = st.tema === 'dark' ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', st.tema); try { localStorage.setItem('vira-tema', st.tema); } catch (e) { /* ok */ } render(); }
+      else if (v === 'todos') { st.todos = true; render(); }
+    }
+  });
+  document.addEventListener('change', function (ev) {
+    var t = ev.target;
+    // escolheu: a lista sai de uso (solta o foco) para a tela poder se redesenhar
+    if (t && t.tagName === 'SELECT' && t.blur) t.blur();
+    if (t && t.getAttribute && t.getAttribute('data-nav') != null && t.value) ir(t.value);
+    var s = t && t.getAttribute && t.getAttribute('data-sel');
+    if (s === 'ver') { st.ver = t.value; st.todos = false; QUADRO = ''; render(); }
+    else if (s === 'ele') { st.ele = t.value; render(); }
+    else if (s === 'ref') { st.ref = t.value; render(); }
+  });
+  // Esc fecha a nota técnica; clicar no fundo escuro também
+  document.addEventListener('keydown', function (ev) { if (NOTA && ev.key === 'Escape') { NOTA = false; renderNota(); } });
+  document.addEventListener('click', function (ev) { if (NOTA && ev.target && ev.target.id === 'nota') { NOTA = false; renderNota(); } });
+  // saiu de uma lista sem escolher: a parte que esperava volta a ser desenhada
+  document.addEventListener('focusout', function (ev) { if (ev.target && ev.target.tagName === 'SELECT') pedirRender(); });
+  // tela mudou de tamanho (girar o celular, janela): o mapa se ajusta e a aba certa aparece
+  if (window.addEventListener) window.addEventListener('resize', function () { if (MAPA) MAPA.invalidateSize({ animate: false, pan: false }); pedirRender(); });
+  document.addEventListener('input', function (ev) {
+    var t = ev.target;
+    if (t && t.getAttribute && t.getAttribute('data-busca') != null) { st.busca = t.value || ''; renderLista(); }
+  });
+
+  // ======================================================================
+  // Início
+  // ======================================================================
+  function iniciar() {
+    // tema claro (o da marca) sempre; o escuro só por escolha do visitante, lembrada neste aparelho
+    try { if (localStorage.getItem('vira-tema') === 'dark') st.tema = 'dark'; } catch (e) { /* sem armazenamento: fica o claro */ }
+    document.documentElement.setAttribute('data-theme', st.tema);
+    if (!LITE && window.matchMedia && window.matchMedia('(max-width: 760px)').matches) st.aba = 'resumo';
+    versoes();
+    render();
+    var parar = false;
+    return carregarBase().then(null, function () {
+      if (MODO === 'demo') { parar = true; AO.aviso = 'A demonstração precisa da base do projeto (pasta aovivo_dados), que não abriu.'; return; }
+      return carregarReserva();
+    }).then(function () {
+      var alvo = Q.get('ir');
+      render();
+      if (parar) return;
+      return alvo && (BASE.lug[alvo] || /^(mun|int|ime|rm|zon):/.test(alvo)) ? irPara(alvo) : null;
+    }).then(function () {
+      // ?aba=viro|mapa|lista e ?ver=mun (Brasil por município etc.) abrem direto
+      var a = Q.get('aba'), v = Q.get('ver'), qm = Q.get('quem');
+      if (['a', 'b', 'd'].indexOf(qm) >= 0) st.quem = qm;   // ?quem=d abre o Virômetro no desinteresse
+      if (Q.get('nota') === '1') { NOTA = true; if (!OPC.semCiclo && MODO !== 'demo') testarTse(); }   // ?nota=1 abre a nota técnica (e testa a conexão)
+      if ((LITE ? ['mapa', 'viro'] : ['resumo', 'mapa', 'viro', 'lista']).indexOf(a) >= 0) st.aba = a;
+      if (v && opcoesVer(st.lugar).indexOf(v) >= 0) st.ver = v;
+      if (a || v) render();
+      if (!OPC.semCiclo && !parar) return ciclo();
+    });
+  }
+  // Versão Completa (aovivo.html, index.html) e Versão Lite (lite.html): abas e o link de uma para a outra, com o mesmo modo (?demo=1…)
+  function versoes() {
+    var qs = new URLSearchParams(Q.toString()); qs.delete('lite');
+    // endereço principal (./) = Lite; completa.html (o site abre também como /completa) = Completa
+    var s = qs.toString(), a = $('versao-link');
+    if (a && a.setAttribute) { a.setAttribute('href', (LITE ? 'completa.html' : './') + (s ? '?' + s : '')); a.textContent = LITE ? 'Versão completa' : 'Versão Lite'; }
+    if (!LITE) return;
+    document.title = 'Vira 2026 · Virômetro ao vivo do 2º turno';
+    $('abas-cel').innerHTML = '<button data-aba="viro" aria-current="page">Virômetro</button><button data-aba="mapa">Mapa</button>';
+  }
+  // Botão "voltar" do celular/navegador: cada lugar e aba aberta vira um passo do histórico (sem mudar o endereço)
+  var HIST = !!(window.history && window.history.pushState && window.addEventListener), RESTAURANDO = false;
+  function passo() { return { lugar: st.lugar, aba: st.aba, viaRm: st.viaRm }; }
+  function marcarHistorico() {
+    if (!HIST || RESTAURANDO) return;
+    var a = history.state, p = passo();
+    if (a && a.lugar === p.lugar && a.aba === p.aba) return;
+    if (!a) history.replaceState(p, ''); else history.pushState(p, '');
+  }
+  if (HIST) window.addEventListener('popstate', function (ev) {
+    var p = ev.state; if (!p || !p.lugar) return;
+    RESTAURANDO = true;
+    st.aba = p.aba; st.viaRm = p.viaRm || null;
+    try { ir(p.lugar); } finally { RESTAURANDO = false; }
+  });
+  // ?ir= aceita qualquer nível; abre o estado antes, se for preciso (o estado vem do código do município no IBGE ou da base)
+  function irPara(alvo) {
+    if (BASE.lug[alvo]) return ir(alvo);
+    var u = (Q.get('uf') || '').toUpperCase();
+    if (!u) return ir('br');
+    return Promise.resolve(garantirUf(u)).then(function () { return ir(BASE.lug[alvo] ? alvo : 'uf:' + u); });
+  }
+
+  window.AoVivo = {
+    st: st, BASE: BASE, VIVO: VIVO, AB: AB, AO: AO, FILA: FILA, DEMO: DEMO, URLS: URLS, MODO: MODO, I: I,
+    get FIN() { return FIN; }, get ELE() { return ELE; }, get COMP() { return COMP; },
+    lerU: lerU, lerAb: lerAb, Fila: Fila, vivo: vivo, base: base, justa: justa, caminho: caminho, pai: pai, itens: itens, membros: membros,
+    agg: agg, munsDe: munsDe, garantirTodas: garantirTodas, get NACIONAL() { return NACIONAL; }, LITE: LITE, valQ: valQ, desDe: desDe, misturar: misturar,
+    opcoesVer: opcoesVer, ir: ir, irPara: irPara, render: render, ciclo: ciclo, corDe: corDe, pct: pct, garantirUf: garantirUf, ele2: ele2,
+    pronto: iniciar()
+  };
+})();
+</script>
+</body>
+</html>
